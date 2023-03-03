@@ -14,6 +14,7 @@ public class TbwCommand extends Command {
 
     @Override
     public boolean execute(String prefix, String[] arguments) {
+        this.displayMessage(TbwAddon.prefix + "§b/tbw &7was executed!");
         return false;
     }
 }
