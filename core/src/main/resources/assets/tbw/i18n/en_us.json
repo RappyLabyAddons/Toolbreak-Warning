@@ -1,0 +1,31 @@
+{
+    "tbw": {
+        "settings": {
+            "name": "Toolbreak Warning",
+            "enabled": {
+                "name": "Activated"
+            },
+            "format": {
+                "name": "Zahlen formatieren"
+            },
+            "debug": {
+                "name": "Debug Mode (Development Feature)"
+            },
+            "lastHit": {
+                "name": "Warn on last hit"
+            },
+            "swordPercentage": {
+                "name": "Sword Warn Percentage"
+            },
+            "pickaxePercentage": {
+                "name": "Pickaxe Warn Percentage"
+            },
+            "axePercentage": {
+                "name": "Axe Warn Percentage"
+            },
+            "shovelPercentage": {
+                "name": "Shovel Warn Percentage"
+            }
+        }
+    }
+}

@@ -9,15 +9,18 @@ version = "1.0.0"
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
 labyMod {
-    defaultPackageName = "org.example" //change this to your main package name (used by all modules)
+    defaultPackageName = "com.rappytv.tbw" //change this to your main package name (used by all modules)
     addonInfo {
-        namespace = "example"
-        displayName = "ExampleAddon"
-        author = "Example Author"
-        description = "Example Description"
-        minecraftVersion = "*"
-        version = System.getenv().getOrDefault("VERSION", "0.0.1")
+        namespace = "tbw"
+        displayName = "Toolbreak Warning"
+        author = "RappyTV#6969"
+        description = "Stops you from using your currently used tool when its almost destroyed."
+        version = System.getenv().getOrDefault("VERSION", "1.0")
     }
 
     minecraft {

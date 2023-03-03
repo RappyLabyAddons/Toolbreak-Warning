@@ -1,4 +1,4 @@
-rootProject.name = "labymod4-addon-template"
+rootProject.name = "Toolbreak Warning"
 
 pluginManagement {
     val labyGradlePluginVersion = "0.3.18"
