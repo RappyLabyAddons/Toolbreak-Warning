@@ -6,7 +6,7 @@
                 "name": "Aktiviert"
             },
             "format": {
-                "name": "Aktiviert"
+                "name": "Zahlen formatieren"
             },
             "debug": {
                 "name": "Debug Modus (Entwicklungs-Funktion)"
@@ -26,6 +26,34 @@
             "shovelPercentage": {
                 "name": "Schaufelwarnung (%)"
             }
+        },
+        "tooltype": {
+            "sword": "Schwert",
+            "pickaxe": "Spitzhacke",
+            "axe": "Axt",
+            "shovel": "Schaufel"
+        },
+        "messages": {
+            "lastHit": "§cDu solltest das Tool jetzt weglegen. Das ist dein letzter Schlag!",
+            "warning": "§cWillst du das Tool wirklich weiter benutzen? Die Haltbarkeit liegt bei %s%!",
+            "debug": "§e§m   §e§l[ Event ausgelöst ]§e§m   \n§7Event: §b%s in Haupthand\n§7Maximale Haltbarkeit: §b%s\n§7Aktuelle Haltbarkeit: §b%s\n§7Warnungshaltbarkeit: §b%s\n§e§m                                   "
+        },
+        "command": {
+            "addonIsDisabled": "§cDieses addon ist deaktiviert! Benutze §b/tbw enable §cum es zu aktivieren.",
+            "invalidSubcommand": "§cBitte gib einen gültigen Subcommand an! [enable, disable, format, debug, config]",
+            "onOff": "§cBitte gib ein gültiges Argument an! [on, off]",
+            "onOnceOff": "§cBitte gib ein gültiges Argument an! arguments: [on, once, off]",
+            "addonEnabled":  "§7Addon erfolgreich §aaktiviert§7!",
+            "addonDisabled":  "§7Addon erfolgreich §cdeaktiviert§7!",
+            "formattingEnabled":  "§7Nummerformatierungen erfolgreich §aaktiviert§7!",
+            "formattingDisabled":  "§7Nummerformatierungen erfolgreich §cdeaktiviert§7!",
+            "debugEnabled":  "§7Debug Modus erfolgreich §aaktiviert§7!",
+            "debugDisabled":  "§7Debug Modus erfolgreich §cdeaktiviert§7!",
+            "debugOnce":  "§7Debug Modus erfolgreich einmalig §aaktiviert§7)!",
+            "noEventTriggered": "§e§m   §e§l[ Kein Event ausgelöst ]§e§m   \n§7Event: §8-\n§7Maximale Haltbarkeit: §8-\n§7Aktuelle Haltbarkeit: §8-\n§7Warnungshaltbarkeit: §8-\n§e§m                                          ",
+            "config": "§e§m           §e§l[ Config ]§e§m           \n§7%s: %s\n§7%s: %s\n§7%s: %s\n§7%s: %s\n§7%s: §b%s\n§7%s: §b%s\n§7%s: §b%s\n§7%s: §b%s\n§e§m                                    ",
+            "yes": "Ja",
+            "no": "Nein"
         }
     }
 }
