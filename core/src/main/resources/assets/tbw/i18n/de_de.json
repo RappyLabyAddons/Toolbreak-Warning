@@ -6,13 +6,16 @@
                 "name": "Aktiviert"
             },
             "format": {
-                "name": "Zahlen formatieren"
+                "name": "Zahlen formatieren",
+                "description": "Unformatierte Zahl: 1561\nFormatierte Zahl: 1.561"
             },
             "debug": {
-                "name": "Debug Modus (Entwicklungs-Funktion)"
+                "name": "Debug Modus (Entwicklungs-Funktion)",
+                "description": "Sendet jeden Tick eine Nachricht in den Chat, in dem du ein Tool in der Hand hältst."
             },
             "lastHit": {
-                "name": "Warnung beim letzten Schlag"
+                "name": "Warnung beim letzten Schlag",
+                "description": "Warnt dich, wenn dein Tool bei Haltbarkeit 1 angekommen ist"
             },
             "swordPercentage": {
                 "name": "Schwertwarnung (%)"

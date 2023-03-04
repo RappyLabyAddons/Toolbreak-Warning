@@ -6,13 +6,16 @@
                 "name": "Activated"
             },
             "format": {
-                "name": "Format numbers"
+                "name": "Format numbers",
+                "description": "Unformatted Number: 1561\nFormatted Number: 1.561"
             },
             "debug": {
-                "name": "Debug Mode (Development Feature)"
+                "name": "Debug Mode (Development Feature)",
+                "description": "Sends a message in the chat every tick you're holding a tool."
             },
             "lastHit": {
-                "name": "Warn on last hit"
+                "name": "Warn on last hit",
+                "description": "Warns you when your tool is at 1 durability"
             },
             "swordPercentage": {
                 "name": "Sword Warn Percentage"
