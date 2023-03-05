@@ -38,7 +38,7 @@
         },
         "messages": {
             "lastHit": "§cDu solltest das Tool jetzt weglegen. Das ist dein letzter Schlag!",
-            "warning": "§cWillst du das Tool wirklich weiter benutzen? Die Haltbarkeit liegt bei %s%!",
+            "warning": "§cWillst du das Tool wirklich weiter benutzen? Die Haltbarkeit liegt bei %s%%!",
             "debug": "§e§m   §e§l[ Event ausgelöst ]§e§m   \n§7Event: §b%s in Haupthand\n§7Maximale Haltbarkeit: §b%s\n§7Aktuelle Haltbarkeit: §b%s\n§7Warnungshaltbarkeit: §b%s\n§e§m                                   "
         },
         "command": {

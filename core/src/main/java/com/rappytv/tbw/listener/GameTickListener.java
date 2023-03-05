@@ -10,6 +10,7 @@ import net.labymod.api.client.entity.player.GameMode;
 import net.labymod.api.client.world.item.ItemStack;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.lifecycle.GameTickEvent;
+import net.labymod.api.util.I18n;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +49,7 @@ public class GameTickListener {
         if(itemUsedInt == itemWarnInt) {
             if(!warns.contains(itemStack)) {
                 Laby.labyAPI().minecraft().openChat("");
-                Util.msg(Util.getTranslation("tbw.messages.warning", toolType.getWarnPercentage(config)), true);
+                Util.msg(I18n.getTranslation("tbw.messages.warning", toolType.getWarnPercentage(config)), true);
                 warns.add(itemStack);
             }
         } else if(isLastHit(itemStack)) {
