@@ -1,5 +1,4 @@
 # **Toolbreak Warning (LabyMod 4)**
-## Now works without Forge
 > With this plugin you can prevent breaking your expensive tools, especially when you're mining with high efficiency enchantments and/or haste.
 > Adds the command /tbw (Addon Settings as a command)
 
