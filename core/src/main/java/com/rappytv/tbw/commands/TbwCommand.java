@@ -55,7 +55,8 @@ public class TbwCommand extends Command {
 
                 Util.msg(Util.getTranslation("tbw.command.debugEnabled"), true);
             } else if(arguments[1].equalsIgnoreCase("once")) {
-                ClientPlayer player = Laby.labyAPI().minecraft().clientPlayer();
+                ClientPlayer player = Laby.labyAPI().minecraft().getClientPlayer();
+                if(player == null) return true;
                 ItemStack itemStack = player.getMainHandItemStack();
                 if(itemStack == null) return true;
                 Util.msg(Util.getTranslation("tbw.command.debugOnce"), true);

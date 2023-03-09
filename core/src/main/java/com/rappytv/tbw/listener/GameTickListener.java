@@ -29,7 +29,7 @@ public class GameTickListener {
     @Subscribe
     public void onTick(GameTickEvent event) {
         if(!addon.configuration().enabled().get()) return;
-        ClientPlayer player = Laby.labyAPI().minecraft().clientPlayer();
+        ClientPlayer player = Laby.labyAPI().minecraft().getClientPlayer();
         if(player == null) return;
         ItemStack itemStack = player.getMainHandItemStack();
 
