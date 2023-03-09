@@ -42,8 +42,7 @@
             "debug": "§e§m   §e§l[ Event ausgelöst ]§e§m   \n§7Event: §b%s in Haupthand\n§7Maximale Haltbarkeit: §b%s\n§7Aktuelle Haltbarkeit: §b%s\n§7Warnungshaltbarkeit: §b%s\n§e§m                                   "
         },
         "command": {
-            "addonIsDisabled": "§cDieses addon ist deaktiviert! Benutze §b/tbw enable §cum es zu aktivieren.",
-            "invalidSubcommand": "§cBitte gib einen gültigen Subcommand an! [enable, disable, format, debug, config]",
+            "invalidSubcommand": "§cBitte gib einen gültigen Subcommand an! [disable, format, debug, config]",
             "onOff": "§cBitte gib ein gültiges Argument an! [on, off]",
             "onOnceOff": "§cBitte gib ein gültiges Argument an! arguments: [on, once, off]",
             "addonEnabled":  "§7Addon erfolgreich §aaktiviert§7!",

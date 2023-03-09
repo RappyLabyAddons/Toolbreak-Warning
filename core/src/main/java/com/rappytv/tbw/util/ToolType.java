@@ -2,7 +2,6 @@ package com.rappytv.tbw.util;
 
 import com.rappytv.tbw.TbwConfiguration;
 import net.labymod.api.client.world.item.ItemStack;
-import net.labymod.api.util.CharSequences;
 
 public enum ToolType {
     None, Sword, Pickaxe, Axe, Shovel;

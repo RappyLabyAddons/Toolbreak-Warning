@@ -40,9 +40,6 @@ public class TbwConfiguration extends AddonConfig {
 
     @Override
     public ConfigProperty<Boolean> enabled() {
-        return ConfigProperty.create(true);
-    }
-    public ConfigProperty<Boolean> activated() {
         return enabled;
     }
     public ConfigProperty<Boolean> format() {

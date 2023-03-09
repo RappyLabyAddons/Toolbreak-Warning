@@ -8,7 +8,6 @@ import net.labymod.api.Laby;
 import net.labymod.api.client.chat.command.Command;
 import net.labymod.api.client.entity.player.ClientPlayer;
 import net.labymod.api.client.world.item.ItemStack;
-import java.util.Arrays;
 
 public class TbwCommand extends Command {
 
@@ -21,19 +20,11 @@ public class TbwCommand extends Command {
 
     @Override
     public boolean execute(String prefix, String[] arguments) {
-        if(!config.activated().get() && (arguments.length < 1 || !Arrays.asList("enable", "config").contains(arguments[0].toLowerCase()))) {
-            Util.msg(Util.getTranslation("tbw.command.addonIsDisabled"), true);
-            return true;
-        }
         if(arguments.length < 1) {
             Util.msg(Util.getTranslation("tbw.command.invalidSubcommand"), true);
             return true;
-        } else if(arguments[0].equalsIgnoreCase("enable")) {
-            config.activated().set(true);
-
-            Util.msg(Util.getTranslation("tbw.command.addonEnabled"), true);
         } else if(arguments[0].equalsIgnoreCase("disable")) {
-            config.activated().set(false);
+            config.enabled().set(false);
 
             Util.msg(Util.getTranslation("tbw.command.addonDisabled"), true);
         } else if(arguments[0].equalsIgnoreCase("format")) {
@@ -90,7 +81,7 @@ public class TbwCommand extends Command {
 
             Util.msg(Util.getTranslation("tbw.command.config",
                 Util.getTranslation("tbw.settings.enabled.name"),
-                config.activated().get() ? yes : no,
+                config.enabled().get() ? yes : no,
                 Util.getTranslation("tbw.settings.format.name"),
                 config.format().get() ? yes : no,
                 Util.getTranslation("tbw.settings.debug.name"),
