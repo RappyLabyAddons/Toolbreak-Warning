@@ -1,6 +1,6 @@
-package com.rappytv.tbw.util;
+package com.rappytv.toolwarn.util;
 
-import com.rappytv.tbw.TbwAddon;
+import com.rappytv.toolwarn.TbwAddon;
 import net.labymod.api.util.I18n;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

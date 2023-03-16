@@ -1,4 +1,4 @@
-package com.rappytv.tbw;
+package com.rappytv.toolwarn;
 
 import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SliderWidget.SliderSetting;

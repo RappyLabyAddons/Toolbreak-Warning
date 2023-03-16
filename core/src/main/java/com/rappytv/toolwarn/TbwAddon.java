@@ -1,7 +1,7 @@
-package com.rappytv.tbw;
+package com.rappytv.toolwarn;
 
-import com.rappytv.tbw.commands.TbwCommand;
-import com.rappytv.tbw.listener.GameTickListener;
+import com.rappytv.toolwarn.commands.TbwCommand;
+import com.rappytv.toolwarn.listener.GameTickListener;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
 

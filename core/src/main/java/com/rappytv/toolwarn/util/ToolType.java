@@ -1,6 +1,6 @@
-package com.rappytv.tbw.util;
+package com.rappytv.toolwarn.util;
 
-import com.rappytv.tbw.TbwConfiguration;
+import com.rappytv.toolwarn.TbwConfiguration;
 import net.labymod.api.client.world.item.ItemStack;
 
 public enum ToolType {

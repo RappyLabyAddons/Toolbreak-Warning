@@ -14,9 +14,9 @@ tasks.withType<JavaCompile> {
 }
 
 labyMod {
-    defaultPackageName = "com.rappytv.tbw" //change this to your main package name (used by all modules)
+    defaultPackageName = "com.rappytv.toolwarn" //change this to your main package name (used by all modules)
     addonInfo {
-        namespace = "tbw"
+        namespace = "toolwarn"
         displayName = "Toolbreak Warning"
         author = "RappyTV#6969"
         description = "Stops you from using your currently used tool when its almost destroyed."

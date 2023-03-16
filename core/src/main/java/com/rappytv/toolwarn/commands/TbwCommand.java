@@ -1,9 +1,9 @@
-package com.rappytv.tbw.commands;
+package com.rappytv.toolwarn.commands;
 
-import com.rappytv.tbw.TbwAddon;
-import com.rappytv.tbw.TbwConfiguration;
-import com.rappytv.tbw.util.ToolType;
-import com.rappytv.tbw.util.Util;
+import com.rappytv.toolwarn.TbwAddon;
+import com.rappytv.toolwarn.TbwConfiguration;
+import com.rappytv.toolwarn.util.ToolType;
+import com.rappytv.toolwarn.util.Util;
 import net.labymod.api.Laby;
 import net.labymod.api.client.chat.command.Command;
 import net.labymod.api.client.entity.player.ClientPlayer;
