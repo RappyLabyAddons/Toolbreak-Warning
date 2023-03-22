@@ -5,6 +5,10 @@
             "enabled": {
                 "name": "Aktiviert"
             },
+            "openChat": {
+                "name": "Chat öffnen beim warnen",
+                "description": "Wenn das Addon dich warnt, wird sich dein Chat öffnen, damit du daran gehindert wirst, die letzten Hits mit deinem Tool zu verbrauchen."
+            },
             "format": {
                 "name": "Zahlen formatieren",
                 "description": "Unformatierte Zahl: 1561\nFormatierte Zahl: 1.561"

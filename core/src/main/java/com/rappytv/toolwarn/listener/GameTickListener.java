@@ -47,13 +47,13 @@ public class GameTickListener {
 
         if(itemUsedInt == itemWarnInt) {
             if(!warns.contains(itemStack)) {
-                Laby.labyAPI().minecraft().openChat("");
+                if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
                 Util.msg(I18n.getTranslation("toolwarn.messages.warning", toolType.getWarnPercentage(config)), true);
                 warns.add(itemStack);
             }
         } else if(isLastHit(itemStack)) {
             if(!warns.contains(itemStack)) {
-                Laby.labyAPI().minecraft().openChat("");
+                if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
                 Util.msg(Util.getTranslation("toolwarn.messages.lastHit"), true);
                 warns.add(itemStack);
             }

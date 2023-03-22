@@ -5,6 +5,10 @@
             "enabled": {
                 "name": "Activated"
             },
+            "openChat": {
+                "name": "Open chat on warn",
+                "description": "When the addon warns you, your chat will open to prevent you from wasting the last durability of your tool."
+            },
             "format": {
                 "name": "Format numbers",
                 "description": "Unformatted Number: 1561\nFormatted Number: 1.561"
