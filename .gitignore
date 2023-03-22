@@ -75,3 +75,8 @@ build-data.txt
 
 # Don't ignore libraries
 !libs/*.jar
+
+# Ignore the test client
+game-runner
+
+.assetsroot
