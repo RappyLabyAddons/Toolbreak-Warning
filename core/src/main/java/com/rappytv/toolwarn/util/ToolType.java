@@ -35,6 +35,6 @@ public enum ToolType {
     }
 
     public String displayName() {
-        return Util.getTranslation("tbw.tooltype." + this.name().toLowerCase());
+        return Util.getTranslation("toolwarn.tooltype." + this.name().toLowerCase());
     }
 }

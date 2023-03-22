@@ -43,18 +43,18 @@ public class GameTickListener {
         int itemWarnInt = (toolType.getWarnPercentage(config) * itemStack.getMaximumDamage()) / 100;
         int itemUsedInt = itemStack.getMaximumDamage() - itemStack.getCurrentDamageValue();
         if(config.debug().get())
-            Util.msg(Util.getTranslation("tbw.messages.debug", toolType.displayName(), (config.format().get() ? Util.formatNumber(itemStack.getMaximumDamage()) : itemStack.getMaximumDamage()), (config.format().get() ? Util.formatNumber(itemUsedInt) : itemUsedInt), (config.format().get() ? Util.formatNumber(itemWarnInt) : itemWarnInt)), false);
+            Util.msg(Util.getTranslation("toolwarn.messages.debug", toolType.displayName(), (config.format().get() ? Util.formatNumber(itemStack.getMaximumDamage()) : itemStack.getMaximumDamage()), (config.format().get() ? Util.formatNumber(itemUsedInt) : itemUsedInt), (config.format().get() ? Util.formatNumber(itemWarnInt) : itemWarnInt)), false);
 
         if(itemUsedInt == itemWarnInt) {
             if(!warns.contains(itemStack)) {
                 Laby.labyAPI().minecraft().openChat("");
-                Util.msg(I18n.getTranslation("tbw.messages.warning", toolType.getWarnPercentage(config)), true);
+                Util.msg(I18n.getTranslation("toolwarn.messages.warning", toolType.getWarnPercentage(config)), true);
                 warns.add(itemStack);
             }
         } else if(isLastHit(itemStack)) {
             if(!warns.contains(itemStack)) {
                 Laby.labyAPI().minecraft().openChat("");
-                Util.msg(Util.getTranslation("tbw.messages.lastHit"), true);
+                Util.msg(Util.getTranslation("toolwarn.messages.lastHit"), true);
                 warns.add(itemStack);
             }
         } else {
