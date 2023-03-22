@@ -4,6 +4,7 @@
 
 ### You can customize these Settings:
 - If the addon is enabled or not
+- If the chat should be opened when you get warned
 - If durability numbers should be formatted (Formatted = 1.562 | Not Formatted = 1562)
 - If you should be warned at durability 1
 - If the debug mode is enabled or not (only recommended for developing purposes)
