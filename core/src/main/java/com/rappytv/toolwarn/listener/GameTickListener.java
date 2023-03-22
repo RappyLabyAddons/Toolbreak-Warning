@@ -12,7 +12,6 @@ import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.lifecycle.GameTickEvent;
 import net.labymod.api.util.I18n;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GameTickListener {
@@ -35,7 +34,7 @@ public class GameTickListener {
 
         if(itemStack == null) return;
         if(itemStack.getMaximumDamage() == 0) return;
-        if(!Arrays.asList(GameMode.SURVIVAL, GameMode.ADVENTURE).contains(player.gameMode())) return;
+        if(player.gameMode() != GameMode.SURVIVAL && player.gameMode() != GameMode.ADVENTURE) return;
 
         toolUsed(itemStack, ToolType.getByItem(itemStack));
     }
