@@ -40,6 +40,7 @@ public class GameTickListener {
     }
 
     public void toolUsed(ItemStack itemStack, ToolType toolType) {
+        if(toolType == ToolType.None) return;
         int itemWarnInt = (toolType.getWarnPercentage(config) * itemStack.getMaximumDamage()) / 100;
         int itemUsedInt = itemStack.getMaximumDamage() - itemStack.getCurrentDamageValue();
         if(config.debug().get())
