@@ -7,12 +7,14 @@ import com.rappytv.toolwarn.util.Util;
 import net.labymod.api.Laby;
 import net.labymod.api.client.entity.player.ClientPlayer;
 import net.labymod.api.client.entity.player.GameMode;
+import net.labymod.api.client.gui.screen.widget.overlay.ScreenOverlay;
 import net.labymod.api.client.world.item.ItemStack;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.lifecycle.GameTickEvent;
 import net.labymod.api.util.I18n;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameTickListener {
 
@@ -41,6 +43,8 @@ public class GameTickListener {
 
     public void toolUsed(ItemStack itemStack, ToolType toolType) {
         if(toolType == ToolType.None) return;
+        if(Laby.labyAPI().minecraft().minecraftWindow().isScreenOpened()) return;
+
         int itemWarnInt = (toolType.getWarnPercentage(config) * itemStack.getMaximumDamage()) / 100;
         int itemUsedInt = itemStack.getMaximumDamage() - itemStack.getCurrentDamageValue();
         if(config.debug().get())
