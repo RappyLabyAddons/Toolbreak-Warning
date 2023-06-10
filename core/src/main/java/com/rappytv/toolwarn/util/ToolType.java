@@ -20,18 +20,13 @@ public enum ToolType {
     }
 
     public int getWarnPercentage(TbwConfiguration configuration) {
-        switch(this) {
-            case Sword:
-                return configuration.swordPercentage().get();
-            case Pickaxe:
-                return configuration.pickAxePercentage().get();
-            case Axe:
-                return configuration.axePercentage().get();
-            case Shovel:
-                return configuration.shovelPercentage().get();
-            default:
-                return -1;
-        }
+        return switch (this) {
+            case Sword -> configuration.swordPercentage().get();
+            case Pickaxe -> configuration.pickAxePercentage().get();
+            case Axe -> configuration.axePercentage().get();
+            case Shovel -> configuration.shovelPercentage().get();
+            default -> -1;
+        };
     }
 
     public String displayName() {
