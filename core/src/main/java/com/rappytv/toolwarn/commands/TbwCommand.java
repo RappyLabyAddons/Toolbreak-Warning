@@ -4,7 +4,6 @@ import com.rappytv.toolwarn.TbwAddon;
 import com.rappytv.toolwarn.config.TbwConfiguration;
 import com.rappytv.toolwarn.util.ToolType;
 import com.rappytv.toolwarn.util.Util;
-import com.rappytv.toolwarn.util.WarnSound;
 import net.labymod.api.Laby;
 import net.labymod.api.client.chat.command.Command;
 import net.labymod.api.client.entity.player.ClientPlayer;
@@ -24,24 +23,6 @@ public class TbwCommand extends Command {
     public boolean execute(String prefix, String[] arguments) {
         if(arguments.length < 1) {
             Util.msg(I18n.translate("toolwarn.command.invalidSubcommand"), true);
-        } else if(arguments[0].equalsIgnoreCase("test")) {
-            if(arguments.length > 1 && arguments[1].equalsIgnoreCase("last")) {
-                if(config.sounds().enabled().get() && config.sounds().lastHitSound().get() != WarnSound.NONE) {
-                    Laby.labyAPI().minecraft().sounds().playSound(
-                        config.sounds().lastHitSound().get().getResourceLocation(),
-                        1f,
-                        1f
-                    );
-                }
-            } else {
-                if(config.sounds().enabled().get() && config.sounds().warnSound().get() != WarnSound.NONE) {
-                    Laby.labyAPI().minecraft().sounds().playSound(
-                        config.sounds().warnSound().get().getResourceLocation(),
-                        1f,
-                        1f
-                    );
-                }
-            }
         } else if(arguments[0].equalsIgnoreCase("disable")) {
             config.enabled().set(false);
 
