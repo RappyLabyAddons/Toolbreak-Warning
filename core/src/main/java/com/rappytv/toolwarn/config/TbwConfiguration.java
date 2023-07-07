@@ -1,5 +1,6 @@
-package com.rappytv.toolwarn;
+package com.rappytv.toolwarn.config;
 
+import com.rappytv.toolwarn.config.subconfig.TbwSoundSubConfig;
 import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SliderWidget.SliderSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
@@ -24,6 +25,8 @@ public class TbwConfiguration extends AddonConfig {
     @SwitchSetting
     @SpriteSlot(size = 32, x = 3)
     private final ConfigProperty<Boolean> debug = new ConfigProperty<>(false);
+
+    private final TbwSoundSubConfig sounds = new TbwSoundSubConfig();
 
     @SwitchSetting
     @SpriteSlot(size = 32, y = 1)
@@ -53,6 +56,10 @@ public class TbwConfiguration extends AddonConfig {
     }
     public ConfigProperty<Boolean> debug() {
         return debug;
+    }
+
+    public TbwSoundSubConfig sounds() {
+        return sounds;
     }
 
     public ConfigProperty<Boolean> lastHit() {

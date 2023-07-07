@@ -1,7 +1,7 @@
 package com.rappytv.toolwarn.commands;
 
 import com.rappytv.toolwarn.TbwAddon;
-import com.rappytv.toolwarn.TbwConfiguration;
+import com.rappytv.toolwarn.config.TbwConfiguration;
 import com.rappytv.toolwarn.util.ToolType;
 import com.rappytv.toolwarn.util.Util;
 import net.labymod.api.Laby;
@@ -22,7 +22,6 @@ public class TbwCommand extends Command {
     public boolean execute(String prefix, String[] arguments) {
         if(arguments.length < 1) {
             Util.msg(Util.getTranslation("toolwarn.command.invalidSubcommand"), true);
-            return true;
         } else if(arguments[0].equalsIgnoreCase("disable")) {
             config.enabled().set(false);
 

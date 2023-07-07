@@ -4,16 +4,15 @@ import com.rappytv.toolwarn.TbwAddon;
 import net.labymod.api.client.resources.ResourceLocation;
 
 public enum WarnSound {
-    AnvilUse(TbwAddon.getSounds().getAnvilUseSound()),
-    Pling(TbwAddon.getSounds().getPlingSound());
-
-    private final ResourceLocation resourceLocation;
-
-    WarnSound(ResourceLocation resourceLocation) {
-        this.resourceLocation = resourceLocation;
-    }
+    NONE,
+    PLING,
+    ANVIL_USE;
 
     public ResourceLocation getResourceLocation() {
-        return resourceLocation;
+        return switch (this) {
+            case NONE -> null;
+            case ANVIL_USE -> TbwAddon.getSounds().getAnvilUseSound();
+            case PLING -> TbwAddon.getSounds().getPlingSound();
+        };
     }
 }
