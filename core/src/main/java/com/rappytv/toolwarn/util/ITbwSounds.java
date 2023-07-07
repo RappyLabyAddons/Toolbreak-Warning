@@ -8,5 +8,7 @@ import org.jetbrains.annotations.NotNull;
 public interface ITbwSounds {
 
     @NotNull ResourceLocation getPlingSound();
+    @NotNull ResourceLocation getLevelUpSound();
+    @NotNull ResourceLocation getGlassBreakSound();
     @NotNull ResourceLocation getAnvilUseSound();
 }
