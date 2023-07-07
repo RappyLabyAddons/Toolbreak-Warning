@@ -18,9 +18,9 @@ labyMod {
     addonInfo {
         namespace = "toolwarn"
         displayName = "Toolbreak Warning"
-        author = "RappyTV#6969"
+        author = "RappyTV"
         description = "Stops you from using your currently used tool when its almost destroyed."
-        version = System.getenv().getOrDefault("VERSION", "1.1.0")
+        version = System.getenv().getOrDefault("VERSION", "1.2.0")
     }
 
     minecraft {
