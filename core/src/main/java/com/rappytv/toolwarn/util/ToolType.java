@@ -2,6 +2,7 @@ package com.rappytv.toolwarn.util;
 
 import com.rappytv.toolwarn.config.TbwConfiguration;
 import net.labymod.api.client.world.item.ItemStack;
+import net.labymod.api.util.I18n;
 
 public enum ToolType {
     None, Sword, Pickaxe, Axe, Shovel;
@@ -30,6 +31,6 @@ public enum ToolType {
     }
 
     public String displayName() {
-        return Util.getTranslation("toolwarn.tooltype." + this.name().toLowerCase());
+        return I18n.translate("toolwarn.tooltype." + this.name().toLowerCase());
     }
 }

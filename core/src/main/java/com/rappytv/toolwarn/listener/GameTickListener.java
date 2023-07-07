@@ -47,7 +47,7 @@ public class GameTickListener {
         int itemWarnInt = (toolType.getWarnPercentage(config) * itemStack.getMaximumDamage()) / 100;
         int itemUsedInt = itemStack.getMaximumDamage() - itemStack.getCurrentDamageValue();
         if(config.debug().get())
-            Util.msg(Util.getTranslation("toolwarn.messages.debug", toolType.displayName(), (config.format().get() ? Util.formatNumber(itemStack.getMaximumDamage()) : itemStack.getMaximumDamage()), (config.format().get() ? Util.formatNumber(itemUsedInt) : itemUsedInt), (config.format().get() ? Util.formatNumber(itemWarnInt) : itemWarnInt)), false);
+            Util.msg(I18n.translate("toolwarn.messages.debug", toolType.displayName(), (config.format().get() ? Util.formatNumber(itemStack.getMaximumDamage()) : itemStack.getMaximumDamage()), (config.format().get() ? Util.formatNumber(itemUsedInt) : itemUsedInt), (config.format().get() ? Util.formatNumber(itemWarnInt) : itemWarnInt)), false);
 
         if(itemUsedInt == itemWarnInt) {
             if(!warns.contains(itemStack)) {
@@ -66,7 +66,7 @@ public class GameTickListener {
         } else if(isLastHit(itemStack)) {
             if(!warns.contains(itemStack)) {
                 if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
-                Util.msg(Util.getTranslation("toolwarn.messages.lastHit"), true);
+                Util.msg(I18n.translate("toolwarn.messages.lastHit"), true);
                 warns.add(itemStack);
 
                 if(config.sounds().enabled().get() && config.sounds().lastHitSound().get() != WarnSound.NONE) {

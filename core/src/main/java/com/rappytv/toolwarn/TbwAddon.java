@@ -13,20 +13,14 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
 
     public static final String prefix = "§c§lTBW §8» §7";
     private static ITbwSounds sounds;
-    private static TbwAddon instance;
 
     @Override
     protected void enable() {
         sounds = ((DefaultReferenceStorage) this.referenceStorageAccessor()).iTbwSounds();
-        instance = this;
         registerSettingCategory();
 
         registerCommand(new TbwCommand(this));
         registerListener(new GameTickListener(this));
-    }
-
-    public static TbwAddon get() {
-        return instance;
     }
 
     public static ITbwSounds getSounds() {
