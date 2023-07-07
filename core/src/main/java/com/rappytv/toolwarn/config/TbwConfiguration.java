@@ -8,6 +8,7 @@ import net.labymod.api.configuration.loader.annotation.ConfigName;
 import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.annotation.SpriteTexture;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
+import net.labymod.api.configuration.settings.annotation.SettingSection;
 
 @ConfigName("settings")
 @SpriteTexture(value = "settings")
@@ -16,6 +17,7 @@ public class TbwConfiguration extends AddonConfig {
     @SwitchSetting
     @SpriteSlot(size = 32)
     private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
+    @SettingSection("general")
     @SwitchSetting
     @SpriteSlot(size = 32, x = 1)
     private final ConfigProperty<Boolean> openChat = new ConfigProperty<>(true);
@@ -23,14 +25,16 @@ public class TbwConfiguration extends AddonConfig {
     @SpriteSlot(size = 32, x = 2)
     private final ConfigProperty<Boolean> format = new ConfigProperty<>(true);
     @SwitchSetting
+    @SpriteSlot(size = 32, y = 1)
+    private final ConfigProperty<Boolean> lastHit = new ConfigProperty<>(true);
+    @SwitchSetting
     @SpriteSlot(size = 32, x = 3)
     private final ConfigProperty<Boolean> debug = new ConfigProperty<>(false);
 
+    @SettingSection("sounds")
     private final TbwSoundSubConfig sounds = new TbwSoundSubConfig();
 
-    @SwitchSetting
-    @SpriteSlot(size = 32, y = 1)
-    private final ConfigProperty<Boolean> lastHit = new ConfigProperty<>(true);
+    @SettingSection("tools")
     @SliderSetting(steps = 1, min = 1, max = 25)
     @SpriteSlot(size = 32, y = 3)
     private final ConfigProperty<Integer> swordPercentage = new ConfigProperty<>(5);
@@ -54,6 +58,9 @@ public class TbwConfiguration extends AddonConfig {
     public ConfigProperty<Boolean> format() {
         return format;
     }
+    public ConfigProperty<Boolean> lastHit() {
+        return lastHit;
+    }
     public ConfigProperty<Boolean> debug() {
         return debug;
     }
@@ -62,9 +69,6 @@ public class TbwConfiguration extends AddonConfig {
         return sounds;
     }
 
-    public ConfigProperty<Boolean> lastHit() {
-        return lastHit;
-    }
     public ConfigProperty<Integer> swordPercentage() {
         return swordPercentage;
     }
