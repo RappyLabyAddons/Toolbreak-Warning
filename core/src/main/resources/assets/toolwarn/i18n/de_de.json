@@ -2,6 +2,17 @@
     "toolwarn": {
         "settings": {
             "name": "Toolbreak Warnung",
+            "header": {
+                "general": {
+                    "name": "Allgemein"
+                },
+                "sounds": {
+                    "name": "Sounds"
+                },
+                "tools": {
+                    "name": "Werkzeuge"
+                }
+            },
             "enabled": {
                 "name": "Aktiviert"
             },
@@ -13,13 +24,37 @@
                 "name": "Zahlen formatieren",
                 "description": "Unformatierte Zahl: 1561\nFormatierte Zahl: 1.561"
             },
+            "lastHit": {
+                "name": "Warnung beim letzten Schlag",
+                "description": "Warnt dich, wenn dein Tool bei Haltbarkeit 1 angekommen ist"
+            },
             "debug": {
                 "name": "Debug Modus (Entwicklungs-Funktion)",
                 "description": "Sendet jeden Tick eine Nachricht in den Chat, in dem du ein Tool in der Hand hältst."
             },
-            "lastHit": {
-                "name": "Warnung beim letzten Schlag",
-                "description": "Warnt dich, wenn dein Tool bei Haltbarkeit 1 angekommen ist"
+            "sounds": {
+                "name": "Sound Einstellungen",
+                "description": "Verwaltet die Sounds, die abgespielt werden.",
+                "warnSound": {
+                    "name": "Warnungs Sound",
+                    "entries": {
+                        "none": "Keiner",
+                        "anvilUse": "Amboss",
+                        "levelUp": "Level Up",
+                        "glassBreak": "Glas abbauen",
+                        "pling": "Pling"
+                    }
+                },
+                "lastHitSound": {
+                    "name": "Sound beim letzten Schlag",
+                    "entries": {
+                        "none": "Keiner",
+                        "anvilUse": "Amboss",
+                        "levelUp": "Level Up",
+                        "glassBreak": "Glas abbauen",
+                        "pling": "Pling"
+                    }
+                }
             },
             "swordPercentage": {
                 "name": "Schwertwarnung (%)"
