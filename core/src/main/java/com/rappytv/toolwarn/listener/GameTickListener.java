@@ -5,8 +5,11 @@ import com.rappytv.toolwarn.TbwConfiguration;
 import com.rappytv.toolwarn.util.ToolType;
 import com.rappytv.toolwarn.util.Util;
 import net.labymod.api.Laby;
+import net.labymod.api.client.Minecraft;
 import net.labymod.api.client.entity.player.ClientPlayer;
 import net.labymod.api.client.entity.player.GameMode;
+import net.labymod.api.client.resources.ResourceLocation;
+import net.labymod.api.client.sound.SoundType;
 import net.labymod.api.client.world.item.ItemStack;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.lifecycle.GameTickEvent;
@@ -53,12 +56,22 @@ public class GameTickListener {
                 if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
                 Util.msg(I18n.getTranslation("toolwarn.messages.warning", toolType.getWarnPercentage(config)), true);
                 warns.add(itemStack);
+                Laby.labyAPI().minecraft().sounds().playSound(
+                    TbwAddon.sound.getResourceLocation(),
+                    1f,
+                    1f
+                );
             }
         } else if(isLastHit(itemStack)) {
             if(!warns.contains(itemStack)) {
                 if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
                 Util.msg(Util.getTranslation("toolwarn.messages.lastHit"), true);
                 warns.add(itemStack);
+                Laby.labyAPI().minecraft().sounds().playSound(
+                    TbwAddon.sound.getResourceLocation(),
+                    1f,
+                    1f
+                );
             }
         } else {
             warns.remove(itemStack);
@@ -67,6 +80,6 @@ public class GameTickListener {
 
     public boolean isLastHit(ItemStack i) {
         if (!addon.configuration().lastHit().get()) return false;
-        return (i.getMaximumDamage() - i.getCurrentDamageValue()) == 1;
+        return (i.getMaximumDamage() - i.getCurrentDamageValue()) <= 1;
     }
 }
