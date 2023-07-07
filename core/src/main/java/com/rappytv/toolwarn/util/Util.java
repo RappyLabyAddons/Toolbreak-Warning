@@ -1,7 +1,7 @@
 package com.rappytv.toolwarn.util;
 
 import com.rappytv.toolwarn.TbwAddon;
-import net.labymod.api.util.I18n;
+import net.labymod.api.Laby;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -10,14 +10,7 @@ import java.util.Locale;
 public class Util {
 
     public static void msg(String text, boolean prefix) {
-        TbwAddon.get().displayMessage(prefix ? TbwAddon.prefix + text : text);
-    }
-
-    public static String getTranslation(String key, Object ...args) {
-        String translation = I18n.getTranslation(key, args);
-        if(translation == null)
-            return key;
-        return translation;
+        Laby.references().chatExecutor().displayClientMessage(prefix ? TbwAddon.prefix + text : text);
     }
 
     public static String formatNumber(int number) {
