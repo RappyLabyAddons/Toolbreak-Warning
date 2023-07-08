@@ -20,7 +20,7 @@ labyMod {
         displayName = "Toolbreak Warning"
         author = "RappyTV"
         description = "Stops you from using your currently used tool when its almost destroyed."
-        version = System.getenv().getOrDefault("VERSION", "1.2.0")
+        version = System.getenv().getOrDefault("VERSION", "1.2.1")
     }
 
     minecraft {
