@@ -20,17 +20,9 @@
                 "name": "Chat öffnen beim warnen",
                 "description": "Wenn das Addon dich warnt, wird sich dein Chat öffnen, damit du daran gehindert wirst, die letzten Hits mit deinem Tool zu verbrauchen."
             },
-            "format": {
-                "name": "Zahlen formatieren",
-                "description": "Unformatierte Zahl: 1561\nFormatierte Zahl: 1.561"
-            },
             "lastHit": {
                 "name": "Warnung beim letzten Schlag",
                 "description": "Warnt dich, wenn dein Tool bei Haltbarkeit 1 angekommen ist"
-            },
-            "debug": {
-                "name": "Debug Modus (Entwicklungs-Funktion)",
-                "description": "Sendet jeden Tick eine Nachricht in den Chat, in dem du ein Tool in der Hand hältst."
             },
             "sounds": {
                 "name": "Sound Einstellungen",

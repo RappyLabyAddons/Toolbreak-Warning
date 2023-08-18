@@ -22,9 +22,6 @@ public class TbwConfiguration extends AddonConfig {
     @SpriteSlot(size = 32, x = 1)
     private final ConfigProperty<Boolean> openChat = new ConfigProperty<>(true);
     @SwitchSetting
-    @SpriteSlot(size = 32, x = 2)
-    private final ConfigProperty<Boolean> format = new ConfigProperty<>(true);
-    @SwitchSetting
     @SpriteSlot(size = 32, x = 3)
     private final ConfigProperty<Boolean> lastHit = new ConfigProperty<>(true);
 
@@ -52,9 +49,6 @@ public class TbwConfiguration extends AddonConfig {
     }
     public ConfigProperty<Boolean> openChat() {
         return openChat;
-    }
-    public ConfigProperty<Boolean> format() {
-        return format;
     }
     public ConfigProperty<Boolean> lastHit() {
         return lastHit;

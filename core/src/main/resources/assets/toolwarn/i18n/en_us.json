@@ -20,17 +20,9 @@
                 "name": "Open chat on warn",
                 "description": "When the addon warns you, your chat will open to prevent you from wasting the last durability of your tool."
             },
-            "format": {
-                "name": "Format numbers",
-                "description": "Unformatted Number: 1561\nFormatted Number: 1.561"
-            },
             "lastHit": {
                 "name": "Warn on last hit",
                 "description": "Warns you when your tool is at 1 durability"
-            },
-            "debug": {
-                "name": "Debug Mode (Development Feature)",
-                "description": "Sends a message in the chat every tick you're holding a tool."
             },
             "sounds": {
                 "name": "Sound Settings",
