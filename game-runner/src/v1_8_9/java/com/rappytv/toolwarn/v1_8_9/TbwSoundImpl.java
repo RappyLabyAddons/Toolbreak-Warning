@@ -10,20 +10,25 @@ import org.jetbrains.annotations.NotNull;
 @Implements(ITbwSounds.class)
 public class TbwSoundImpl implements ITbwSounds {
 
+    private final ResourceLocation plingSound = ResourceLocation.create("minecraft", "note.pling");
+    private final ResourceLocation levelUpSound = ResourceLocation.create("minecraft", "random.levelup");
+    private final ResourceLocation glassBreakSound = ResourceLocation.create("minecraft", "game.potion.smash");
+    private final ResourceLocation anvilUseSound = ResourceLocation.create("minecraft", "random.anvil_use");
+
     @Override
     public ResourceLocation getPlingSound() {
-        return ResourceLocation.create("minecraft", "note.pling");
+        return plingSound;
     }
     @Override
     public ResourceLocation getLevelUpSound() {
-        return ResourceLocation.create("minecraft", "random.levelup");
+        return levelUpSound;
     }
     @Override
     public @NotNull ResourceLocation getGlassBreakSound() {
-        return ResourceLocation.create("minecraft", "game.potion.smash");
+        return glassBreakSound;
     }
     @Override
     public ResourceLocation getAnvilUseSound() {
-        return ResourceLocation.create("minecraft", "random.anvil_use");
+        return anvilUseSound;
     }
 }
