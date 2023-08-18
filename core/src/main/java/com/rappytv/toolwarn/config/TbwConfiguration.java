@@ -27,9 +27,6 @@ public class TbwConfiguration extends AddonConfig {
     @SwitchSetting
     @SpriteSlot(size = 32, x = 3)
     private final ConfigProperty<Boolean> lastHit = new ConfigProperty<>(true);
-    @SwitchSetting
-    @SpriteSlot(size = 32, y = 1)
-    private final ConfigProperty<Boolean> debug = new ConfigProperty<>(false);
 
     @SettingSection("sounds")
     @SpriteSlot(size = 32, y = 1, x = 1)
@@ -61,9 +58,6 @@ public class TbwConfiguration extends AddonConfig {
     }
     public ConfigProperty<Boolean> lastHit() {
         return lastHit;
-    }
-    public ConfigProperty<Boolean> debug() {
-        return debug;
     }
 
     public TbwSoundSubConfig sounds() {

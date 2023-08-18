@@ -76,25 +76,8 @@
             "shovel": "Shovel"
         },
         "messages": {
-            "lastHit": "§cYou should stop using this tool now, this is your last hit!",
-            "warning": "§cDo you really want to continue using this tool? Its durability is at %s%%!",
-            "debug": "§e§m   §e§l[ Event triggered ]§e§m   \n§7Event: §b%s in main hand\n§7Max durability: §b%s\n§7Current durability: §b%s\n§7Warn durability: §b%s\n§e§m                                   "
-        },
-        "command": {
-            "invalidSubcommand": "§cPlease provide a valid subcommand! [disable, format, debug, config]",
-            "onOff": "§cPlease provide a valid argument! [on, off]",
-            "onOnceOff": "§cPlease provide a valid argument! [on, once, off]",
-            "addonEnabled":  "§7Addon successfully §aenabled§7!",
-            "addonDisabled":  "§7Addon successfully §cdisabled§7!",
-            "formattingEnabled":  "§7Number formatting successfully §aenabled§7!",
-            "formattingDisabled":  "§7Number formatting successfully §cdisabled§7!",
-            "debugEnabled":  "§7Debug mode successfully §aenabled§7!",
-            "debugDisabled":  "§7Debug mode successfully §cdisabled§7!",
-            "debugOnce":  "§7Debug mode successfully §aenabled §7once!",
-            "noEventTriggered": "§e§m   §e§l[ No event triggered ]§e§m   \n§7Event: §8-\n§7Max durability: §8-\n§7Current durability: §8-\n§7Warn durability: §8-\n§e§m                                       ",
-            "config": "§e§m           §e§l[ Config ]§e§m           \n§7%s: %s\n§7%s: %s\n§7%s: %s\n§7%s: %s\n§7%s: §b%s\n§7%s: §b%s\n§7%s: §b%s\n§7%s: §b%s\n§e§m                                    ",
-            "yes": "Yes",
-            "no": "No"
+            "lastHit": "You should stop using this tool now, this is your last hit!",
+            "warning": "Do you really want to continue using this tool? Its durability is at %s%%!"
         }
     }
 }
