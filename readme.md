@@ -4,7 +4,7 @@ With this plugin you can prevent breaking your expensive tools, especially when 
 ### Installation
 1. Press `Win` + `R`
 2. Paste this into the window that popped up: `%appdata%/.minecraft/LabyMod-neo/addons` and press enter
-3. It should open your Labymod addon directory; Paste the [Toolbreak_Warning.jar](https://github.com/RappyLabyAddons/Toolbreak-Warning/releases/download/v1.3.0/Toolbreak_Warning.jar) in there.
+3. It should open your Labymod addon directory; Paste the [Toolbreak_Warning.jar](https://github.com/RappyLabyAddons/Toolbreak-Warning/releases/latest/download/Toolbreak_Warning.jar) in there.
 4. Launch your Labymod client.
 
 If you have any problems with the addon/have update ideas, feel free to
