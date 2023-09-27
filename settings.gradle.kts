@@ -1,7 +1,7 @@
-rootProject.name = "Toolbreak Warning"
+rootProject.name = "toolwarn"
 
 pluginManagement {
-    val labyGradlePluginVersion = "0.3.27"
+    val labyGradlePluginVersion = "0.3.29"
     plugins {
         id("net.labymod.gradle") version (labyGradlePluginVersion)
     }
