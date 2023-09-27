@@ -1,4 +1,4 @@
-rootProject.name = "Toolbreak Warning"
+rootProject.name = "toolwarn"
 
 pluginManagement {
     val labyGradlePluginVersion = "0.3.29"
