@@ -1,4 +1,5 @@
-# **Toolbreak Warning (LabyMod 4)**
+# **Toolbreak Warning**
+![Downloads](https://labybadges-delta.vercel.app/api/downloads/toolwarn/formatted)<br>
 With this plugin you can prevent breaking your expensive tools, especially when you're mining with high efficiency enchantments and/or haste.
 
 ### Installation
