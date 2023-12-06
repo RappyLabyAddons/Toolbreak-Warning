@@ -20,8 +20,8 @@ labyMod {
         displayName = "Toolbreak Warning"
         author = "RappyTV"
         description = "Stops you from using your currently used tool when its almost destroyed."
-        minecraftVersion = "1.8<1.20.2"
-        version = System.getenv().getOrDefault("VERSION", "1.3.1")
+        minecraftVersion = "1.8<1.20.3"
+        version = System.getenv().getOrDefault("VERSION", "1.3.2")
     }
 
     minecraft {
@@ -35,7 +35,8 @@ labyMod {
                 "1.19.3",
                 "1.19.4",
                 "1.20.1",
-                "1.20.2"
+                "1.20.2",
+                "1.20.3"
         ) { version, provider ->
             configureRun(provider, version)
         }
