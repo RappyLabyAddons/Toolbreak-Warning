@@ -19,7 +19,6 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
 
     @Override
     protected void enable() {
-        //  "§c§lTBW §8» §7"
         prefix = Component
             .text("TBW ", Style.builder().color(NamedTextColor.RED).decorate(TextDecoration.BOLD).build())
             .append(Component.text("» ", NamedTextColor.DARK_GRAY));
