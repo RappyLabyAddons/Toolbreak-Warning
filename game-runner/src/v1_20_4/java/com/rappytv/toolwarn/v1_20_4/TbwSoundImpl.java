@@ -1,4 +1,4 @@
-package com.rappytv.toolwarn.v1_20_3;
+package com.rappytv.toolwarn.v1_20_4;
 
 import com.rappytv.toolwarn.util.ITbwSounds;
 import net.labymod.api.client.resources.ResourceLocation;
