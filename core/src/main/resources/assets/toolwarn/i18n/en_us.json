@@ -49,23 +49,29 @@
                 }
             },
             "swordPercentage": {
-                "name": "Sword Warn Percentage"
+                "name": "Sword warn percentage"
             },
             "pickaxePercentage": {
-                "name": "Pickaxe Warn Percentage"
+                "name": "Pickaxe warn percentage"
             },
             "axePercentage": {
-                "name": "Axe Warn Percentage"
+                "name": "Axe warn percentage"
             },
             "shovelPercentage": {
-                "name": "Shovel Warn Percentage"
+                "name": "Shovel warn percentage"
+            },
+            "crossbowPercentage": {
+                "name": "Crossbow warn percentage"
+            },
+            "lighterPercentage": {
+                "name": "Flint and Steel warn percentage"
+            },
+            "shearsPercentage": {
+                "name": "Shears warn percentage"
+            },
+            "tridentPercentage": {
+                "name": "Trident warn percentage"
             }
-        },
-        "tooltype": {
-            "sword": "Sword",
-            "pickaxe": "Pickaxe",
-            "axe": "Axe",
-            "shovel": "Shovel"
         },
         "messages": {
             "lastHit": "You should stop using this tool now, this is your last hit!",
