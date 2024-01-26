@@ -4,18 +4,26 @@ import com.rappytv.toolwarn.config.TbwConfiguration;
 import com.rappytv.toolwarn.core.generated.DefaultReferenceStorage;
 import com.rappytv.toolwarn.listener.GameTickListener;
 import com.rappytv.toolwarn.util.ITbwSounds;
+import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.component.format.Style;
 import net.labymod.api.client.component.format.TextDecoration;
 import net.labymod.api.models.addon.annotation.AddonMain;
+import net.labymod.api.revision.SimpleRevision;
+import net.labymod.api.util.version.SemanticVersion;
 
 @AddonMain
 public class TbwAddon extends LabyAddon<TbwConfiguration> {
 
     public static Component prefix;
     private static ITbwSounds sounds;
+
+    @Override
+    protected void preConfigurationLoad() {
+        Laby.references().revisionRegistry().register(new SimpleRevision("toolwarn", new SemanticVersion("1.4.3"), "2024-01-26"));
+    }
 
     @Override
     protected void enable() {

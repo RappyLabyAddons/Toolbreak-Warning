@@ -5,6 +5,7 @@ import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SliderWidget.SliderSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.configuration.loader.annotation.ConfigName;
+import net.labymod.api.configuration.loader.annotation.IntroducedIn;
 import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.annotation.SpriteTexture;
 import net.labymod.api.configuration.loader.annotation.VersionCompatibility;
@@ -46,16 +47,20 @@ public class TbwConfiguration extends AddonConfig {
     @SliderSetting(steps = 1, min = 1, max = 25)
     @SpriteSlot(size = 32, y = 3)
     @VersionCompatibility("1.14<*")
+    @IntroducedIn(namespace = "globaltags", value = "1.4.3")
     private final ConfigProperty<Integer> crossbowPercentage = new ConfigProperty<>(5);
     @SliderSetting(steps = 1, min = 1, max = 25)
     @SpriteSlot(size = 32, y = 3, x = 1)
+    @IntroducedIn(namespace = "globaltags", value = "1.4.3")
     private final ConfigProperty<Integer> lighterPercentage = new ConfigProperty<>(5);
     @SliderSetting(steps = 1, min = 1, max = 25)
     @SpriteSlot(size = 32, y = 3, x = 2)
+    @IntroducedIn(namespace = "globaltags", value = "1.4.3")
     private final ConfigProperty<Integer> shearsPercentage = new ConfigProperty<>(5);
     @SliderSetting(steps = 1, min = 1, max = 25)
     @SpriteSlot(size = 32, y = 3, x = 3)
     @VersionCompatibility("1.13<*")
+    @IntroducedIn(namespace = "globaltags", value = "1.4.3")
     private final ConfigProperty<Integer> tridentPercentage = new ConfigProperty<>(5);
 
     @Override
