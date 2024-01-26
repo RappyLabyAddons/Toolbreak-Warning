@@ -2,7 +2,6 @@ package com.rappytv.toolwarn.util;
 
 import com.rappytv.toolwarn.config.TbwConfiguration;
 import net.labymod.api.client.world.item.ItemStack;
-import net.labymod.api.util.I18n;
 
 public enum ToolType {
     None, Sword, Pickaxe, Axe, Shovel, Crossbow, Lighter, Shears, Trident;
