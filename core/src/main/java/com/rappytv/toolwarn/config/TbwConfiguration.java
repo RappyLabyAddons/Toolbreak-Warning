@@ -7,6 +7,7 @@ import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.Switc
 import net.labymod.api.configuration.loader.annotation.ConfigName;
 import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.annotation.SpriteTexture;
+import net.labymod.api.configuration.loader.annotation.VersionCompatibility;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 
@@ -42,6 +43,20 @@ public class TbwConfiguration extends AddonConfig {
     @SliderSetting(steps = 1, min = 1, max = 25)
     @SpriteSlot(size = 32, x = 3, y = 3)
     private final ConfigProperty<Integer> shovelPercentage = new ConfigProperty<>(5);
+    @SliderSetting(steps = 1, min = 1, max = 25)
+    @SpriteSlot(size = 32, x = 3, y = 3)
+    @VersionCompatibility("1.14<*")
+    private final ConfigProperty<Integer> crossbowPercentage = new ConfigProperty<>(5);
+    @SliderSetting(steps = 1, min = 1, max = 25)
+    @SpriteSlot(size = 32, x = 3, y = 3)
+    private final ConfigProperty<Integer> lighterPercentage = new ConfigProperty<>(5);
+    @SliderSetting(steps = 1, min = 1, max = 25)
+    @SpriteSlot(size = 32, x = 3, y = 3)
+    private final ConfigProperty<Integer> shearsPercentage = new ConfigProperty<>(5);
+    @SliderSetting(steps = 1, min = 1, max = 25)
+    @SpriteSlot(size = 32, x = 3, y = 3)
+    @VersionCompatibility("1.13<*")
+    private final ConfigProperty<Integer> tridentPercentage = new ConfigProperty<>(5);
 
     @Override
     public ConfigProperty<Boolean> enabled() {
@@ -69,5 +84,17 @@ public class TbwConfiguration extends AddonConfig {
     }
     public ConfigProperty<Integer> shovelPercentage() {
         return shovelPercentage;
+    }
+    public ConfigProperty<Integer> crossbowPercentage() {
+        return crossbowPercentage;
+    }
+    public ConfigProperty<Integer> lighterPercentage() {
+        return lighterPercentage;
+    }
+    public ConfigProperty<Integer> shearsPercentage() {
+        return shearsPercentage;
+    }
+    public ConfigProperty<Integer> tridentPercentage() {
+        return tridentPercentage;
     }
 }
