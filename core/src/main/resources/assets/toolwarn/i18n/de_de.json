@@ -49,23 +49,29 @@
                 }
             },
             "swordPercentage": {
-                "name": "Schwertwarnung (%)"
+                "name": "Schwert-Warnung (%)"
             },
             "pickaxePercentage": {
-                "name": "Spitzhackenwarnung (%)"
+                "name": "Spitzhacken-Warnung (%)"
             },
             "axePercentage": {
-                "name": "Axtwarnung (%)"
+                "name": "Axt-Warnung (%)"
             },
             "shovelPercentage": {
-                "name": "Schaufelwarnung (%)"
+                "name": "Schaufel-Warnung (%)"
+            },
+            "crossbowPercentage": {
+                "name": "Armbrust-Warnung (%)"
+            },
+            "lighterPercentage": {
+                "name": "Feuerzeug-Warnung (%)"
+            },
+            "shearsPercentage": {
+                "name": "Scheren-Warnung (%)"
+            },
+            "tridentPercentage": {
+                "name": "Dreizack-Warnung (%)"
             }
-        },
-        "tooltype": {
-            "sword": "Schwert",
-            "pickaxe": "Spitzhacke",
-            "axe": "Axt",
-            "shovel": "Schaufel"
         },
         "messages": {
             "lastHit": "Du solltest das Tool jetzt weglegen. Das ist dein letzter Schlag!",

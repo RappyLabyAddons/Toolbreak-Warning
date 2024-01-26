@@ -12,10 +12,10 @@ public class TbwSoundSubConfig extends Config {
     @ParentSwitch
     private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
     @DropdownSetting
-    @SpriteSlot(size = 32, y = 1, x = 2)
+    @SpriteSlot(size = 32, y = 1, x = 1)
     private final ConfigProperty<WarnSound> warnSound = new ConfigProperty<>(WarnSound.PLING);
     @DropdownSetting
-    @SpriteSlot(size = 32, y = 1, x = 3)
+    @SpriteSlot(size = 32, y = 1, x = 2)
     private final ConfigProperty<WarnSound> lastHitSound = new ConfigProperty<>(WarnSound.ANVIL_USE);
 
     public ConfigProperty<Boolean> enabled() {
