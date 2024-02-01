@@ -2,6 +2,7 @@ package com.rappytv.toolwarn.ui;
 
 import com.rappytv.toolwarn.util.ToolType;
 import com.rappytv.toolwarn.util.WarnSound;
+import com.rappytv.toolwarn.util.WarnTool;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.lss.property.annotation.AutoWidget;
 import net.labymod.api.client.gui.screen.Parent;
@@ -21,12 +22,9 @@ public class ToolWidget extends SimpleWidget {
     private final boolean openChat;
     private final boolean lastHitWarn;
 
-    public ToolWidget(ToolType toolType, WarnSound warnSound, int warnAt, boolean openChat, boolean lastHitWarn) {
+    public ToolWidget(ToolType toolType, WarnTool warnTool) {
         this.toolType = toolType;
-        this.warnSound = warnSound;
-        this.warnAt = warnAt;
-        this.openChat = openChat;
-        this.lastHitWarn = lastHitWarn;
+
     }
 
     @Override

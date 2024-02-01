@@ -19,6 +19,7 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
 
     public static Component prefix;
     private static ITbwSounds sounds;
+    private static TbwAddon instance;
 
     @Override
     protected void preConfigurationLoad() {
@@ -32,8 +33,13 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
             .append(Component.text("» ", NamedTextColor.DARK_GRAY));
         sounds = ((DefaultReferenceStorage) this.referenceStorageAccessor()).iTbwSounds();
         registerSettingCategory();
+        instance = this;
 
         registerListener(new GameTickListener(this));
+    }
+
+    public static TbwAddon get() {
+        return instance;
     }
 
     public static ITbwSounds getSounds() {

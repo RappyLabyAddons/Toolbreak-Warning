@@ -2,12 +2,16 @@ package com.rappytv.toolwarn.config;
 
 import com.rappytv.toolwarn.config.subconfig.TbwSoundSubConfig;
 import com.rappytv.toolwarn.ui.ToolConfigActivity;
+import com.rappytv.toolwarn.ui.ToolWidget;
+import com.rappytv.toolwarn.util.ToolType;
+import com.rappytv.toolwarn.util.WarnTool;
 import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.widget.widgets.activity.settings.ActivitySettingWidget.ActivitySetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SliderWidget.SliderSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.configuration.loader.annotation.ConfigName;
+import net.labymod.api.configuration.loader.annotation.Exclude;
 import net.labymod.api.configuration.loader.annotation.IntroducedIn;
 import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.annotation.SpriteTexture;
@@ -15,10 +19,19 @@ import net.labymod.api.configuration.loader.annotation.VersionCompatibility;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 import net.labymod.api.util.MethodOrder;
+import java.util.HashMap;
+import java.util.Map;
 
 @ConfigName("settings")
 @SpriteTexture(value = "settings")
 public class TbwConfiguration extends AddonConfig {
+
+    @Exclude
+    private final Map<ToolType, WarnTool> tools = new HashMap<>();
+
+    public Map<ToolType, WarnTool> getTools() {
+        return tools;
+    }
 
     @SwitchSetting
     @SpriteSlot(size = 32)
