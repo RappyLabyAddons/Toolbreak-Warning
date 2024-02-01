@@ -1,6 +1,7 @@
 package com.rappytv.toolwarn.ui;
 
 import com.rappytv.toolwarn.util.ToolType;
+import com.rappytv.toolwarn.util.WarnSound;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.lss.property.annotation.AutoWidget;
 import net.labymod.api.client.gui.screen.Parent;
@@ -15,12 +16,14 @@ import net.labymod.api.client.resources.ResourceLocation;
 public class ToolWidget extends SimpleWidget {
 
     private final ToolType toolType;
+    private final WarnSound warnSound;
     private final int warnAt;
     private final boolean openChat;
     private final boolean lastHitWarn;
 
-    public ToolWidget(ToolType toolType, int warnAt, boolean openChat, boolean lastHitWarn) {
+    public ToolWidget(ToolType toolType, WarnSound warnSound, int warnAt, boolean openChat, boolean lastHitWarn) {
         this.toolType = toolType;
+        this.warnSound = warnSound;
         this.warnAt = warnAt;
         this.openChat = openChat;
         this.lastHitWarn = lastHitWarn;
@@ -35,7 +38,7 @@ public class ToolWidget extends SimpleWidget {
         ComponentWidget nameWidget = ComponentWidget.text(this.toolType.name())
             .addId("name-component");
 
-        ComponentWidget meta = ComponentWidget.i18n("", warnAt, openChat, lastHitWarn)
+        ComponentWidget meta = ComponentWidget.i18n("", warnAt, warnSound, openChat, lastHitWarn)
             .addId("meta-component");
 
         this.addChild(iconWidget);
