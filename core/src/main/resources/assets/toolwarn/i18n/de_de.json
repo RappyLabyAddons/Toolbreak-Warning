@@ -48,6 +48,9 @@
                     }
                 }
             },
+            "toolConfig": {
+                "name": "Werkzeuge verwalten"
+            },
             "swordPercentage": {
                 "name": "Schwert-Warnung (%)"
             },

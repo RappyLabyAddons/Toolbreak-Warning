@@ -38,7 +38,7 @@ public class TbwConfiguration extends AddonConfig {
     @SettingSection("tools")
     @MethodOrder(after = "sounds")
     @ActivitySetting
-    public Activity activity() {
+    public Activity toolConfig() {
         return new ToolConfigActivity();
     }
     @SliderSetting(steps = 1, min = 1, max = 25)

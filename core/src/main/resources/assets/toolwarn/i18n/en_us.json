@@ -48,6 +48,9 @@
                     }
                 }
             },
+            "toolConfig": {
+                "name": "Manage tools"
+            },
             "swordPercentage": {
                 "name": "Sword warn percentage"
             },
