@@ -1,7 +1,10 @@
 package com.rappytv.toolwarn.config;
 
 import com.rappytv.toolwarn.config.subconfig.TbwSoundSubConfig;
+import com.rappytv.toolwarn.ui.ToolConfigActivity;
 import net.labymod.api.addon.AddonConfig;
+import net.labymod.api.client.gui.screen.activity.Activity;
+import net.labymod.api.client.gui.screen.widget.widgets.activity.settings.ActivitySettingWidget.ActivitySetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SliderWidget.SliderSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.configuration.loader.annotation.ConfigName;
@@ -11,6 +14,7 @@ import net.labymod.api.configuration.loader.annotation.SpriteTexture;
 import net.labymod.api.configuration.loader.annotation.VersionCompatibility;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
+import net.labymod.api.util.MethodOrder;
 
 @ConfigName("settings")
 @SpriteTexture(value = "settings")
@@ -32,6 +36,11 @@ public class TbwConfiguration extends AddonConfig {
     private final TbwSoundSubConfig sounds = new TbwSoundSubConfig();
 
     @SettingSection("tools")
+    @MethodOrder(after = "sounds")
+    @ActivitySetting
+    public Activity activity() {
+        return new ToolConfigActivity();
+    }
     @SliderSetting(steps = 1, min = 1, max = 25)
     @SpriteSlot(size = 32, y = 2)
     private final ConfigProperty<Integer> swordPercentage = new ConfigProperty<>(5);
