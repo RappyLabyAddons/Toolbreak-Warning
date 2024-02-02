@@ -1,18 +1,128 @@
 package com.rappytv.toolwarn.util;
 
+import com.rappytv.toolwarn.config.TbwConfiguration;
+import net.labymod.api.client.gui.icon.Icon;
+import net.labymod.api.client.resources.ResourceLocation;
+import net.labymod.api.client.world.item.ItemStack;
+
 public class WarnTool {
 
-    private final ToolType type;
-    private final WarnSound sound;
-    private final int warnAt;
-    private final boolean openChat;
-    private final boolean lastHitWarn;
+    private Type type;
+    private WarnSound sound;
+    private WarnSound lastSound;
+    private int warnAt;
+    private boolean openChat;
+    private boolean lastHitWarn;
 
-    public WarnTool(ToolType type, WarnSound sound, int warnAt, boolean openChat, boolean lastHitWarn) {
+    public WarnTool() {
+        this(Type.Sword, WarnSound.NONE, WarnSound.NONE, 5, true, true);
+    }
+
+    public WarnTool(Type type, WarnSound sound, WarnSound lastSound, int warnAt, boolean openChat, boolean lastHitWarn) {
         this.type = type;
         this.sound = sound;
+        this.lastSound = lastSound;
         this.warnAt = warnAt;
         this.openChat = openChat;
         this.lastHitWarn = lastHitWarn;
+    }
+
+    public Type getType() {
+        return type;
+    }
+    public WarnSound getSound() {
+        return sound;
+    }
+    public WarnSound getLastSound() {
+        return lastSound;
+    }
+    public int getWarnAt() {
+        return warnAt;
+    }
+    public boolean openChat() {
+        return openChat;
+    }
+    public boolean lastHitWarn() {
+        return lastHitWarn;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+    public void setSound(WarnSound sound) {
+        this.sound = sound;
+    }
+    public void setLastSound(WarnSound lastSound) {
+        this.lastSound = lastSound;
+    }
+    public void setWarnAt(int warnAt) {
+        this.warnAt = warnAt;
+    }
+    public void setOpenChat(boolean openChat) {
+        this.openChat = openChat;
+    }
+    public void setLastHitWarn(boolean lastHitWarn) {
+        this.lastHitWarn = lastHitWarn;
+    }
+
+    public enum Type {
+        None(-1, -1),
+        Sword(0, 0),
+        Pickaxe(0, 1),
+        Axe(0, 2),
+        Shovel(0, 3),
+        Crossbow(1, 0),
+        Lighter(1, 1),
+        Shears(1, 2),
+        Trident(1, 3);
+
+        private final ResourceLocation sprite = ResourceLocation.create("toolwarn", "textures/tools.png");
+        private final int x;
+        private final int y;
+
+        Type(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public Icon getIcon() {
+            return Icon.sprite32(sprite, x, y);
+        }
+
+        public static Type getByItem(ItemStack itemStack) {
+            String path = itemStack.getIdentifier().getPath();
+            if (path.endsWith("_sword")) {
+                return Sword;
+            } else if (path.endsWith("_pickaxe")) {
+                return Pickaxe;
+            } else if (path.endsWith("_axe")) {
+                return Axe;
+            } else if (path.endsWith("_shovel")) {
+                return Shovel;
+            } else if (path.equalsIgnoreCase("crossbow")) {
+                return Crossbow;
+            } else if (path.equalsIgnoreCase("flint_and_steel")) {
+                return Lighter;
+            } else if (path.equalsIgnoreCase("shears")) {
+                return Shears;
+            } else if (path.equalsIgnoreCase("trident")) {
+                return Trident;
+            }
+            return None;
+        }
+
+        public int getWarnPercentage(TbwConfiguration configuration) {
+            return switch (this) {
+                case Sword -> configuration.swordPercentage().get();
+                case Pickaxe -> configuration.pickAxePercentage().get();
+                case Axe -> configuration.axePercentage().get();
+                case Shovel -> configuration.shovelPercentage().get();
+                case Crossbow -> configuration.crossbowPercentage().get();
+                case Lighter -> configuration.lighterPercentage().get();
+                case Shears -> configuration.shearsPercentage().get();
+                case Trident -> configuration.tridentPercentage().get();
+                default -> -1;
+            };
+        }
     }
 }

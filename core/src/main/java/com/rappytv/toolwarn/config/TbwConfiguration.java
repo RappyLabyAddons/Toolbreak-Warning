@@ -2,8 +2,6 @@ package com.rappytv.toolwarn.config;
 
 import com.rappytv.toolwarn.config.subconfig.TbwSoundSubConfig;
 import com.rappytv.toolwarn.ui.ToolConfigActivity;
-import com.rappytv.toolwarn.ui.ToolWidget;
-import com.rappytv.toolwarn.util.ToolType;
 import com.rappytv.toolwarn.util.WarnTool;
 import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.activity.Activity;
@@ -19,18 +17,21 @@ import net.labymod.api.configuration.loader.annotation.VersionCompatibility;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 import net.labymod.api.util.MethodOrder;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 @ConfigName("settings")
 @SpriteTexture(value = "settings")
 public class TbwConfiguration extends AddonConfig {
 
     @Exclude
-    private final Map<ToolType, WarnTool> tools = new HashMap<>();
+    private final List<WarnTool> tools = new ArrayList<>();
 
-    public Map<ToolType, WarnTool> getTools() {
+    public List<WarnTool> getTools() {
         return tools;
+    }
+    public void removeInvalidTools() {
+
     }
 
     @SwitchSetting

@@ -2,9 +2,9 @@ package com.rappytv.toolwarn.listener;
 
 import com.rappytv.toolwarn.TbwAddon;
 import com.rappytv.toolwarn.config.TbwConfiguration;
-import com.rappytv.toolwarn.util.ToolType;
 import com.rappytv.toolwarn.util.Util;
 import com.rappytv.toolwarn.util.WarnSound;
+import com.rappytv.toolwarn.util.WarnTool.Type;
 import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.NamedTextColor;
@@ -38,11 +38,11 @@ public class GameTickListener {
         if(itemStack.getMaximumDamage() == 0) return;
         if(player.gameMode() != GameMode.SURVIVAL && player.gameMode() != GameMode.ADVENTURE) return;
 
-        toolUsed(itemStack, ToolType.getByItem(itemStack));
+        toolUsed(itemStack, Type.getByItem(itemStack));
     }
 
-    public void toolUsed(ItemStack itemStack, ToolType toolType) {
-        if(toolType == ToolType.None) return;
+    public void toolUsed(ItemStack itemStack, Type toolType) {
+        if(toolType == Type.None) return;
         if(Laby.labyAPI().minecraft().minecraftWindow().isScreenOpened()) return;
 
         int itemWarnInt = (toolType.getWarnPercentage(config) * itemStack.getMaximumDamage()) / 100;

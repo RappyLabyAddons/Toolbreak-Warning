@@ -1,0 +1,53 @@
+.tool-container {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  Scroll {
+    width: 90%;
+    top: 0;
+    bottom: 0;
+    margin-top: 5;
+    margin-bottom: 5;
+    left: 50%;
+    alignment-x: center;
+
+    .tool-list {
+      left: 0;
+      top: 0;
+      height: fit-content;
+      space-between-entries: 2;
+      selectable: true;
+    }
+
+    Scrollbar {
+      left: 0;
+      top: 0;
+      width: 5;
+      height: 100%;
+      margin-left: 5;
+    }
+  }
+}
+
+.overview-button-menu {
+  width: 90%;
+  height: 20;
+  left: 50%;
+  alignment-x: center;
+  bottom: 5;
+  layout: fill;
+  space-between-entries: 8;
+  margin-bottom: 5;
+}
+
+.edit-button-menu {
+  width: 90%;
+  height: 20;
+  left: 50%;
+  alignment-x: center;
+  bottom: 0;
+  layout: fill;
+  space-between-entries: 8;
+}
