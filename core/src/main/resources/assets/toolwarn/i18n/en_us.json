@@ -81,9 +81,19 @@
             "warning": "Do you really want to continue using this tool? Its durability is at %s%%!"
         },
         "gui": {
-            "meta": "%s%% • Chat: %s • Last hit: %s",
+            "meta": "Warn at: %s%% • Chat: %s • Last hit: %s",
             "add": "Add a new tool configuration",
-            "remove": "Do you really want to remove this entry?"
+            "remove": "Do you really want to remove this entry?",
+            "checkbox": {
+                "openChat": "Open chat",
+                "lastHit": "Last hit warning"
+            },
+            "dropdown": {
+                "sound": "Warn sound",
+                "lastSound": "Last hit warn sound"
+            },
+            "slider": "Warning durability (in %)",
+            "type": "Tool type"
         }
     }
 }
