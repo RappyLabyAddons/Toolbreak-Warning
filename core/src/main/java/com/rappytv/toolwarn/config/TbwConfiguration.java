@@ -31,7 +31,7 @@ public class TbwConfiguration extends AddonConfig {
         return tools;
     }
     public void removeInvalidTools() {
-
+        this.tools.removeIf(entry -> entry.getWarnAt() < 1 || entry.getWarnAt() > 25);
     }
 
     @SwitchSetting
