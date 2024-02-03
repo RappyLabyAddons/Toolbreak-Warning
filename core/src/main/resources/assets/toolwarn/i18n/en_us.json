@@ -89,8 +89,25 @@
                 "lastHit": "Last hit warning"
             },
             "dropdown": {
-                "sound": "Warn sound",
-                "lastSound": "Last hit warn sound"
+                "warnSound": "Warn sound",
+                "lastSound": "Last hit warn sound",
+                "type": {
+                    "sword": "Sword",
+                    "pickaxe": "Pickaxe",
+                    "axe": "Axe",
+                    "shovel": "Shovel",
+                    "crossbow": "Crossbow",
+                    "lighter": "Flint and steel",
+                    "shears": "Shears",
+                    "trident": "Trident"
+                },
+                "sound": {
+                    "none": "None",
+                    "anvilUse": "Anvil Use",
+                    "levelUp": "Level Up",
+                    "glassBreak": "Glass Break",
+                    "pling": "Pling"
+                }
             },
             "slider": "Warning durability (in %)",
             "type": "Tool type"

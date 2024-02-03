@@ -160,9 +160,10 @@ public class ToolConfigActivity extends Activity {
         DropdownWidget<WarnTool.Type> typeDropdown = new DropdownWidget<>()
             .addId("type-dropdown");
         for(WarnTool.Type type : WarnTool.Type.values()) {
-            if(type == Type.None) continue;
+            if(type == Type.NONE) continue;
             typeDropdown.add(type);
         }
+        typeDropdown.setTranslationKeyPrefix("toolwarn.gui.dropdown.type");
         typeDropdown.setSelected(toolWidget.getTool().getType());
         typeDropdown.setChangeListener((type) -> {
             // Update toolIcon to type.getIcon()
@@ -181,17 +182,19 @@ public class ToolConfigActivity extends Activity {
         DivWidget lastSoundDiv = new DivWidget()
             .addId("dropdown-div");
 
-        ComponentWidget soundText = ComponentWidget.i18n("toolwarn.gui.dropdown.sound")
+        ComponentWidget soundText = ComponentWidget.i18n("toolwarn.gui.dropdown.warnSound")
             .addId("dropdown-name");
 
         DropdownWidget<WarnSound> soundDropdown = new DropdownWidget<>()
             .addId("dropdown-item");
+        soundDropdown.setTranslationKeyPrefix("toolwarn.gui.dropdown.sound");
 
         ComponentWidget lastSoundText = ComponentWidget.i18n("toolwarn.gui.dropdown.lastSound")
             .addId("dropdown-name");
 
         DropdownWidget<WarnSound> lastSoundDropdown = new DropdownWidget<>()
             .addId("dropdown-item");
+        lastSoundDropdown.setTranslationKeyPrefix("toolwarn.gui.dropdown.sound");
 
         soundDiv.addChild(soundText);
         soundDiv.addChild(soundDropdown);
