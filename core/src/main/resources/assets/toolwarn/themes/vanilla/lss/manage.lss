@@ -140,8 +140,3 @@ Dropdown {
   alignment-x: center;
   font-size: 0.8;
 }
-
-.tool-icon {
-    top: 0;
-    alignment-x: center;
-}

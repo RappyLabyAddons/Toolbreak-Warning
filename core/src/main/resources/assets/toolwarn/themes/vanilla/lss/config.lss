@@ -58,7 +58,7 @@ Tool {
   padding: 1;
 
   .tool-icon {
-    left: 11;
+    left: 3;
     top: 2;
     width: 16;
     height: width;
