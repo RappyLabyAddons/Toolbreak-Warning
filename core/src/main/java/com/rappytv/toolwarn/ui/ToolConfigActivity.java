@@ -39,6 +39,7 @@ public class ToolConfigActivity extends Activity {
     private final TbwAddon addon;
     private final VerticalListWidget<ToolWidget> toolList;
     private final List<ToolWidget> toolWidgets;
+    private int sliderValue;
 
     private ToolWidget selectedTool;
 
@@ -170,7 +171,7 @@ public class ToolConfigActivity extends Activity {
         ComponentWidget sliderText = ComponentWidget.i18n("toolwarn.gui.slider")
             .addId("slider-name");
 
-        SliderWidget warnSlider = new SliderWidget()
+        SliderWidget warnSlider = new SliderWidget(value -> sliderValue = (int) value)
             .addId("warn-slider");
         warnSlider.range(1, 25);
         warnSlider.setValue(toolWidget.getTool().getWarnAt());
@@ -227,105 +228,9 @@ public class ToolConfigActivity extends Activity {
         openChatDiv.addChild(openChatCheck);
         lastHitDiv.addChild(lastHitText);
         lastHitDiv.addChild(lastHitCheck);
-//        ComponentWidget customNameWidget = ComponentWidget.component(toolWidget.getCustomTag().displayName());
-//        customNameWidget.addId("custom-preview");
-//        inputContainer.addChild(customNameWidget);
 
         this.inputWidget = new FlexibleContentWidget();
         this.inputWidget.addId("input-list");
-//
-//        ComponentWidget labelName = ComponentWidget.i18n("toolwarn.gui.name");
-//        labelName.addId("label-name");
-//        this.inputWidget.addContent(labelName);
-//
-//        HorizontalListWidget nameList = new HorizontalListWidget();
-//        nameList.addId("input-name-list");
-//
-//        IconWidget iconWidget = new IconWidget(
-//            toolWidget.getIconWidget(toolWidget.getUserName()));
-//        iconWidget.addId("input-avatar");
-//        nameList.addEntry(iconWidget);
-//
-//        TextFieldWidget nameTextField = new TextFieldWidget();
-//        nameTextField.maximalLength(16);
-//        nameTextField.setText(toolWidget.getUserName());
-//        nameTextField.validator(newValue -> NAME_PATTERN.matcher(newValue).matches());
-//        nameTextField.updateListener(newValue -> {
-//            doneButton.setEnabled(
-//                !newValue.trim().isEmpty() && !this.getStrippedText(customTextField.getText()).isEmpty()
-//            );
-//            if (newValue.equals(this.lastUserName)) {
-//                return;
-//            }
-//
-//            this.lastUserName = newValue;
-//            iconWidget.icon().set(toolWidget.getIconWidget(newValue));
-//        });
-//
-//        nameList.addEntry(nameTextField);
-//        this.inputWidget.addContent(nameList);
-//
-//        ComponentWidget labelCustomName = ComponentWidget.i18n("customnametags.gui.manage.lss.custom.name");
-//        labelCustomName.addId("label-name");
-//        this.inputWidget.addContent(labelCustomName);
-//
-//        HorizontalListWidget customNameList = new HorizontalListWidget();
-//        customNameList.addId("input-name-list");
-//
-//        DivWidget placeHolder = new DivWidget();
-//        placeHolder.addId("input-avatar");
-//        customNameList.addEntry(placeHolder);
-//
-//        TextFieldWidget customTextField = new TextFieldWidget();
-//        customTextField.maximalLength(64);
-//        customTextField.setText(toolWidget.getCustomTag().getCustomName());
-//        customTextField.updateListener(newValue -> {
-//            doneButton.setEnabled(
-//                !this.getStrippedText(newValue).isEmpty() && !nameTextField.getText().trim().isEmpty()
-//            );
-//            if (newValue.equals(this.lastCustomName)) {
-//                return;
-//            }
-//
-//            this.lastCustomName = newValue;
-//            customNameWidget.setComponent(
-//                LegacyComponentSerializer.legacyAmpersand().deserialize(newValue));
-//        });
-//
-//        customNameList.addEntry(customTextField);
-//        this.inputWidget.addContent(customNameList);
-//
-//        HorizontalListWidget checkBoxList = new HorizontalListWidget();
-//        checkBoxList.addId("checkbox-list");
-//
-//        DivWidget enabledDiv = new DivWidget();
-//        enabledDiv.addId("checkbox-div");
-//
-//        ComponentWidget enabledText = ComponentWidget.i18n("customnametags.gui.manage.lss.enabled.name");
-//        enabledText.addId("checkbox-name");
-//        enabledDiv.addChild(enabledText);
-//
-//        CheckBoxWidget enabledWidget = new CheckBoxWidget();
-//        enabledWidget.addId("checkbox-item");
-//        enabledWidget.setState(
-//            toolWidget.getCustomTag().isEnabled() ? State.CHECKED : State.UNCHECKED);
-//        enabledDiv.addChild(enabledWidget);
-//        checkBoxList.addEntry(enabledDiv);
-//
-//        DivWidget replaceDiv = new DivWidget();
-//        replaceDiv.addId("checkbox-div");
-//
-//        ComponentWidget replaceText = ComponentWidget.i18n("customnametags.gui.manage.lss.replace.name");
-//        replaceText.addId("checkbox-name");
-//        replaceDiv.addChild(replaceText);
-//
-//        CheckBoxWidget replaceWidget = new CheckBoxWidget();
-//        replaceWidget.addId("checkbox-item");
-//        replaceWidget.setState(
-//            toolWidget.getCustomTag().isReplaceScoreboard() ? State.CHECKED : State.UNCHECKED);
-//        replaceDiv.addChild(replaceWidget);
-//        checkBoxList.addEntry(replaceDiv);
-//        this.inputWidget.addContent(checkBoxList);
 
         HorizontalListWidget dropdownList = new HorizontalListWidget()
             .addId("dropdown-list");
@@ -351,7 +256,7 @@ public class ToolConfigActivity extends Activity {
         doneButton.setPressable(() -> {
             WarnTool tool = toolWidget.getTool();
             tool.setType(typeDropdown.getSelected());
-//            tool.setWarnAt(warnSlider);
+            tool.setWarnAt(sliderValue);
             tool.setSound(soundDropdown.getSelected());
             tool.setLastSound(lastSoundDropdown.getSelected());
             tool.setOpenChat(openChatCheck.state() == State.CHECKED);
