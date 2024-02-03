@@ -68,13 +68,13 @@ public class WarnTool {
     public enum Type {
         None(-1, -1),
         Sword(0, 0),
-        Pickaxe(0, 1),
-        Axe(0, 2),
-        Shovel(0, 3),
-        Crossbow(1, 0),
+        Pickaxe(1, 0),
+        Axe(2, 0),
+        Shovel(3, 0),
+        Crossbow(0, 1),
         Lighter(1, 1),
-        Shears(1, 2),
-        Trident(1, 3);
+        Shears(2, 1),
+        Trident(3, 1);
 
         private final ResourceLocation sprite = ResourceLocation.create("toolwarn", "textures/tools.png");
         private final int x;
