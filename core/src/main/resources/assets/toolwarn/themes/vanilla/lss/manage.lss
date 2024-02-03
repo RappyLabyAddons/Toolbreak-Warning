@@ -1,9 +1,8 @@
-TextField {
-    top: 0;
-    left: 0;
-    height: 20;
-    width: 100%;
-    margin: 2 40 5 5;
+Dropdown {
+  top: 10;
+  height: 20;
+  left: 50%;
+  alignment-x: center;
 }
 
 .manage-container {
@@ -21,7 +20,8 @@ TextField {
     alignment-x: center;
     alignment-y: center;
 
-	  background-color: rgba(20, 20, 20, 150);
+	  background-color: rgba(20, 20, 20, 180);
+	  border-radius: 10;
 	  padding: 10;
 
     .custom-preview {
@@ -42,24 +42,6 @@ TextField {
       bottom: 0;
     }
   }
-}
-
-.input-name-list {
-  left: 0;
-  height: 30;
-  width: 100%;
-}
-
-.input-avatar {
-  margin-top: -4;
-  top: 0;
-  left: 2;
-  width: 16;
-  height: width;
-}
-
-.label-name {
-  margin-left: 21;
 }
 
 .remove-container {
@@ -123,4 +105,42 @@ TextField {
   height: 20;
   left: 50%;
   alignment-x: center;
+}
+
+.dropdown-list {
+  left: 0;
+  width: 90%;
+  height: 45;
+  left: 50%;
+  alignment-x: center;
+}
+
+.dropdown-div {
+  top: 0;
+  height: 100%;
+  width: 50%;
+}
+
+.dropdown-name {
+  top: 0;
+  left: 50%;
+  alignment-x: center;
+  font-size: 0.8;
+}
+
+.warn-slider {
+  height: 20;
+  width: 100;
+  alignment-x: center;
+}
+
+.slider-name {
+  top: 0;
+  alignment-x: center;
+  font-size: 0.8;
+}
+
+.tool-icon {
+    top: 0;
+    alignment-x: center;
 }
