@@ -42,7 +42,7 @@ public class GameTickListener {
     }
 
     public void toolUsed(ItemStack itemStack, Type toolType) {
-        if(toolType == Type.None) return;
+        if(toolType == Type.NONE) return;
         if(Laby.labyAPI().minecraft().minecraftWindow().isScreenOpened()) return;
 
         int itemWarnInt = (toolType.getWarnPercentage(config) * itemStack.getMaximumDamage()) / 100;

@@ -15,7 +15,7 @@ public class WarnTool {
     private boolean lastHitWarn;
 
     public WarnTool() {
-        this(Type.Sword, WarnSound.NONE, WarnSound.NONE, 5, true, true);
+        this(Type.SWORD, WarnSound.NONE, WarnSound.NONE, 5, true, true);
     }
 
     public WarnTool(Type type, WarnSound sound, WarnSound lastSound, int warnAt, boolean openChat, boolean lastHitWarn) {
@@ -66,15 +66,15 @@ public class WarnTool {
     }
 
     public enum Type {
-        None(-1, -1),
-        Sword(0, 0),
-        Pickaxe(1, 0),
-        Axe(2, 0),
-        Shovel(3, 0),
-        Crossbow(0, 1),
-        Lighter(1, 1),
-        Shears(2, 1),
-        Trident(3, 1);
+        NONE(-1, -1),
+        SWORD(0, 0),
+        PICKAXE(1, 0),
+        AXE(2, 0),
+        SHOVEL(3, 0),
+        CROSSBOW(0, 1),
+        LIGHTER(1, 1),
+        SHEARS(2, 1),
+        TRIDENT(3, 1);
 
         private final ResourceLocation sprite = ResourceLocation.create("toolwarn", "textures/tools.png");
         private final int x;
@@ -92,35 +92,35 @@ public class WarnTool {
         public static Type getByItem(ItemStack itemStack) {
             String path = itemStack.getIdentifier().getPath();
             if (path.endsWith("_sword")) {
-                return Sword;
+                return SWORD;
             } else if (path.endsWith("_pickaxe")) {
-                return Pickaxe;
+                return PICKAXE;
             } else if (path.endsWith("_axe")) {
-                return Axe;
+                return AXE;
             } else if (path.endsWith("_shovel")) {
-                return Shovel;
+                return SHOVEL;
             } else if (path.equalsIgnoreCase("crossbow")) {
-                return Crossbow;
+                return CROSSBOW;
             } else if (path.equalsIgnoreCase("flint_and_steel")) {
-                return Lighter;
+                return LIGHTER;
             } else if (path.equalsIgnoreCase("shears")) {
-                return Shears;
+                return SHEARS;
             } else if (path.equalsIgnoreCase("trident")) {
-                return Trident;
+                return TRIDENT;
             }
-            return None;
+            return NONE;
         }
 
         public int getWarnPercentage(TbwConfiguration configuration) {
             return switch (this) {
-                case Sword -> configuration.swordPercentage().get();
-                case Pickaxe -> configuration.pickAxePercentage().get();
-                case Axe -> configuration.axePercentage().get();
-                case Shovel -> configuration.shovelPercentage().get();
-                case Crossbow -> configuration.crossbowPercentage().get();
-                case Lighter -> configuration.lighterPercentage().get();
-                case Shears -> configuration.shearsPercentage().get();
-                case Trident -> configuration.tridentPercentage().get();
+                case SWORD -> configuration.swordPercentage().get();
+                case PICKAXE -> configuration.pickAxePercentage().get();
+                case AXE -> configuration.axePercentage().get();
+                case SHOVEL -> configuration.shovelPercentage().get();
+                case CROSSBOW -> configuration.crossbowPercentage().get();
+                case LIGHTER -> configuration.lighterPercentage().get();
+                case SHEARS -> configuration.shearsPercentage().get();
+                case TRIDENT -> configuration.tridentPercentage().get();
                 default -> -1;
             };
         }
