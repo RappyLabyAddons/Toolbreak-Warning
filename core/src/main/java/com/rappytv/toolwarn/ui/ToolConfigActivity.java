@@ -1,11 +1,9 @@
 package com.rappytv.toolwarn.ui;
 
 import com.rappytv.toolwarn.TbwAddon;
+import com.rappytv.toolwarn.util.WarnSound;
 import com.rappytv.toolwarn.util.WarnTool;
 import com.rappytv.toolwarn.util.WarnTool.Type;
-import net.labymod.api.Laby;
-import net.labymod.api.client.component.serializer.legacy.LegacyComponentSerializer;
-import net.labymod.api.client.gui.hud.hudwidget.item.ItemHudWidget;
 import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.LabyScreen;
 import net.labymod.api.client.gui.screen.Parent;
@@ -13,7 +11,6 @@ import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
 import net.labymod.api.client.gui.screen.activity.Link;
 import net.labymod.api.client.gui.screen.activity.Links;
-import net.labymod.api.client.gui.screen.activity.types.SimpleActivity;
 import net.labymod.api.client.gui.screen.key.InputType;
 import net.labymod.api.client.gui.screen.key.Key;
 import net.labymod.api.client.gui.screen.key.MouseButton;
@@ -23,20 +20,18 @@ import net.labymod.api.client.gui.screen.widget.widgets.DivWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.input.CheckBoxWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.input.CheckBoxWidget.State;
-import net.labymod.api.client.gui.screen.widget.widgets.input.TextFieldWidget;
+import net.labymod.api.client.gui.screen.widget.widgets.input.SliderWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.input.dropdown.DropdownWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.FlexibleContentWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.ScrollWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.list.HorizontalListWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.list.VerticalListWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.renderer.IconWidget;
-import net.labymod.api.client.world.item.ItemStack;
-import net.labymod.api.client.world.item.ItemStackFactory;
 import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-//@SuppressWarnings("deprecation")
+@SuppressWarnings("deprecation")
 @Links({@Link("manage.lss"), @Link("config.lss")})
 @AutoActivity
 public class ToolConfigActivity extends Activity {
@@ -51,8 +46,6 @@ public class ToolConfigActivity extends Activity {
     private ButtonWidget editButton;
 
     private FlexibleContentWidget inputWidget;
-    private String lastUserName;
-    private String lastCustomName;
 
     private Action action;
 
@@ -121,7 +114,7 @@ public class ToolConfigActivity extends Activity {
         };
 
         DivWidget manageContainer = new DivWidget()
-            .addId("manage.lss-container");
+            .addId("manage-container");
         manageContainer.addChild(overlayWidget);
         this.document().addChild(manageContainer);
     }
@@ -174,6 +167,66 @@ public class ToolConfigActivity extends Activity {
             // Update toolIcon to type.getIcon()
         });
 
+        ComponentWidget sliderText = ComponentWidget.i18n("toolwarn.gui.slider")
+            .addId("slider-name");
+
+        SliderWidget warnSlider = new SliderWidget()
+            .addId("warn-slider");
+        warnSlider.range(1, 25);
+        warnSlider.setValue(toolWidget.getTool().getWarnAt());
+
+        DivWidget soundDiv = new DivWidget()
+            .addId("dropdown-div");
+        DivWidget lastSoundDiv = new DivWidget()
+            .addId("dropdown-div");
+
+        ComponentWidget soundText = ComponentWidget.i18n("toolwarn.gui.dropdown.sound")
+            .addId("dropdown-name");
+
+        DropdownWidget<WarnSound> soundDropdown = new DropdownWidget<>()
+            .addId("dropdown-item");
+
+        ComponentWidget lastSoundText = ComponentWidget.i18n("toolwarn.gui.dropdown.lastSound")
+            .addId("dropdown-name");
+
+        DropdownWidget<WarnSound> lastSoundDropdown = new DropdownWidget<>()
+            .addId("dropdown-item");
+
+        soundDiv.addChild(soundText);
+        soundDiv.addChild(soundDropdown);
+        lastSoundDiv.addChild(lastSoundText);
+        lastSoundDiv.addChild(lastSoundDropdown);
+
+        for(WarnSound sound : WarnSound.values()) {
+            soundDropdown.add(sound);
+            lastSoundDropdown.add(sound);
+        }
+        soundDropdown.setSelected(toolWidget.getTool().getSound());
+        lastSoundDropdown.setSelected(toolWidget.getTool().getLastSound());
+
+        DivWidget openChatDiv = new DivWidget()
+            .addId("checkbox-div");
+        DivWidget lastHitDiv = new DivWidget()
+            .addId("checkbox-div");
+
+        ComponentWidget openChatText = ComponentWidget.i18n("toolwarn.gui.checkbox.openChat")
+            .addId("checkbox-name");
+
+        CheckBoxWidget openChatCheck = new CheckBoxWidget()
+            .addId("checkbox-item");
+        openChatCheck.setState(toolWidget.getTool().openChat() ? State.CHECKED : State.UNCHECKED);
+
+        ComponentWidget lastHitText = ComponentWidget.i18n("toolwarn.gui.checkbox.lastHit")
+            .addId("checkbox-name");
+
+        CheckBoxWidget lastHitCheck = new CheckBoxWidget()
+            .addId("checkbox-item");
+        lastHitCheck.setState(toolWidget.getTool().lastHitWarn() ? State.CHECKED : State.UNCHECKED);
+
+        openChatDiv.addChild(openChatText);
+        openChatDiv.addChild(openChatCheck);
+        lastHitDiv.addChild(lastHitText);
+        lastHitDiv.addChild(lastHitCheck);
 //        ComponentWidget customNameWidget = ComponentWidget.component(toolWidget.getCustomTag().displayName());
 //        customNameWidget.addId("custom-preview");
 //        inputContainer.addChild(customNameWidget);
@@ -274,32 +327,48 @@ public class ToolConfigActivity extends Activity {
 //        checkBoxList.addEntry(replaceDiv);
 //        this.inputWidget.addContent(checkBoxList);
 
+        HorizontalListWidget dropdownList = new HorizontalListWidget()
+            .addId("dropdown-list");
+        dropdownList.addEntry(soundDiv);
+        dropdownList.addEntry(lastSoundDiv);
+
+        HorizontalListWidget checkBoxList = new HorizontalListWidget()
+            .addId("checkbox-list");
+        checkBoxList.addEntry(openChatDiv);
+        checkBoxList.addEntry(lastHitDiv);
+
+        inputWidget.addContent(toolIconWidget);
+        inputWidget.addContent(typeDropdown);
+        inputWidget.addContent(sliderText);
+        inputWidget.addContent(warnSlider);
+        inputWidget.addContent(dropdownList);
+        inputWidget.addContent(checkBoxList);
+
         HorizontalListWidget buttonList = new HorizontalListWidget()
             .addId("edit-button-menu");
 
         doneButton.setEnabled(true);
         doneButton.setPressable(() -> {
-//            if (toolWidget.getUserName().length() == 0) {
-//                this.toolWidgets.put(nameTextField.getText(), toolWidget);
-//                this.toolList.session().setSelectedEntry(toolWidget);
-//            }
-
             WarnTool tool = toolWidget.getTool();
             tool.setType(typeDropdown.getSelected());
+//            tool.setWarnAt(warnSlider);
+            tool.setSound(soundDropdown.getSelected());
+            tool.setLastSound(lastSoundDropdown.getSelected());
+            tool.setOpenChat(openChatCheck.state() == State.CHECKED);
+            tool.setLastHitWarn(lastHitCheck.state() == State.CHECKED);
             this.addon.configuration().getTools().remove(toolWidget.getTool());
             this.addon.configuration().getTools().add(tool);
             this.addon.configuration().removeInvalidTools();
 
             toolWidget.setTool(tool);
             this.setAction(null);
+            reload();
         });
 
         buttonList.addEntry(doneButton);
         buttonList.addEntry(ButtonWidget.i18n("labymod.ui.button.cancel", () -> this.setAction(null)));
         this.inputWidget.addContent(buttonList);
 
-        inputContainer.addChild(toolIconWidget);
-        inputContainer.addChild(typeDropdown);
         inputContainer.addChild(this.inputWidget);
         return inputContainer;
     }
