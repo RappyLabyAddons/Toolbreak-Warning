@@ -26,7 +26,6 @@ import net.labymod.api.client.gui.screen.widget.widgets.layout.FlexibleContentWi
 import net.labymod.api.client.gui.screen.widget.widgets.layout.ScrollWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.list.HorizontalListWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.list.VerticalListWidget;
-import net.labymod.api.client.gui.screen.widget.widgets.renderer.IconWidget;
 import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
@@ -154,8 +153,11 @@ public class ToolConfigActivity extends Activity {
         DivWidget inputContainer = new DivWidget()
             .addId("input-container");
 
-        IconWidget toolIconWidget = new IconWidget(toolWidget.getTool().getType().getIcon())
-            .addId("tool-icon");
+        DivWidget typeDiv = new DivWidget()
+            .addId("type-div");
+
+        ComponentWidget typeText = ComponentWidget.i18n("toolwarn.gui.type")
+            .addId("type-name");
 
         DropdownWidget<WarnTool.Type> typeDropdown = new DropdownWidget<>()
             .addId("type-dropdown");
@@ -165,9 +167,9 @@ public class ToolConfigActivity extends Activity {
         }
         typeDropdown.setTranslationKeyPrefix("toolwarn.gui.dropdown.type");
         typeDropdown.setSelected(toolWidget.getTool().getType());
-        typeDropdown.setChangeListener((type) -> {
-            // Update toolIcon to type.getIcon()
-        });
+
+        typeDiv.addChild(typeText);
+        typeDiv.addChild(typeDropdown);
 
         ComponentWidget sliderText = ComponentWidget.i18n("toolwarn.gui.slider")
             .addId("slider-name");
@@ -245,8 +247,7 @@ public class ToolConfigActivity extends Activity {
         checkBoxList.addEntry(openChatDiv);
         checkBoxList.addEntry(lastHitDiv);
 
-        inputWidget.addContent(toolIconWidget);
-        inputWidget.addContent(typeDropdown);
+        inputWidget.addContent(typeDiv);
         inputWidget.addContent(sliderText);
         inputWidget.addContent(warnSlider);
         inputWidget.addContent(dropdownList);
