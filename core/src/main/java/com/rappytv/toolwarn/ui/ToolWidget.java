@@ -23,8 +23,9 @@ public class ToolWidget extends SimpleWidget {
         IconWidget iconWidget = new IconWidget(tool.getType().getIcon())
             .addId("tool-icon");
 
-        ComponentWidget nameWidget = ComponentWidget.text(tool.getType().name())
-            .addId("name-component");
+        ComponentWidget nameWidget = ComponentWidget.i18n(
+            "toolwarn.gui.dropdown.type." + tool.getType().name().toLowerCase()
+            ).addId("name-component");
 
         ComponentWidget meta = ComponentWidget.text(I18n.translate(
             "toolwarn.gui.meta",
