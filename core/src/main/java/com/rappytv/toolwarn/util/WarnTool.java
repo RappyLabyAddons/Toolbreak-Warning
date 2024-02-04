@@ -90,6 +90,7 @@ public class WarnTool {
         }
 
         public static Type getByItem(ItemStack itemStack) {
+            if(itemStack == null) return NONE;
             String path = itemStack.getIdentifier().getPath();
             if (path.endsWith("_sword")) {
                 return SWORD;
