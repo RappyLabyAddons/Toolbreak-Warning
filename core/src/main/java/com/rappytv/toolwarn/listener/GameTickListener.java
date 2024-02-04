@@ -16,6 +16,7 @@ import net.labymod.api.event.client.lifecycle.GameTickEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class GameTickListener {
 
     private final TbwAddon addon;
@@ -50,31 +51,31 @@ public class GameTickListener {
 
         if(itemUsedInt == itemWarnInt) {
             if(!warns.contains(itemStack)) {
-                if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
+//                if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
                 Util.msg(Component.translatable("toolwarn.messages.warning", NamedTextColor.RED, Component.text(toolType.getWarnPercentage(config))), true);
                 warns.add(itemStack);
 
-                if(config.sounds().enabled().get() && config.sounds().warnSound().get() != WarnSound.NONE) {
-                    Laby.labyAPI().minecraft().sounds().playSound(
-                        config.sounds().warnSound().get().getResourceLocation(),
-                        1f,
-                        1f
-                    );
-                }
+//                if(config.sounds().enabled().get() && config.sounds().warnSound().get() != WarnSound.NONE) {
+//                    Laby.labyAPI().minecraft().sounds().playSound(
+//                        config.sounds().warnSound().get().getResourceLocation(),
+//                        1f,
+//                        1f
+//                    );
+//                }
             }
         } else if(isLastHit(itemStack)) {
             if(!warns.contains(itemStack)) {
-                if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
+//                if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
                 Util.msg(Component.translatable("toolwarn.messages.lastHit", NamedTextColor.RED), true);
                 warns.add(itemStack);
 
-                if(config.sounds().enabled().get() && config.sounds().lastHitSound().get() != WarnSound.NONE) {
-                    Laby.labyAPI().minecraft().sounds().playSound(
-                        config.sounds().lastHitSound().get().getResourceLocation(),
-                        1f,
-                        1f
-                    );
-                }
+//                if(config.sounds().enabled().get() && config.sounds().lastHitSound().get() != WarnSound.NONE) {
+//                    Laby.labyAPI().minecraft().sounds().playSound(
+//                        config.sounds().lastHitSound().get().getResourceLocation(),
+//                        1f,
+//                        1f
+//                    );
+//                }
             }
         } else {
             warns.remove(itemStack);
@@ -82,7 +83,7 @@ public class GameTickListener {
     }
 
     public boolean isLastHit(ItemStack i) {
-        if (!addon.configuration().lastHit().get()) return false;
+//        if (!addon.configuration().lastHit().get()) return false;
         return (i.getMaximumDamage() - i.getCurrentDamageValue()) <= 1;
     }
 }
