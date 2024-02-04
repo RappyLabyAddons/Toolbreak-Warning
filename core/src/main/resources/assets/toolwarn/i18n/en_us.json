@@ -3,12 +3,6 @@
         "settings": {
             "name": "Toolbreak Warning",
             "header": {
-                "general": {
-                    "name": "General"
-                },
-                "sounds": {
-                    "name": "Sounds"
-                },
                 "tools": {
                     "name": "Tools"
                 }
@@ -16,64 +10,8 @@
             "enabled": {
                 "name": "Activated"
             },
-            "openChat": {
-                "name": "Open chat on warn",
-                "description": "When the addon warns you, your chat will open to prevent you from wasting the last durability of your tool."
-            },
-            "lastHit": {
-                "name": "Warn on last hit",
-                "description": "Warns you when your tool is at 1 durability"
-            },
-            "sounds": {
-                "name": "Sound Settings",
-                "description": "Manages the sounds that are played.",
-                "warnSound": {
-                    "name": "Warn Sound",
-                    "entries": {
-                        "none": "None",
-                        "anvilUse": "Anvil Use",
-                        "levelUp": "Level Up",
-                        "glassBreak": "Glass Break",
-                        "pling": "Pling"
-                    }
-                },
-                "lastHitSound": {
-                    "name": "Last hit warn sound",
-                    "entries": {
-                        "none": "None",
-                        "anvilUse": "Anvil Use",
-                        "levelUp": "Level Up",
-                        "glassBreak": "Glass Break",
-                        "pling": "Pling"
-                    }
-                }
-            },
             "toolConfig": {
                 "name": "Manage tools"
-            },
-            "swordPercentage": {
-                "name": "Sword warn percentage"
-            },
-            "pickaxePercentage": {
-                "name": "Pickaxe warn percentage"
-            },
-            "axePercentage": {
-                "name": "Axe warn percentage"
-            },
-            "shovelPercentage": {
-                "name": "Shovel warn percentage"
-            },
-            "crossbowPercentage": {
-                "name": "Crossbow warn percentage"
-            },
-            "lighterPercentage": {
-                "name": "Flint and Steel warn percentage"
-            },
-            "shearsPercentage": {
-                "name": "Shears warn percentage"
-            },
-            "tridentPercentage": {
-                "name": "Trident warn percentage"
             }
         },
         "messages": {
@@ -82,7 +20,6 @@
         },
         "gui": {
             "meta": "Warn at: %s%% • Chat: %s • Last hit: %s",
-            "add": "Add a new tool configuration",
             "remove": "Do you really want to remove this entry?",
             "checkbox": {
                 "openChat": "Open chat",

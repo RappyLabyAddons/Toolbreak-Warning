@@ -39,7 +39,7 @@ public class TbwConfiguration extends AddonConfig {
     private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
     @SettingSection("tools")
-    @MethodOrder(after = "sounds")
+    @MethodOrder(after = "enabled")
     @ActivitySetting
     public Activity toolConfig() {
         return new ToolConfigActivity();
