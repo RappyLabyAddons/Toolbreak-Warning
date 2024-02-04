@@ -2,7 +2,9 @@ package com.rappytv.toolwarn;
 
 import com.rappytv.toolwarn.config.TbwConfiguration;
 import com.rappytv.toolwarn.core.generated.DefaultReferenceStorage;
+import com.rappytv.toolwarn.listener.BlockBreakListener;
 import com.rappytv.toolwarn.listener.GameTickListener;
+import com.rappytv.toolwarn.listener.ItemEquipListener;
 import com.rappytv.toolwarn.util.ITbwSounds;
 import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
@@ -24,6 +26,7 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
     @Override
     protected void preConfigurationLoad() {
         Laby.references().revisionRegistry().register(new SimpleRevision("toolwarn", new SemanticVersion("1.4.3"), "2024-01-26"));
+        // TODO: Create revision for v1.4.0
     }
 
     @Override
@@ -35,7 +38,9 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
         registerSettingCategory();
         instance = this;
 
+        registerListener(new BlockBreakListener());
         registerListener(new GameTickListener(this));
+        registerListener(new ItemEquipListener());
     }
 
     public static TbwAddon get() {
