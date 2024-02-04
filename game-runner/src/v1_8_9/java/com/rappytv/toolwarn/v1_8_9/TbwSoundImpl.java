@@ -16,11 +16,11 @@ public class TbwSoundImpl implements ITbwSounds {
     private final ResourceLocation anvilUseSound = ResourceLocation.create("minecraft", "random.anvil_use");
 
     @Override
-    public ResourceLocation getPlingSound() {
+    public @NotNull ResourceLocation getPlingSound() {
         return plingSound;
     }
     @Override
-    public ResourceLocation getLevelUpSound() {
+    public @NotNull ResourceLocation getLevelUpSound() {
         return levelUpSound;
     }
     @Override
@@ -28,7 +28,7 @@ public class TbwSoundImpl implements ITbwSounds {
         return glassBreakSound;
     }
     @Override
-    public ResourceLocation getAnvilUseSound() {
+    public @NotNull ResourceLocation getAnvilUseSound() {
         return anvilUseSound;
     }
 }
