@@ -3,7 +3,6 @@ package com.rappytv.toolwarn.listener;
 import com.rappytv.toolwarn.TbwAddon;
 import com.rappytv.toolwarn.config.TbwConfiguration;
 import com.rappytv.toolwarn.util.Util;
-import com.rappytv.toolwarn.util.WarnSound;
 import com.rappytv.toolwarn.util.WarnTool.Type;
 import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
