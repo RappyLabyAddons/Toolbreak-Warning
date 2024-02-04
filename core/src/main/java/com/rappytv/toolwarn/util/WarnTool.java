@@ -111,18 +111,9 @@ public class WarnTool {
             return NONE;
         }
 
+        @Deprecated
         public int getWarnPercentage(TbwConfiguration configuration) {
-            return switch (this) {
-                case SWORD -> configuration.swordPercentage().get();
-                case PICKAXE -> configuration.pickAxePercentage().get();
-                case AXE -> configuration.axePercentage().get();
-                case SHOVEL -> configuration.shovelPercentage().get();
-                case CROSSBOW -> configuration.crossbowPercentage().get();
-                case LIGHTER -> configuration.lighterPercentage().get();
-                case SHEARS -> configuration.shearsPercentage().get();
-                case TRIDENT -> configuration.tridentPercentage().get();
-                default -> -1;
-            };
+            return -1;
         }
     }
 }
