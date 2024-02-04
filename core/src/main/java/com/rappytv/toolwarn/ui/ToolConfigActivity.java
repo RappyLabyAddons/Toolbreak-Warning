@@ -258,6 +258,11 @@ public class ToolConfigActivity extends Activity {
 
         doneButton.setEnabled(true);
         doneButton.setPressable(() -> {
+            if(!this.toolWidgets.contains(toolWidget)) {
+                this.toolWidgets.add(toolWidget);
+                this.toolList.session().setSelectedEntry(toolWidget);
+            }
+
             WarnTool tool = toolWidget.getTool();
             tool.setType(typeDropdown.getSelected());
             tool.setWarnAt(sliderValue);
@@ -271,7 +276,6 @@ public class ToolConfigActivity extends Activity {
 
             toolWidget.setTool(tool);
             this.setAction(null);
-            reload();
         });
 
         buttonList.addEntry(doneButton);
