@@ -34,11 +34,12 @@ public class TbwConfiguration extends AddonConfig {
         );
     }
 
-    @SwitchSetting
     @SpriteSlot(size = 32)
+    @SwitchSetting
     private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
     @SettingSection("tools")
+    @SpriteSlot(size = 32, x = 1)
     @MethodOrder(after = "enabled")
     @ActivitySetting
     public Activity toolConfig() {
