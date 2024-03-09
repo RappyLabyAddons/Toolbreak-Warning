@@ -1,6 +1,5 @@
 package com.rappytv.toolwarn.util;
 
-import com.rappytv.toolwarn.config.TbwConfiguration;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;
@@ -71,10 +70,11 @@ public class WarnTool {
         PICKAXE(1, 0),
         AXE(2, 0),
         SHOVEL(3, 0),
-        CROSSBOW(0, 1),
-        LIGHTER(1, 1),
-        SHEARS(2, 1),
-        TRIDENT(3, 1);
+        HOE(0, 1),
+        CROSSBOW(1, 1),
+        LIGHTER(2, 1),
+        SHEARS(3, 1),
+        TRIDENT(0, 2);
 
         private final ResourceLocation sprite = ResourceLocation.create("toolwarn", "textures/tools.png");
         private final int x;
@@ -100,6 +100,8 @@ public class WarnTool {
                 return AXE;
             } else if (path.endsWith("_shovel")) {
                 return SHOVEL;
+            } else if (path.endsWith("_hoe")) {
+                return HOE;
             } else if (path.equalsIgnoreCase("crossbow")) {
                 return CROSSBOW;
             } else if (path.equalsIgnoreCase("flint_and_steel")) {
@@ -110,11 +112,6 @@ public class WarnTool {
                 return TRIDENT;
             }
             return NONE;
-        }
-
-        @Deprecated
-        public int getWarnPercentage(TbwConfiguration configuration) {
-            return -1;
         }
     }
 }
