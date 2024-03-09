@@ -21,7 +21,7 @@ labyMod {
         author = "RappyTV"
         description = "Stops you from using your currently used tool when its almost destroyed."
         minecraftVersion = "1.8<1.20.4"
-        version = System.getenv().getOrDefault("VERSION", "1.3.4")
+        version = System.getenv().getOrDefault("VERSION", "1.4.0")
     }
 
     minecraft {
