@@ -23,8 +23,8 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
 
     @Override
     protected void preConfigurationLoad() {
-        Laby.references().revisionRegistry().register(new SimpleRevision("toolwarn", new SemanticVersion("1.4.3"), "2024-01-26"));
-        // TODO: Create revision for v1.4.0
+        Laby.references().revisionRegistry().register(new SimpleRevision("toolwarn", new SemanticVersion("1.3.4"), "2024-01-26"));
+        Laby.references().revisionRegistry().register(new SimpleRevision("toolwarn", new SemanticVersion("1.4.0"), "2024-03-09"));
     }
 
     @Override
