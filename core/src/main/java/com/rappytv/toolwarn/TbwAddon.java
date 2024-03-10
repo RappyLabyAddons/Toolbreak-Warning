@@ -4,6 +4,9 @@ import com.rappytv.toolwarn.config.TbwConfiguration;
 import com.rappytv.toolwarn.core.generated.DefaultReferenceStorage;
 import com.rappytv.toolwarn.listener.GameTickListener;
 import com.rappytv.toolwarn.util.ITbwSounds;
+import com.rappytv.toolwarn.util.WarnSound;
+import com.rappytv.toolwarn.util.WarnTool;
+import com.rappytv.toolwarn.util.WarnTool.Type;
 import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.client.component.Component;
@@ -36,6 +39,7 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
         registerSettingCategory();
         instance = this;
 
+        migrateConfig();
         registerListener(new GameTickListener(this));
     }
 
@@ -50,5 +54,24 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
     @Override
     protected Class<? extends TbwConfiguration> configurationClass() {
         return TbwConfiguration.class;
+    }
+
+    private void migrateConfig() {
+        if(configuration().getConfigVersion() == 1) {
+            WarnSound warnSound = WarnSound.NONE;
+            WarnSound lastHitSound = WarnSound.NONE;
+            boolean openChat = true;
+            boolean lastHitWarn = true;
+
+            configuration().getTools().add(new WarnTool(Type.SWORD, warnSound, lastHitSound, 5, openChat, lastHitWarn));
+            configuration().getTools().add(new WarnTool(Type.PICKAXE, warnSound, lastHitSound, 5, openChat, lastHitWarn));
+            configuration().getTools().add(new WarnTool(Type.AXE, warnSound, lastHitSound, 5, openChat, lastHitWarn));
+            configuration().getTools().add(new WarnTool(Type.SHOVEL, warnSound, lastHitSound, 5, openChat, lastHitWarn));
+            configuration().getTools().add(new WarnTool(Type.CROSSBOW, warnSound, lastHitSound, 5, openChat, lastHitWarn));
+            configuration().getTools().add(new WarnTool(Type.LIGHTER, warnSound, lastHitSound, 5, openChat, lastHitWarn));
+            configuration().getTools().add(new WarnTool(Type.SHEARS, warnSound, lastHitSound, 5, openChat, lastHitWarn));
+            configuration().getTools().add(new WarnTool(Type.TRIDENT, warnSound, lastHitSound, 5, openChat, lastHitWarn));
+            configuration().usedConfigVersion().set(2);
+        }
     }
 }
