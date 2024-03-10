@@ -20,25 +20,15 @@ import java.util.List;
 @SpriteTexture(value = "settings")
 public class TbwConfiguration extends AddonConfig {
 
-    @Exclude
-    private final List<WarnTool> tools = new ArrayList<>();
-
-    public List<WarnTool> getTools() {
-        return tools;
-    }
-    public void removeInvalidTools() {
-        this.tools.removeIf(entry ->
-            entry.getWarnAt() < 1
-                || entry.getWarnAt() > 25
-                || entry.getType() == null
-        );
-    }
-
     @SpriteSlot(size = 32)
     @SwitchSetting
     private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
+    @Exclude
+    private final List<WarnTool> tools = new ArrayList<>();
+
     @SettingSection("tools")
+//    @IntroducedIn(namespace = "toolwarn", value = "1.4.0")
     @SpriteSlot(size = 32, x = 1)
     @MethodOrder(after = "enabled")
     @ActivitySetting
@@ -49,5 +39,16 @@ public class TbwConfiguration extends AddonConfig {
     @Override
     public ConfigProperty<Boolean> enabled() {
         return enabled;
+    }
+
+    public List<WarnTool> getTools() {
+        return tools;
+    }
+    public void removeInvalidTools() {
+        this.tools.removeIf(entry ->
+            entry.getWarnAt() < 1
+                || entry.getWarnAt() > 25
+                || entry.getType() == null
+        );
     }
 }
