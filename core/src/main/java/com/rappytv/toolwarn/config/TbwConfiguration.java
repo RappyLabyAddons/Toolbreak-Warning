@@ -51,4 +51,9 @@ public class TbwConfiguration extends AddonConfig {
                 || entry.getType() == null
         );
     }
+
+    @Override
+    public int getConfigVersion() {
+        return 2;
+    }
 }
