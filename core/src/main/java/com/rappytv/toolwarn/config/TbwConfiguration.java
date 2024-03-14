@@ -8,6 +8,7 @@ import net.labymod.api.client.gui.screen.widget.widgets.activity.settings.Activi
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.configuration.loader.annotation.ConfigName;
 import net.labymod.api.configuration.loader.annotation.Exclude;
+import net.labymod.api.configuration.loader.annotation.IntroducedIn;
 import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.annotation.SpriteTexture;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
@@ -28,7 +29,7 @@ public class TbwConfiguration extends AddonConfig {
     private final List<WarnTool> tools = new ArrayList<>();
 
     @SettingSection("tools")
-//    @IntroducedIn(namespace = "toolwarn", value = "1.4.0")
+    @IntroducedIn(namespace = "toolwarn", value = "1.4.0")
     @SpriteSlot(size = 32, x = 1)
     @MethodOrder(after = "enabled")
     @ActivitySetting
