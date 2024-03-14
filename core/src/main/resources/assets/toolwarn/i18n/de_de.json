@@ -3,12 +3,6 @@
         "settings": {
             "name": "Toolbreak Warnung",
             "header": {
-                "general": {
-                    "name": "Allgemein"
-                },
-                "sounds": {
-                    "name": "Sounds"
-                },
                 "tools": {
                     "name": "Werkzeuge"
                 }
@@ -16,66 +10,45 @@
             "enabled": {
                 "name": "Aktiviert"
             },
-            "openChat": {
-                "name": "Chat öffnen beim warnen",
-                "description": "Wenn das Addon dich warnt, wird sich dein Chat öffnen, damit du daran gehindert wirst, die letzten Hits mit deinem Tool zu verbrauchen."
-            },
-            "lastHit": {
-                "name": "Warnung beim letzten Schlag",
-                "description": "Warnt dich, wenn dein Tool bei Haltbarkeit 1 angekommen ist"
-            },
-            "sounds": {
-                "name": "Sound Einstellungen",
-                "description": "Verwaltet die Sounds, die abgespielt werden.",
-                "warnSound": {
-                    "name": "Warnungs Sound",
-                    "entries": {
-                        "none": "Keiner",
-                        "anvilUse": "Amboss",
-                        "levelUp": "Level Up",
-                        "glassBreak": "Glas abbauen",
-                        "pling": "Pling"
-                    }
-                },
-                "lastHitSound": {
-                    "name": "Sound beim letzten Schlag",
-                    "entries": {
-                        "none": "Keiner",
-                        "anvilUse": "Amboss",
-                        "levelUp": "Level Up",
-                        "glassBreak": "Glas abbauen",
-                        "pling": "Pling"
-                    }
-                }
-            },
-            "swordPercentage": {
-                "name": "Schwert-Warnung (%)"
-            },
-            "pickaxePercentage": {
-                "name": "Spitzhacken-Warnung (%)"
-            },
-            "axePercentage": {
-                "name": "Axt-Warnung (%)"
-            },
-            "shovelPercentage": {
-                "name": "Schaufel-Warnung (%)"
-            },
-            "crossbowPercentage": {
-                "name": "Armbrust-Warnung (%)"
-            },
-            "lighterPercentage": {
-                "name": "Feuerzeug-Warnung (%)"
-            },
-            "shearsPercentage": {
-                "name": "Scheren-Warnung (%)"
-            },
-            "tridentPercentage": {
-                "name": "Dreizack-Warnung (%)"
+            "toolConfig": {
+                "name": "Werkzeuge verwalten"
             }
         },
         "messages": {
             "lastHit": "Du solltest das Tool jetzt weglegen. Das ist dein letzter Schlag!",
             "warning": "Willst du das Tool wirklich weiter benutzen? Die Haltbarkeit liegt bei %s%%!"
+        },
+        "gui": {
+            "meta": "Warnung bei: %s%% • Chat: %s • Letzter Schlag: %s",
+            "remove": "Willst du diesen Eintrag wirklich entfernen?",
+            "checkbox": {
+                "openChat": "Chat öffnen",
+                "lastHit": "Warnung bei letztem Schlag"
+            },
+            "dropdown": {
+                "warnSound": "Warnungston",
+                "lastSound": "Warnungston bei letztem Schlag",
+                "type": {
+                    "sword": "Schwert",
+                    "pickaxe": "Spitzhacke",
+                    "axe": "Axt",
+                    "shovel": "Schaufel",
+                    "hoe": "Hacke",
+                    "crossbow": "Armbrust",
+                    "lighter": "Feuerzeug",
+                    "shears": "Schere",
+                    "trident": "Dreizack"
+                },
+                "sound": {
+                    "none": "Keiner",
+                    "anvilUse": "Amboss",
+                    "levelUp": "Level Up",
+                    "glassBreak": "Glas Abbauen",
+                    "pling": "Pling"
+                }
+            },
+            "slider": "Haltbarkeit (in %)",
+            "type": "Werkzeug Typ"
         }
     }
 }

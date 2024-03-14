@@ -2,9 +2,10 @@ package com.rappytv.toolwarn.listener;
 
 import com.rappytv.toolwarn.TbwAddon;
 import com.rappytv.toolwarn.config.TbwConfiguration;
-import com.rappytv.toolwarn.util.ToolType;
 import com.rappytv.toolwarn.util.Util;
 import com.rappytv.toolwarn.util.WarnSound;
+import com.rappytv.toolwarn.util.WarnTool;
+import com.rappytv.toolwarn.util.WarnTool.Type;
 import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.NamedTextColor;
@@ -38,51 +39,56 @@ public class GameTickListener {
         if(itemStack.getMaximumDamage() == 0) return;
         if(player.gameMode() != GameMode.SURVIVAL && player.gameMode() != GameMode.ADVENTURE) return;
 
-        toolUsed(itemStack, ToolType.getByItem(itemStack));
+        checkForWarn(itemStack, Type.getByItem(itemStack));
     }
 
-    public void toolUsed(ItemStack itemStack, ToolType toolType) {
-        if(toolType == ToolType.None) return;
+    private void checkForWarn(ItemStack itemStack, WarnTool.Type type) {
+        if(type == Type.NONE) return;
         if(Laby.labyAPI().minecraft().minecraftWindow().isScreenOpened()) return;
 
-        int itemWarnInt = (toolType.getWarnPercentage(config) * itemStack.getMaximumDamage()) / 100;
         int itemUsedInt = itemStack.getMaximumDamage() - itemStack.getCurrentDamageValue();
 
-        if(itemUsedInt == itemWarnInt) {
-            if(!warns.contains(itemStack)) {
-                if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
-                Util.msg(Component.translatable("toolwarn.messages.warning", NamedTextColor.RED, Component.text(toolType.getWarnPercentage(config))), true);
-                warns.add(itemStack);
+        for(WarnTool tool : config.getTools()) {
+            if(tool.getType() != type) continue;
+            int itemWarnInt = (tool.getWarnAt() * itemStack.getMaximumDamage()) / 100;
 
-                if(config.sounds().enabled().get() && config.sounds().warnSound().get() != WarnSound.NONE) {
-                    Laby.labyAPI().minecraft().sounds().playSound(
-                        config.sounds().warnSound().get().getResourceLocation(),
-                        1f,
-                        1f
-                    );
-                }
-            }
-        } else if(isLastHit(itemStack)) {
-            if(!warns.contains(itemStack)) {
-                if(this.config.openChat().get()) Laby.labyAPI().minecraft().openChat("");
-                Util.msg(Component.translatable("toolwarn.messages.lastHit", NamedTextColor.RED), true);
-                warns.add(itemStack);
+            if(itemUsedInt == itemWarnInt) {
+                if(!warns.contains(itemStack)) {
+                    if(tool.openChat()) Laby.labyAPI().minecraft().openChat("");
+                    Util.msg(Component.translatable(
+                        "toolwarn.messages.warning",
+                        NamedTextColor.RED,
+                        Component.text(tool.getWarnAt())
+                    ), true);
+                    warns.add(itemStack);
 
-                if(config.sounds().enabled().get() && config.sounds().lastHitSound().get() != WarnSound.NONE) {
-                    Laby.labyAPI().minecraft().sounds().playSound(
-                        config.sounds().lastHitSound().get().getResourceLocation(),
-                        1f,
-                        1f
-                    );
+                    if(tool.getSound() != WarnSound.NONE) {
+                        Laby.labyAPI().minecraft().sounds().playSound(
+                            tool.getSound().getResourceLocation(),
+                            1f,
+                            1f
+                        );
+                    }
                 }
+            } else if(tool.lastHitWarn() && itemUsedInt <= 1) {
+                if(!warns.contains(itemStack)) {
+                    if(tool.openChat()) Laby.labyAPI().minecraft().openChat("");
+                    Util.msg(
+                        Component.translatable("toolwarn.messages.lastHit", NamedTextColor.RED),
+                        true
+                    );
+                    warns.add(itemStack);
+                    if(tool.getLastSound() != WarnSound.NONE) {
+                        Laby.labyAPI().minecraft().sounds().playSound(
+                            tool.getLastSound().getResourceLocation(),
+                            1f,
+                            1f
+                        );
+                    }
+                }
+            } else {
+                warns.remove(itemStack);
             }
-        } else {
-            warns.remove(itemStack);
         }
-    }
-
-    public boolean isLastHit(ItemStack i) {
-        if (!addon.configuration().lastHit().get()) return false;
-        return (i.getMaximumDamage() - i.getCurrentDamageValue()) <= 1;
     }
 }

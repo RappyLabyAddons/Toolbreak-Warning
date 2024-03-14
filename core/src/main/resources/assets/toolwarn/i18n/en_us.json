@@ -3,12 +3,6 @@
         "settings": {
             "name": "Toolbreak Warning",
             "header": {
-                "general": {
-                    "name": "General"
-                },
-                "sounds": {
-                    "name": "Sounds"
-                },
                 "tools": {
                     "name": "Tools"
                 }
@@ -16,66 +10,45 @@
             "enabled": {
                 "name": "Activated"
             },
-            "openChat": {
-                "name": "Open chat on warn",
-                "description": "When the addon warns you, your chat will open to prevent you from wasting the last durability of your tool."
-            },
-            "lastHit": {
-                "name": "Warn on last hit",
-                "description": "Warns you when your tool is at 1 durability"
-            },
-            "sounds": {
-                "name": "Sound Settings",
-                "description": "Manages the sounds that are played.",
-                "warnSound": {
-                    "name": "Warn Sound",
-                    "entries": {
-                        "none": "None",
-                        "anvilUse": "Anvil Use",
-                        "levelUp": "Level Up",
-                        "glassBreak": "Glass Break",
-                        "pling": "Pling"
-                    }
-                },
-                "lastHitSound": {
-                    "name": "Last hit warn sound",
-                    "entries": {
-                        "none": "None",
-                        "anvilUse": "Anvil Use",
-                        "levelUp": "Level Up",
-                        "glassBreak": "Glass Break",
-                        "pling": "Pling"
-                    }
-                }
-            },
-            "swordPercentage": {
-                "name": "Sword warn percentage"
-            },
-            "pickaxePercentage": {
-                "name": "Pickaxe warn percentage"
-            },
-            "axePercentage": {
-                "name": "Axe warn percentage"
-            },
-            "shovelPercentage": {
-                "name": "Shovel warn percentage"
-            },
-            "crossbowPercentage": {
-                "name": "Crossbow warn percentage"
-            },
-            "lighterPercentage": {
-                "name": "Flint and Steel warn percentage"
-            },
-            "shearsPercentage": {
-                "name": "Shears warn percentage"
-            },
-            "tridentPercentage": {
-                "name": "Trident warn percentage"
+            "toolConfig": {
+                "name": "Manage tools"
             }
         },
         "messages": {
             "lastHit": "You should stop using this tool now, this is your last hit!",
             "warning": "Do you really want to continue using this tool? Its durability is at %s%%!"
+        },
+        "gui": {
+            "meta": "Warn at: %s%% • Chat: %s • Last hit: %s",
+            "remove": "Do you really want to remove this entry?",
+            "checkbox": {
+                "openChat": "Open chat",
+                "lastHit": "Last hit warning"
+            },
+            "dropdown": {
+                "warnSound": "Warn sound",
+                "lastSound": "Last hit warn sound",
+                "type": {
+                    "sword": "Sword",
+                    "pickaxe": "Pickaxe",
+                    "axe": "Axe",
+                    "shovel": "Shovel",
+                    "hoe": "Hoe",
+                    "crossbow": "Crossbow",
+                    "lighter": "Flint and steel",
+                    "shears": "Shears",
+                    "trident": "Trident"
+                },
+                "sound": {
+                    "none": "None",
+                    "anvilUse": "Anvil Use",
+                    "levelUp": "Level Up",
+                    "glassBreak": "Glass Break",
+                    "pling": "Pling"
+                }
+            },
+            "slider": "Warning durability (in %)",
+            "type": "Tool type"
         }
     }
 }

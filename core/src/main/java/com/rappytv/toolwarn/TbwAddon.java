@@ -2,6 +2,7 @@ package com.rappytv.toolwarn;
 
 import com.rappytv.toolwarn.config.TbwConfiguration;
 import com.rappytv.toolwarn.core.generated.DefaultReferenceStorage;
+import com.rappytv.toolwarn.listener.ConfigMigrationListener;
 import com.rappytv.toolwarn.listener.GameTickListener;
 import com.rappytv.toolwarn.util.ITbwSounds;
 import net.labymod.api.Laby;
@@ -19,10 +20,13 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
 
     public static Component prefix;
     private static ITbwSounds sounds;
+    private static TbwAddon instance;
 
     @Override
     protected void preConfigurationLoad() {
-        Laby.references().revisionRegistry().register(new SimpleRevision("toolwarn", new SemanticVersion("1.4.3"), "2024-01-26"));
+        Laby.references().revisionRegistry().register(new SimpleRevision("toolwarn", new SemanticVersion("1.3.4"), "2024-01-26"));
+        Laby.references().revisionRegistry().register(new SimpleRevision("toolwarn", new SemanticVersion("1.4.0"), "2024-03-14"));
+        registerListener(new ConfigMigrationListener());
     }
 
     @Override
@@ -32,8 +36,13 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
             .append(Component.text("» ", NamedTextColor.DARK_GRAY));
         sounds = ((DefaultReferenceStorage) this.referenceStorageAccessor()).iTbwSounds();
         registerSettingCategory();
+        instance = this;
 
         registerListener(new GameTickListener(this));
+    }
+
+    public static TbwAddon get() {
+        return instance;
     }
 
     public static ITbwSounds getSounds() {
