@@ -1,6 +1,6 @@
 package com.rappytv.toolwarn.v1_8_9;
 
-import com.rappytv.toolwarn.util.ITbwSounds;
+import com.rappytv.toolwarn.api.ITbwSounds;
 import javax.inject.Singleton;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.models.Implements;
