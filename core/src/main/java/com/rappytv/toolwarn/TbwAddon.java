@@ -1,10 +1,11 @@
 package com.rappytv.toolwarn;
 
+import com.rappytv.toolwarn.api.DefaultTbwSounds;
 import com.rappytv.toolwarn.config.TbwConfiguration;
 import com.rappytv.toolwarn.core.generated.DefaultReferenceStorage;
 import com.rappytv.toolwarn.listener.ConfigMigrationListener;
 import com.rappytv.toolwarn.listener.GameTickListener;
-import com.rappytv.toolwarn.util.ITbwSounds;
+import com.rappytv.toolwarn.api.ITbwSounds;
 import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.client.component.Component;
@@ -15,10 +16,14 @@ import net.labymod.api.models.addon.annotation.AddonMain;
 import net.labymod.api.revision.SimpleRevision;
 import net.labymod.api.util.version.SemanticVersion;
 
+@SuppressWarnings("ConstantConditions")
 @AddonMain
 public class TbwAddon extends LabyAddon<TbwConfiguration> {
 
-    public static Component prefix;
+    public static Component prefix = Component
+        .text("TBW ", Style.builder().color(NamedTextColor.RED).decorate(TextDecoration.BOLD).build())
+        .append(Component.text("» ", NamedTextColor.DARK_GRAY));
+
     private static ITbwSounds sounds;
     private static TbwAddon instance;
 
@@ -31,12 +36,11 @@ public class TbwAddon extends LabyAddon<TbwConfiguration> {
 
     @Override
     protected void enable() {
-        prefix = Component
-            .text("TBW ", Style.builder().color(NamedTextColor.RED).decorate(TextDecoration.BOLD).build())
-            .append(Component.text("» ", NamedTextColor.DARK_GRAY));
-        sounds = ((DefaultReferenceStorage) this.referenceStorageAccessor()).iTbwSounds();
         registerSettingCategory();
         instance = this;
+        sounds = ((DefaultReferenceStorage) this.referenceStorageAccessor()).iTbwSounds();
+        if(sounds == null)
+            sounds = new DefaultTbwSounds();
 
         registerListener(new GameTickListener(this));
     }
