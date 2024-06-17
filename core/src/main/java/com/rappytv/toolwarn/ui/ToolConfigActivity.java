@@ -5,7 +5,6 @@ import com.rappytv.toolwarn.util.WarnSound;
 import com.rappytv.toolwarn.util.WarnTool;
 import com.rappytv.toolwarn.util.WarnTool.Type;
 import net.labymod.api.client.gui.mouse.MutableMouse;
-import net.labymod.api.client.gui.screen.LabyScreen;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
@@ -26,7 +25,6 @@ import net.labymod.api.client.gui.screen.widget.widgets.layout.FlexibleContentWi
 import net.labymod.api.client.gui.screen.widget.widgets.layout.ScrollWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.list.HorizontalListWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.list.VerticalListWidget;
-import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -314,11 +312,6 @@ public class ToolConfigActivity extends Activity {
     private void setAction(Action action) {
         this.action = action;
         this.reload();
-    }
-
-    @Override
-    public <T extends LabyScreen> @Nullable T renew() {
-        return null;
     }
 
     private enum Action {

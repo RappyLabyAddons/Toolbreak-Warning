@@ -1,4 +1,4 @@
-package com.rappytv.toolwarn.util;
+package com.rappytv.toolwarn.api;
 
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.reference.annotation.Referenceable;
