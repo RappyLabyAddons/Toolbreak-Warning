@@ -7,8 +7,6 @@ plugins {
 group = "org.example"
 version = "1.0.0"
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
 }
@@ -77,11 +75,7 @@ fun configureRun(provider: net.labymod.gradle.core.minecraft.provider.VersionPro
         args("--addon-dev-environment", "true")
     }
 
-    provider.javaVersion = when (gameVersion) {
-        else -> {
-            JavaVersion.VERSION_17
-        }
-    }
+    provider.javaVersion = JavaVersion.VERSION_21
 
     provider.mixin {
         val mixinMinVersion = when (gameVersion) {
