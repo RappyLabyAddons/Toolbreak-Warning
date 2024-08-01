@@ -41,7 +41,6 @@ public class ConfigMigrationListener {
         int pickaxe = defaultPercentage;
         int axe = defaultPercentage;
         int shovel = defaultPercentage;
-        int bow = defaultPercentage;
         int crossbow = defaultPercentage;
         int lighter = defaultPercentage;
         int shears = defaultPercentage;
@@ -56,7 +55,6 @@ public class ConfigMigrationListener {
             pickaxe = config.get("pickaxePercentage").getAsInt();
             axe = config.get("axePercentage").getAsInt();
             shovel = config.get("shovelPercentage").getAsInt();
-            bow = config.get("bowPercentage").getAsInt();
             crossbow = config.get("crossbowPercentage").getAsInt();
             lighter = config.get("lighterPercentage").getAsInt();
             shears = config.get("shearsPercentage").getAsInt();
@@ -70,7 +68,6 @@ public class ConfigMigrationListener {
         tools.add(gson.toJsonTree(new WarnTool(Type.PICKAXE, warnSound, lastHitSound, pickaxe, openChat, lastHitWarn)));
         tools.add(gson.toJsonTree(new WarnTool(Type.AXE, warnSound, lastHitSound, axe, openChat, lastHitWarn)));
         tools.add(gson.toJsonTree(new WarnTool(Type.SHOVEL, warnSound, lastHitSound, shovel, openChat, lastHitWarn)));
-        tools.add(gson.toJsonTree(new WarnTool(Type.BOW, warnSound, lastHitSound, bow, openChat, lastHitWarn)));
         tools.add(gson.toJsonTree(new WarnTool(Type.CROSSBOW, warnSound, lastHitSound, crossbow, openChat, lastHitWarn)));
         tools.add(gson.toJsonTree(new WarnTool(Type.LIGHTER, warnSound, lastHitSound, lighter, openChat, lastHitWarn)));
         tools.add(gson.toJsonTree(new WarnTool(Type.SHEARS, warnSound, lastHitSound, shears, openChat, lastHitWarn)));
