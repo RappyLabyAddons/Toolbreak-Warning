@@ -71,10 +71,11 @@ public class WarnTool {
         AXE(2, 0),
         SHOVEL(3, 0),
         HOE(0, 1),
-        CROSSBOW(1, 1),
-        LIGHTER(2, 1),
-        SHEARS(3, 1),
-        TRIDENT(0, 2);
+        BOW(1, 1),
+        CROSSBOW(2, 1),
+        LIGHTER(3, 1),
+        SHEARS(0, 2),
+        TRIDENT(1, 2);
 
         private final ResourceLocation sprite = ResourceLocation.create("toolwarn", "textures/tools.png");
         private final int x;
@@ -102,6 +103,8 @@ public class WarnTool {
                 return SHOVEL;
             } else if (path.endsWith("_hoe")) {
                 return HOE;
+            } else if (path.equalsIgnoreCase("bow")) {
+                return BOW;
             } else if (path.equalsIgnoreCase("crossbow")) {
                 return CROSSBOW;
             } else if (path.equalsIgnoreCase("flint_and_steel")) {
