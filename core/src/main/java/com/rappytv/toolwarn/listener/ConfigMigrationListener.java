@@ -3,10 +3,10 @@ package com.rappytv.toolwarn.listener;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.rappytv.toolwarn.config.TbwConfiguration;
-import com.rappytv.toolwarn.util.WarnSound;
-import com.rappytv.toolwarn.util.WarnTool;
-import com.rappytv.toolwarn.util.WarnTool.Type;
+import com.rappytv.toolwarn.ToolwarnConfig;
+import com.rappytv.toolwarn.api.WarnSound;
+import com.rappytv.toolwarn.api.WarnTool;
+import com.rappytv.toolwarn.api.WarnTool.Type;
 import net.labymod.api.configuration.loader.Config;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.labymod.config.ConfigurationVersionUpdateEvent;
@@ -14,7 +14,7 @@ import net.labymod.api.event.labymod.config.ConfigurationVersionUpdateEvent;
 @SuppressWarnings("FieldCanBeLocal")
 public class ConfigMigrationListener {
 
-    private final Gson gson = new Gson();
+    private static final Gson gson = new Gson();
     private final int defaultPercentage = 5;
 
     @Subscribe
@@ -22,8 +22,10 @@ public class ConfigMigrationListener {
         Class<? extends Config> configClass = event.getConfigClass();
         int usedVersion = event.getUsedVersion();
 
-        if(configClass == TbwConfiguration.class) {
-            if(usedVersion == 1) migrateFromOne(event);
+        if (configClass == ToolwarnConfig.class) {
+            if (usedVersion == 1) {
+                this.migrateFromOne(event);
+            }
         }
     }
 
@@ -37,30 +39,50 @@ public class ConfigMigrationListener {
         WarnSound lastHitSound = WarnSound.NONE;
         boolean openChat = true;
         boolean lastHitWarn = true;
-        int sword = defaultPercentage;
-        int pickaxe = defaultPercentage;
-        int axe = defaultPercentage;
-        int shovel = defaultPercentage;
-        int crossbow = defaultPercentage;
-        int lighter = defaultPercentage;
-        int shears = defaultPercentage;
-        int trident = defaultPercentage;
+        int sword = this.defaultPercentage;
+        int pickaxe = this.defaultPercentage;
+        int axe = this.defaultPercentage;
+        int shovel = this.defaultPercentage;
+        int crossbow = this.defaultPercentage;
+        int lighter = this.defaultPercentage;
+        int shears = this.defaultPercentage;
+        int trident = this.defaultPercentage;
 
-        try {
+        if (config.has("warnSound")) {
             warnSound = WarnSound.valueOf(sounds.get("warnSound").getAsString());
+        }
+        if (config.has("lastHitSound")) {
             lastHitSound = WarnSound.valueOf(sounds.get("lastHitSound").getAsString());
+        }
+        if (config.has("openChat")) {
             openChat = config.get("openChat").getAsBoolean();
+        }
+        if (config.has("lastHit")) {
             lastHitWarn = config.get("lastHit").getAsBoolean();
+        }
+        if (config.has("swordPercentage")) {
             sword = config.get("swordPercentage").getAsInt();
+        }
+        if (config.has("pickaxePercentage")) {
             pickaxe = config.get("pickaxePercentage").getAsInt();
+        }
+        if (config.has("axePercentage")) {
             axe = config.get("axePercentage").getAsInt();
+        }
+        if (config.has("shovelPercentage")) {
             shovel = config.get("shovelPercentage").getAsInt();
+        }
+        if (config.has("crossbowPercentage")) {
             crossbow = config.get("crossbowPercentage").getAsInt();
+        }
+        if (config.has("lighterPercentage")) {
             lighter = config.get("lighterPercentage").getAsInt();
+        }
+        if (config.has("shearsPercentage")) {
             shears = config.get("shearsPercentage").getAsInt();
+        }
+        if (config.has("tridentPercentage")) {
             trident = config.get("tridentPercentage").getAsInt();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
         }
 
         JsonArray tools = new JsonArray();

@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 @Nullable
 @Referenceable
-public interface ITbwSounds {
+public interface IToolwarnSounds {
 
     @NotNull ResourceLocation getPlingSound();
     @NotNull ResourceLocation getLevelUpSound();
