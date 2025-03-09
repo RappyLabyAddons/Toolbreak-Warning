@@ -42,6 +42,7 @@ public class ToolwarnAddon extends LabyAddon<ToolwarnConfig> {
         instance = this;
 
         this.registerSettingCategory();
+        this.configuration().createDefaultTools();
         this.sounds = ((DefaultReferenceStorage) this.referenceStorageAccessor()).getIToolwarnSounds();
         if (this.sounds == null) {
             this.sounds = new DefaultToolwarnSounds();

@@ -48,12 +48,16 @@ public class ConfigMigrationListener {
         int shears = this.defaultPercentage;
         int trident = this.defaultPercentage;
 
-        if (config.has("warnSound")) {
-            warnSound = WarnSound.valueOf(sounds.get("warnSound").getAsString());
+        try {
+            if (sounds.has("warnSound")) {
+                warnSound = WarnSound.valueOf(sounds.get("warnSound").getAsString());
+            }
+            if (sounds.has("lastHitSound")) {
+                lastHitSound = WarnSound.valueOf(sounds.get("lastHitSound").getAsString());
+            }
+        } catch (IllegalArgumentException ignored) {
         }
-        if (config.has("lastHitSound")) {
-            lastHitSound = WarnSound.valueOf(sounds.get("lastHitSound").getAsString());
-        }
+
         if (config.has("openChat")) {
             openChat = config.get("openChat").getAsBoolean();
         }

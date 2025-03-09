@@ -1,6 +1,7 @@
 package com.rappytv.toolwarn;
 
 import com.rappytv.toolwarn.api.WarnTool;
+import com.rappytv.toolwarn.api.WarnTool.Type;
 import com.rappytv.toolwarn.ui.activities.ToolConfigActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,8 @@ public class ToolwarnConfig extends AddonConfig {
 
     @Exclude
     private final List<WarnTool> tools = new ArrayList<>();
+    @Exclude
+    private final ConfigProperty<Boolean> createDefaultTools = new ConfigProperty<>(true);
 
     @SpriteSlot(size = 32)
     @SwitchSetting
@@ -41,6 +44,27 @@ public class ToolwarnConfig extends AddonConfig {
     public ConfigProperty<Boolean> enabled() {
         return this.enabled;
     }
+
+    public void createDefaultTools() {
+        if (!this.createDefaultTools.get()) {
+            return;
+        }
+        this.createDefaultTools.set(false);
+        if (!this.tools.isEmpty()) {
+            return;
+        }
+        this.tools.add(new WarnTool()); // Sword is the default
+        this.tools.add(new WarnTool(Type.PICKAXE));
+        this.tools.add(new WarnTool(Type.AXE));
+        this.tools.add(new WarnTool(Type.SHOVEL));
+        this.tools.add(new WarnTool(Type.HOE));
+        this.tools.add(new WarnTool(Type.BOW));
+        this.tools.add(new WarnTool(Type.CROSSBOW));
+        this.tools.add(new WarnTool(Type.LIGHTER));
+        this.tools.add(new WarnTool(Type.SHEARS));
+        this.tools.add(new WarnTool(Type.TRIDENT));
+    }
+
     public void removeInvalidTools() {
         this.tools.removeIf(entry ->
             entry.getWarnAt() < 1

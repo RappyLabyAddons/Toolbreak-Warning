@@ -17,7 +17,11 @@ public class WarnTool {
     private boolean lastHitWarn;
 
     public WarnTool() {
-        this(Type.SWORD, WarnSound.NONE, WarnSound.NONE, 5, true, true);
+        this(Type.SWORD);
+    }
+
+    public WarnTool(Type type) {
+        this(type, WarnSound.NONE, WarnSound.NONE, 5, true, true);
     }
 
     public WarnTool(Type type, WarnSound sound, WarnSound lastSound, int warnAt, boolean openChat, boolean lastHitWarn) {
