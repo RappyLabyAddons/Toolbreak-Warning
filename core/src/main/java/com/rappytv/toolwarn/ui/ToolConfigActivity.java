@@ -103,12 +103,12 @@ public class ToolConfigActivity extends Activity {
         if(this.action == null) return;
 
         Widget overlayWidget = switch (this.action) {
+            case EDIT -> this.initializeManageContainer(this.selectedTool);
+            case REMOVE -> this.initializeRemoveContainer(this.selectedTool);
             default -> {
                 ToolWidget newCustomNameTag = new ToolWidget(new WarnTool());
                 yield this.initializeManageContainer(newCustomNameTag);
             }
-            case EDIT -> this.initializeManageContainer(this.selectedTool);
-            case REMOVE -> this.initializeRemoveContainer(this.selectedTool);
         };
 
         DivWidget manageContainer = new DivWidget()
