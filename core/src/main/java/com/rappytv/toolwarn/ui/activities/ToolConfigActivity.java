@@ -1,9 +1,12 @@
-package com.rappytv.toolwarn.ui;
+package com.rappytv.toolwarn.ui.activities;
 
-import com.rappytv.toolwarn.TbwAddon;
-import com.rappytv.toolwarn.util.WarnSound;
-import com.rappytv.toolwarn.util.WarnTool;
-import com.rappytv.toolwarn.util.WarnTool.Type;
+import com.rappytv.toolwarn.ToolwarnAddon;
+import com.rappytv.toolwarn.api.WarnSound;
+import com.rappytv.toolwarn.api.WarnTool;
+import com.rappytv.toolwarn.api.WarnTool.Type;
+import com.rappytv.toolwarn.ui.widgets.ToolWidget;
+import java.util.ArrayList;
+import java.util.List;
 import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
@@ -25,18 +28,14 @@ import net.labymod.api.client.gui.screen.widget.widgets.layout.FlexibleContentWi
 import net.labymod.api.client.gui.screen.widget.widgets.layout.ScrollWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.list.HorizontalListWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.list.VerticalListWidget;
-import java.util.ArrayList;
-import java.util.List;
 
-@SuppressWarnings("deprecation")
 @Links({@Link("manage.lss"), @Link("config.lss")})
 @AutoActivity
 public class ToolConfigActivity extends Activity {
 
-    private final TbwAddon addon;
+    private final ToolwarnAddon addon;
     private final VerticalListWidget<ToolWidget> toolList;
     private final List<ToolWidget> toolWidgets;
-    private int sliderValue;
 
     private ToolWidget selectedTool;
 
@@ -48,7 +47,7 @@ public class ToolConfigActivity extends Activity {
     private Action action;
 
     public ToolConfigActivity() {
-        this.addon = TbwAddon.get();
+        this.addon = ToolwarnAddon.getInstance();
 
         this.toolWidgets = new ArrayList<>();
         this.addon.configuration().getTools().forEach((tool) ->
@@ -58,7 +57,7 @@ public class ToolConfigActivity extends Activity {
         this.toolList = new VerticalListWidget<>()
             .addId("tool-list");
         this.toolList.setSelectCallback(nameTagWidget -> {
-            ToolWidget selectedNameTag = this.toolList.session().getSelectedEntry();
+            ToolWidget selectedNameTag = this.toolList.listSession().getSelectedEntry();
             if (selectedNameTag == null || selectedNameTag.getTool() != nameTagWidget.getTool()) {
                 this.editButton.setEnabled(true);
                 this.removeButton.setEnabled(true);
@@ -77,7 +76,7 @@ public class ToolConfigActivity extends Activity {
         for (ToolWidget nameTagWidget : this.toolWidgets) {
             this.toolList.addChild(nameTagWidget);
         }
-        this.selectedTool = this.toolList.session().getSelectedEntry();
+        this.selectedTool = this.toolList.listSession().getSelectedEntry();
 
         HorizontalListWidget buttons = new HorizontalListWidget()
             .addId("overview-button-menu");
@@ -103,12 +102,12 @@ public class ToolConfigActivity extends Activity {
         if(this.action == null) return;
 
         Widget overlayWidget = switch (this.action) {
+            case EDIT -> this.initializeManageContainer(this.selectedTool);
+            case REMOVE -> this.initializeRemoveContainer(this.selectedTool);
             default -> {
                 ToolWidget newCustomNameTag = new ToolWidget(new WarnTool());
                 yield this.initializeManageContainer(newCustomNameTag);
             }
-            case EDIT -> this.initializeManageContainer(this.selectedTool);
-            case REMOVE -> this.initializeRemoveContainer(this.selectedTool);
         };
 
         DivWidget manageContainer = new DivWidget()
@@ -133,7 +132,7 @@ public class ToolConfigActivity extends Activity {
         menu.addEntry(ButtonWidget.i18n("labymod.ui.button.remove", () -> {
             this.addon.configuration().getTools().remove(toolWidget.getTool());
             this.toolWidgets.remove(toolWidget);
-            this.toolList.session().setSelectedEntry(null);
+            this.toolList.listSession().setSelectedEntry(null);
             this.setAction(null);
         }));
         menu.addEntry(ButtonWidget.i18n("labymod.ui.button.cancel", () -> this.setAction(null)));
@@ -172,7 +171,7 @@ public class ToolConfigActivity extends Activity {
         ComponentWidget sliderText = ComponentWidget.i18n("toolwarn.gui.slider")
             .addId("slider-name");
 
-        SliderWidget warnSlider = new SliderWidget(value -> sliderValue = (int) value)
+        SliderWidget warnSlider = new SliderWidget()
             .addId("warn-slider");
         warnSlider.range(1, 25);
         warnSlider.setValue(toolWidget.getTool().getWarnAt());
@@ -245,11 +244,11 @@ public class ToolConfigActivity extends Activity {
         checkBoxList.addEntry(openChatDiv);
         checkBoxList.addEntry(lastHitDiv);
 
-        inputWidget.addContent(typeDiv);
-        inputWidget.addContent(sliderText);
-        inputWidget.addContent(warnSlider);
-        inputWidget.addContent(dropdownList);
-        inputWidget.addContent(checkBoxList);
+        this.inputWidget.addContent(typeDiv);
+        this.inputWidget.addContent(sliderText);
+        this.inputWidget.addContent(warnSlider);
+        this.inputWidget.addContent(dropdownList);
+        this.inputWidget.addContent(checkBoxList);
 
         HorizontalListWidget buttonList = new HorizontalListWidget()
             .addId("edit-button-menu");
@@ -258,12 +257,12 @@ public class ToolConfigActivity extends Activity {
         doneButton.setPressable(() -> {
             if(!this.toolWidgets.contains(toolWidget)) {
                 this.toolWidgets.add(toolWidget);
-                this.toolList.session().setSelectedEntry(toolWidget);
+                this.toolList.listSession().setSelectedEntry(toolWidget);
             }
 
             WarnTool tool = toolWidget.getTool();
             tool.setType(typeDropdown.getSelected());
-            tool.setWarnAt(sliderValue);
+            tool.setWarnAt((int) warnSlider.getValue());
             tool.setSound(soundDropdown.getSelected());
             tool.setLastSound(lastSoundDropdown.getSelected());
             tool.setOpenChat(openChatCheck.state() == State.CHECKED);
@@ -293,7 +292,7 @@ public class ToolConfigActivity extends Activity {
 
             return super.mouseClicked(mouse, mouseButton);
         } finally {
-            this.selectedTool = this.toolList.session().getSelectedEntry();
+            this.selectedTool = this.toolList.listSession().getSelectedEntry();
             this.removeButton.setEnabled(this.selectedTool != null);
             this.editButton.setEnabled(this.selectedTool != null);
         }

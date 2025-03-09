@@ -1,11 +1,14 @@
-package com.rappytv.toolwarn.util;
+package com.rappytv.toolwarn.api;
 
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 public class WarnTool {
 
+    private static final ResourceLocation ICON_SPRITE = ResourceLocation.create("toolwarn",
+        "textures/tools.png");
     private Type type;
     private WarnSound sound;
     private WarnSound lastSound;
@@ -14,7 +17,11 @@ public class WarnTool {
     private boolean lastHitWarn;
 
     public WarnTool() {
-        this(Type.SWORD, WarnSound.NONE, WarnSound.NONE, 5, true, true);
+        this(Type.SWORD);
+    }
+
+    public WarnTool(Type type) {
+        this(type, WarnSound.NONE, WarnSound.NONE, 5, true, true);
     }
 
     public WarnTool(Type type, WarnSound sound, WarnSound lastSound, int warnAt, boolean openChat, boolean lastHitWarn) {
@@ -27,22 +34,22 @@ public class WarnTool {
     }
 
     public Type getType() {
-        return type;
+        return this.type;
     }
     public WarnSound getSound() {
-        return sound;
+        return this.sound;
     }
     public WarnSound getLastSound() {
-        return lastSound;
+        return this.lastSound;
     }
     public int getWarnAt() {
-        return warnAt;
+        return this.warnAt;
     }
     public boolean openChat() {
-        return openChat;
+        return this.openChat;
     }
     public boolean lastHitWarn() {
-        return lastHitWarn;
+        return this.lastHitWarn;
     }
 
     public void setType(Type type) {
@@ -77,20 +84,17 @@ public class WarnTool {
         SHEARS(0, 2),
         TRIDENT(1, 2);
 
-        private final ResourceLocation sprite = ResourceLocation.create("toolwarn", "textures/tools.png");
-        private final int x;
-        private final int y;
+        private final Icon icon;
 
         Type(int x, int y) {
-            this.x = x;
-            this.y = y;
+            this.icon = Icon.sprite32(ICON_SPRITE, x, y);
         }
 
         public Icon getIcon() {
-            return Icon.sprite32(sprite, x, y);
+            return this.icon;
         }
 
-        public static Type getByItem(ItemStack itemStack) {
+        public static Type getByItem(@Nullable ItemStack itemStack) {
             if(itemStack == null) return NONE;
             String path = itemStack.getIdentifier().getPath();
             if (path.endsWith("_sword")) {

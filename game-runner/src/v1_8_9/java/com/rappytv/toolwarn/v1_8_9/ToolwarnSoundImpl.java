@@ -1,14 +1,14 @@
 package com.rappytv.toolwarn.v1_8_9;
 
-import com.rappytv.toolwarn.api.ITbwSounds;
+import com.rappytv.toolwarn.api.IToolwarnSounds;
 import javax.inject.Singleton;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.models.Implements;
 import org.jetbrains.annotations.NotNull;
 
 @Singleton
-@Implements(ITbwSounds.class)
-public class TbwSoundImpl implements ITbwSounds {
+@Implements(IToolwarnSounds.class)
+public class ToolwarnSoundImpl implements IToolwarnSounds {
 
     private final ResourceLocation plingSound = ResourceLocation.create("minecraft", "note.pling");
     private final ResourceLocation levelUpSound = ResourceLocation.create("minecraft", "random.levelup");
@@ -17,18 +17,18 @@ public class TbwSoundImpl implements ITbwSounds {
 
     @Override
     public @NotNull ResourceLocation getPlingSound() {
-        return plingSound;
+        return this.plingSound;
     }
     @Override
     public @NotNull ResourceLocation getLevelUpSound() {
-        return levelUpSound;
+        return this.levelUpSound;
     }
     @Override
     public @NotNull ResourceLocation getGlassBreakSound() {
-        return glassBreakSound;
+        return this.glassBreakSound;
     }
     @Override
     public @NotNull ResourceLocation getAnvilUseSound() {
-        return anvilUseSound;
+        return this.anvilUseSound;
     }
 }
