@@ -53,7 +53,7 @@ public class GameTickListener {
             if(tool.getType() != type) continue;
             int itemWarnInt = (tool.getWarnAt() * itemStack.getMaximumDamage()) / 100;
 
-            if(itemUsedInt == itemWarnInt) {
+            if(itemUsedInt <= itemWarnInt) {
                 if(!warns.contains(itemStack)) {
                     if(tool.openChat()) Laby.labyAPI().minecraft().openChat("");
                     Laby.references().chatExecutor().displayClientMessage(
