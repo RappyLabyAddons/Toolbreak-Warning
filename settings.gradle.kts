@@ -1,7 +1,7 @@
 rootProject.name = "toolwarn"
 
 pluginManagement {
-    val labyGradlePluginVersion = "0.5.7"
+    val labyGradlePluginVersion = "0.6.2"
 
     buildscript {
         repositories {
