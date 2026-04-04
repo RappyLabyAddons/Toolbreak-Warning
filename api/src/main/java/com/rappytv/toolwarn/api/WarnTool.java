@@ -71,7 +71,7 @@ public class WarnTool {
         this.lastHitWarn = lastHitWarn;
     }
 
-    public enum Type {
+    public enum Type { // TODO: Add spear
         NONE(-1, -1),
         SWORD(0, 0),
         PICKAXE(1, 0),

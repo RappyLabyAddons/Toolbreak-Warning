@@ -1,7 +1,7 @@
-package com.rappytv.toolwarn.listener;
+package com.rappytv.toolwarn.core.listener;
 
-import com.rappytv.toolwarn.ToolwarnAddon;
-import com.rappytv.toolwarn.ToolwarnConfig;
+import com.rappytv.toolwarn.core.ToolwarnAddon;
+import com.rappytv.toolwarn.core.ToolwarnConfig;
 import com.rappytv.toolwarn.api.WarnSound;
 import com.rappytv.toolwarn.api.WarnTool;
 import com.rappytv.toolwarn.api.WarnTool.Type;
@@ -69,7 +69,7 @@ public class GameTickListener {
 
                     if(tool.getSound() != WarnSound.NONE) {
                         Laby.labyAPI().minecraft().sounds().playSound(
-                            this.addon.getWarnSound(tool.getSound()),
+                            tool.getSound().getLocation(),
                             1f,
                             1f
                         );
@@ -89,7 +89,7 @@ public class GameTickListener {
                     warns.add(itemStack);
                     if(tool.getLastSound() != WarnSound.NONE) {
                         Laby.labyAPI().minecraft().sounds().playSound(
-                            this.addon.getWarnSound(tool.getLastSound()),
+                            tool.getSound().getLocation(),
                             1f,
                             1f
                         );

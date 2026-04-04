@@ -1,4 +1,4 @@
-package com.rappytv.toolwarn.ui.widgets;
+package com.rappytv.toolwarn.core.ui.widgets;
 
 import com.rappytv.toolwarn.api.WarnTool;
 import net.labymod.api.client.component.Component;

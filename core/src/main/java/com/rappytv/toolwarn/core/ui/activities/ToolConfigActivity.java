@@ -1,10 +1,10 @@
-package com.rappytv.toolwarn.ui.activities;
+package com.rappytv.toolwarn.core.ui.activities;
 
-import com.rappytv.toolwarn.ToolwarnAddon;
+import com.rappytv.toolwarn.core.ToolwarnAddon;
 import com.rappytv.toolwarn.api.WarnSound;
 import com.rappytv.toolwarn.api.WarnTool;
 import com.rappytv.toolwarn.api.WarnTool.Type;
-import com.rappytv.toolwarn.ui.widgets.ToolWidget;
+import com.rappytv.toolwarn.core.ui.widgets.ToolWidget;
 import java.util.ArrayList;
 import java.util.List;
 import net.labymod.api.client.gui.mouse.MutableMouse;

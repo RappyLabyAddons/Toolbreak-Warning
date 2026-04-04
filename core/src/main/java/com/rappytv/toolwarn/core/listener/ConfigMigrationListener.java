@@ -1,9 +1,9 @@
-package com.rappytv.toolwarn.listener;
+package com.rappytv.toolwarn.core.listener;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.rappytv.toolwarn.ToolwarnConfig;
+import com.rappytv.toolwarn.core.ToolwarnConfig;
 import com.rappytv.toolwarn.api.WarnSound;
 import com.rappytv.toolwarn.api.WarnTool;
 import com.rappytv.toolwarn.api.WarnTool.Type;

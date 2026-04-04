@@ -1,8 +1,8 @@
-package com.rappytv.toolwarn;
+package com.rappytv.toolwarn.core;
 
 import com.rappytv.toolwarn.api.WarnTool;
 import com.rappytv.toolwarn.api.WarnTool.Type;
-import com.rappytv.toolwarn.ui.activities.ToolConfigActivity;
+import com.rappytv.toolwarn.core.ui.activities.ToolConfigActivity;
 import java.util.ArrayList;
 import java.util.List;
 import net.labymod.api.addon.AddonConfig;
