@@ -71,9 +71,10 @@ public class WarnTool {
         this.lastHitWarn = lastHitWarn;
     }
 
-    public enum Type { // TODO: Add spear
+    public enum Type {
         NONE(-1, -1),
         SWORD(0, 0),
+        SPEAR(2, 2), // TODO: Add icon to sprite
         PICKAXE(1, 0),
         AXE(2, 0),
         SHOVEL(3, 0),
@@ -99,6 +100,8 @@ public class WarnTool {
             String path = itemStack.getIdentifier().getPath();
             if (path.endsWith("_sword")) {
                 return SWORD;
+            } else if(path.endsWith("_spear")) {
+                return SPEAR;
             } else if (path.endsWith("_pickaxe")) {
                 return PICKAXE;
             } else if (path.endsWith("_axe")) {
