@@ -1,8 +1,8 @@
-package com.rappytv.toolwarn.v1_21_11.mixins;
+package com.rappytv.toolwarn.v1_21_8.mixins;
 
 import com.rappytv.toolwarn.api.ItemStackDamageEvent;
 import net.labymod.api.Laby;
-import net.labymod.v1_21_11.client.util.MinecraftUtil;
+import net.labymod.v1_21_8.client.util.MinecraftUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemStack.class)
-public class MixinItemStack { // TODO: Test this
+public class MixinItemStack {
 
     @Inject(method = "setItemDamage", at = @At("HEAD"))
     public void onSetDamageValue(int newDamageValue, CallbackInfo ci) {
@@ -30,7 +30,8 @@ public class MixinItemStack { // TODO: Test this
         Laby.fireEvent(new ItemStackDamageEvent(
             MinecraftUtil.fromMinecraft(self),
             oldDurability,
-            newDurability
+            newDurability,
+            false
         ));
     }
 }

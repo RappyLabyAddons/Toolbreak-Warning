@@ -30,7 +30,8 @@ public class MixinItemStack {
         Laby.fireEvent(new ItemStackDamageEvent(
             MinecraftUtil.fromMinecraft(self),
             oldDurability,
-            newDurability
+            newDurability,
+            false
         ));
     }
 }

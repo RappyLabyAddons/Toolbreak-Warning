@@ -15,7 +15,7 @@
             }
         },
         "warnings": {
-            "firstWarning": "Your tools' durability is at %s%%.",
+            "firstWarning": "Your tools' durability is at %s%%!",
             "lastHit": "You are on your last hits of this tool. You are risking breaking it!"
         },
         "gui": {

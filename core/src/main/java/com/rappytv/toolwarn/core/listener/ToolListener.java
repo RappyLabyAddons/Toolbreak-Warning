@@ -84,6 +84,7 @@ public class ToolListener {
                     }
                 }
             } else if (tool.lastHitWarn() && itemUsedInt <= 3) {
+                // TODO: Fix this check. The last hit warning still shows 2-3 times (< 1.21.10)
                 if (!this.warns.contains(itemStack)) {
                     this.warns.add(itemStack);
                     if (tool.openChat()) {

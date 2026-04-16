@@ -14,8 +14,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ItemStack.class)
 public class MixinItemStack {
 
+    // Minecraft#getInstance is marked as NotNull but is still null on startup for whatever reason
+    @SuppressWarnings("ConstantConditions")
     @Inject(method = "setDamageValue", at = @At("HEAD"))
     public void onSetDamageValue(int newDamageValue, CallbackInfo ci) {
+        if (Minecraft.getInstance() == null) {
+            return;
+        }
         LocalPlayer player = Minecraft.getInstance().player;
         if (player == null) return;
 
@@ -30,7 +35,8 @@ public class MixinItemStack {
         Laby.fireEvent(new ItemStackDamageEvent(
             MinecraftUtil.fromMinecraft(self),
             oldDurability,
-            newDurability
+            newDurability,
+            false
         ));
     }
 }
