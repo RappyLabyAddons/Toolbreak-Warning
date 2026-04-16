@@ -14,9 +14,9 @@
                 "name": "Manage tools"
             }
         },
-        "messages": {
-            "lastHit": "You should stop using this tool now, this is your last hit!",
-            "warning": "Do you really want to continue using this tool? Its durability is at %s%%!"
+        "warnings": {
+            "firstWarning": "Your tools' durability is at %s%%.",
+            "lastHit": "You are on your last hits of this tool. You are risking breaking it!"
         },
         "gui": {
             "meta": "Warn at: %s%% • Chat: %s • Last hit: %s",

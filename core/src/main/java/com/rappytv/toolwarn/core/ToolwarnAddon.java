@@ -1,7 +1,6 @@
 package com.rappytv.toolwarn.core;
 
 import com.rappytv.toolwarn.core.listener.ConfigMigrationListener;
-import com.rappytv.toolwarn.core.listener.GameTickListener;
 import com.rappytv.toolwarn.core.listener.ToolListener;
 import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
@@ -43,7 +42,6 @@ public class ToolwarnAddon extends LabyAddon<ToolwarnConfig> {
         this.registerSettingCategory();
         this.configuration().createDefaultTools();
 
-//        this.registerListener(new GameTickListener(this));
         this.registerListener(new ToolListener(this));
     }
 
