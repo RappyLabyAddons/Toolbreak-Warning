@@ -39,7 +39,7 @@ public class MixinClientPacketListener {
     int maxDamage = incoming.getMaxDamage();
     int oldDurability = maxDamage - current.getItemDamage();
     int newDurability = maxDamage - incoming.getItemDamage();
-    if (newDurability > oldDurability) {
+    if (newDurability >= oldDurability) {
       return;
     }
 

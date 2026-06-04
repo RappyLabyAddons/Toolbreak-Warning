@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemStack.class)
-public class MixinItemStack {
+public abstract class MixinItemStack {
 
   // Minecraft#getInstance is marked as NotNull but is still null on startup for whatever reason
   @SuppressWarnings("ConstantConditions")
@@ -35,7 +35,7 @@ public class MixinItemStack {
     int maxDamage = self.getMaxDamage();
     int oldDurability = maxDamage - self.getDamageValue();
     int newDurability = maxDamage - newDamageValue;
-    if (newDurability > oldDurability) {
+    if (newDurability >= oldDurability) {
       return;
     }
 

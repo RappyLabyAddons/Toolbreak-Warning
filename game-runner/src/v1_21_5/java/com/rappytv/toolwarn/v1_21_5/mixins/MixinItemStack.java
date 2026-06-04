@@ -30,7 +30,7 @@ public class MixinItemStack {
     int maxDamage = self.getMaxDamage();
     int oldDurability = maxDamage - self.getDamageValue();
     int newDurability = maxDamage - newDamageValue;
-    if (newDurability > oldDurability) {
+    if (newDurability >= oldDurability) {
       return;
     }
 
