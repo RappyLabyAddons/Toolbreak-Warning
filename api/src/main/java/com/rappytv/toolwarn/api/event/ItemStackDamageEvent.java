@@ -1,4 +1,4 @@
-package com.rappytv.toolwarn.api;
+package com.rappytv.toolwarn.api.event;
 
 import net.labymod.api.client.world.item.ItemStack;
 import net.labymod.api.event.Event;

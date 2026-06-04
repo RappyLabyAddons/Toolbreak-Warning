@@ -19,7 +19,7 @@ public enum WarnSound {
   }
 
   WarnSound(String v1_8_9, String v1_12_2, String above) {
-    this.location = net.labymod.api.client.resources.ResourceLocation.create(
+    this.location = ResourceLocation.create(
         "minecraft",
         MinecraftVersions.V1_8_9.isCurrent()
             ? v1_8_9 :

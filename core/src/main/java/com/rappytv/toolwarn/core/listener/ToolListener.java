@@ -1,9 +1,9 @@
 package com.rappytv.toolwarn.core.listener;
 
-import com.rappytv.toolwarn.api.ItemStackDamageEvent;
 import com.rappytv.toolwarn.api.WarnSound;
-import com.rappytv.toolwarn.api.WarnTool;
-import com.rappytv.toolwarn.api.WarnTool.Type;
+import com.rappytv.toolwarn.api.event.ItemStackDamageEvent;
+import com.rappytv.toolwarn.api.item.WarnTool;
+import com.rappytv.toolwarn.api.item.WarnTool.Type;
 import com.rappytv.toolwarn.core.ToolwarnAddon;
 import com.rappytv.toolwarn.core.ToolwarnConfig;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.rappytv.toolwarn.core.ui.widgets;
 
-import com.rappytv.toolwarn.api.WarnTool;
+import com.rappytv.toolwarn.api.item.WarnTool;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.gui.lss.property.annotation.AutoWidget;

@@ -1,5 +1,6 @@
-package com.rappytv.toolwarn.api;
+package com.rappytv.toolwarn.api.item;
 
+import com.rappytv.toolwarn.api.WarnSound;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;

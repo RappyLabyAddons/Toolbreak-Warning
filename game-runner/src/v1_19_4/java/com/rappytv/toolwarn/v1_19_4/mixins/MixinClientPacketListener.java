@@ -1,6 +1,6 @@
 package com.rappytv.toolwarn.v1_19_4.mixins;
 
-import com.rappytv.toolwarn.api.ItemStackDamageEvent;
+import com.rappytv.toolwarn.api.event.ItemStackDamageEvent;
 import net.labymod.api.Laby;
 import net.labymod.v1_19_4.client.util.MinecraftUtil;
 import net.minecraft.client.Minecraft;

@@ -1,9 +1,9 @@
 package com.rappytv.toolwarn.core.ui.activities;
 
-import com.rappytv.toolwarn.core.ToolwarnAddon;
 import com.rappytv.toolwarn.api.WarnSound;
-import com.rappytv.toolwarn.api.WarnTool;
-import com.rappytv.toolwarn.api.WarnTool.Type;
+import com.rappytv.toolwarn.api.item.WarnTool;
+import com.rappytv.toolwarn.api.item.WarnTool.Type;
+import com.rappytv.toolwarn.core.ToolwarnAddon;
 import com.rappytv.toolwarn.core.ui.widgets.ToolWidget;
 import java.util.ArrayList;
 import java.util.List;
