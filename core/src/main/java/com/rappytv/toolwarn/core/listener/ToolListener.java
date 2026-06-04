@@ -6,8 +6,6 @@ import com.rappytv.toolwarn.api.item.WarnTool;
 import com.rappytv.toolwarn.api.item.WarnTool.Type;
 import com.rappytv.toolwarn.core.ToolwarnAddon;
 import com.rappytv.toolwarn.core.ToolwarnConfig;
-import java.util.ArrayList;
-import java.util.List;
 import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.NamedTextColor;
@@ -19,7 +17,7 @@ import net.labymod.api.event.Subscribe;
 public class ToolListener {
 
   private final ToolwarnConfig config;
-  private final List<ItemStack> warns = new ArrayList<>();
+  private long lastFinalWarning = -1;
 
   public ToolListener(ToolwarnAddon addon) {
     this.config = addon.configuration();
@@ -60,56 +58,37 @@ public class ToolListener {
       int itemWarnInt = (tool.getWarnAt() * itemStack.getMaximumDamage()) / 100;
 
       if (itemUsedInt == itemWarnInt) {
-        if (!this.warns.contains(itemStack)) {
-          this.warns.add(itemStack);
-          if (tool.openChat()) {
-            this.openChatSync();
-          }
-          Laby.references().chatExecutor().displayClientMessage(
-              Component.empty()
-                  .append(ToolwarnAddon.prefix)
-                  .append(Component.translatable(
-                      "toolwarn.warnings.firstWarning",
-                      NamedTextColor.RED,
-                      Component.text(tool.getWarnAt())
-                  ))
-          );
-
-          if (tool.getSound() != WarnSound.NONE) {
-            Laby.labyAPI().minecraft().sounds().playSound(
-                tool.getSound().getLocation(),
-                1f,
-                1f
-            );
-          }
-        }
+        this.handleWarning(tool, false);
       } else if (tool.lastHitWarn() && itemUsedInt <= 3) {
-        // TODO: Fix this check. The last hit warning still shows 2-3 times (< 1.21.10)
-        if (!this.warns.contains(itemStack)) {
-          this.warns.add(itemStack);
-          if (tool.openChat()) {
-            this.openChatSync();
-          }
-          Laby.references().chatExecutor().displayClientMessage(
-              Component.empty()
-                  .append(ToolwarnAddon.prefix)
-                  .append(Component.translatable(
-                      "toolwarn.warnings.lastHit",
-                      NamedTextColor.RED
-                  ))
-          );
-
-          if (tool.getLastSound() != WarnSound.NONE) {
-            Laby.labyAPI().minecraft().sounds().playSound(
-                tool.getSound().getLocation(),
-                1f,
-                1f
-            );
-          }
+        if (System.currentTimeMillis() - this.lastFinalWarning > 5000) {
+          this.lastFinalWarning = System.currentTimeMillis();
+          this.handleWarning(tool, true);
         }
-      } else {
-        this.warns.remove(itemStack);
       }
+    }
+  }
+
+  private void handleWarning(WarnTool tool, boolean finalWarning) {
+    if (tool.openChat()) {
+      this.openChatSync();
+    }
+    Laby.references().chatExecutor().displayClientMessage(
+        Component.empty()
+            .append(ToolwarnAddon.prefix)
+            .append(Component.translatable(
+                finalWarning ? "toolwarn.warnings.lastHit" : "toolwarn.warnings.firstWarning",
+                NamedTextColor.RED,
+                Component.text(tool.getWarnAt())
+            ))
+    );
+
+    WarnSound sound = finalWarning ? tool.getLastSound() : tool.getSound();
+    if (sound != WarnSound.NONE) {
+      Laby.labyAPI().minecraft().sounds().playSound(
+          sound.getLocation(),
+          1f,
+          1f
+      );
     }
   }
 
