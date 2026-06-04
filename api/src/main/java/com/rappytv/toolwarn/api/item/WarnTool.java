@@ -4,12 +4,14 @@ import com.rappytv.toolwarn.api.WarnSound;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;
+import net.labymod.api.util.I18n;
 import org.jetbrains.annotations.Nullable;
 
 public class WarnTool {
 
   private static final ResourceLocation ICON_SPRITE = ResourceLocation.create("toolwarn",
       "textures/tools.png");
+  private boolean enabled;
   private Type type;
   private WarnSound sound;
   private WarnSound lastSound;
@@ -22,17 +24,32 @@ public class WarnTool {
   }
 
   public WarnTool(Type type) {
-    this(type, WarnSound.NONE, WarnSound.NONE, 5, true, true);
+    this(true, type, WarnSound.NONE, WarnSound.NONE, 5, true, true);
   }
 
   public WarnTool(Type type, WarnSound sound, WarnSound lastSound, int warnAt, boolean openChat,
       boolean lastHitWarn) {
+    this(true, type, sound, lastSound, warnAt, openChat, lastHitWarn);
+  }
+
+  public WarnTool(boolean enabled, Type type, WarnSound sound, WarnSound lastSound, int warnAt,
+      boolean openChat,
+      boolean lastHitWarn) {
+    this.enabled = enabled;
     this.type = type;
     this.sound = sound;
     this.lastSound = lastSound;
     this.warnAt = warnAt;
     this.openChat = openChat;
     this.lastHitWarn = lastHitWarn;
+  }
+
+  public boolean isEnabled() {
+    return this.enabled;
+  }
+
+  public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
   }
 
   public Type getType() {
@@ -71,16 +88,29 @@ public class WarnTool {
     return this.openChat;
   }
 
-  public boolean lastHitWarn() {
-    return this.lastHitWarn;
-  }
-
   public void setOpenChat(boolean openChat) {
     this.openChat = openChat;
   }
 
+  public boolean lastHitWarn() {
+    return this.lastHitWarn;
+  }
+
   public void setLastHitWarn(boolean lastHitWarn) {
     this.lastHitWarn = lastHitWarn;
+  }
+
+  @Override
+  public String toString() {
+    return "WarnTool{" +
+        "enabled=" + this.enabled +
+        ", type=" + this.type +
+        ", sound=" + this.sound +
+        ", lastSound=" + this.lastSound +
+        ", warnAt=" + this.warnAt +
+        ", openChat=" + this.openChat +
+        ", lastHitWarn=" + this.lastHitWarn +
+        '}';
   }
 
   public enum Type {
@@ -101,6 +131,14 @@ public class WarnTool {
 
     Type(int x, int y) {
       this.icon = Icon.sprite32(ICON_SPRITE, x, y);
+    }
+
+    public String translationKey() {
+      return "toolwarn.ui.popup.settings.dropdown.type." + this.name().toLowerCase();
+    }
+
+    public String getTranslation() {
+      return I18n.translate(this.translationKey());
     }
 
     public static Type getByItem(@Nullable ItemStack itemStack) {

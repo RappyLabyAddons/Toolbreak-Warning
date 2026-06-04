@@ -5,15 +5,17 @@ import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.gui.lss.property.annotation.AutoWidget;
 import net.labymod.api.client.gui.screen.Parent;
-import net.labymod.api.client.gui.screen.widget.SimpleWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
+import net.labymod.api.client.gui.screen.widget.widgets.layout.FlexibleContentWidget;
+import net.labymod.api.client.gui.screen.widget.widgets.layout.list.HorizontalListWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.renderer.IconWidget;
 
 @AutoWidget
-public class ToolWidget extends SimpleWidget {
+public class ToolWidget extends HorizontalListWidget {
 
   private static final Component enabled = Component.text("✔", NamedTextColor.GREEN);
   private static final Component disabled = Component.text("✘", NamedTextColor.RED);
+
   private WarnTool tool;
 
   public ToolWidget(WarnTool tool) {
@@ -23,23 +25,35 @@ public class ToolWidget extends SimpleWidget {
   @Override
   public void initialize(Parent parent) {
     super.initialize(parent);
-    IconWidget iconWidget = new IconWidget(this.tool.getType().getIcon())
-        .addId("tool-icon");
 
-    ComponentWidget nameWidget = ComponentWidget.i18n(
-        "toolwarn.gui.dropdown.type." + this.tool.getType().name().toLowerCase()
-    ).addId("name-component");
+    if (this.tool.isEnabled()) {
+      this.removeId("disabled");
+    } else {
+      this.addId("disabled");
+    }
+
+    IconWidget iconWidget = new IconWidget(this.tool.getType().getIcon());
+    iconWidget.addId("tool-icon");
+
+    FlexibleContentWidget componentContainer = new FlexibleContentWidget();
+    componentContainer.addId("components");
+
+    ComponentWidget nameWidget = ComponentWidget.i18n(this.tool.getType().translationKey());
+    nameWidget.addId("name-component");
 
     ComponentWidget meta = ComponentWidget.component(Component.translatable(
-        "toolwarn.gui.meta",
+        "toolwarn.ui.tool.meta",
         Component.text(this.tool.getWarnAt()),
         this.tool.openChat() ? enabled : disabled,
         this.tool.lastHitWarn() ? enabled : disabled
-    )).addId("meta-component");
+    ));
+    meta.addId("meta-component");
 
-    this.addChild(iconWidget);
-    this.addChild(nameWidget);
-    this.addChild(meta);
+    componentContainer.addContent(nameWidget);
+    componentContainer.addContent(meta);
+
+    this.addEntry(iconWidget);
+    this.addEntry(componentContainer);
   }
 
   public WarnTool getTool() {

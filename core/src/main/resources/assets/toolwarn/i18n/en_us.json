@@ -1,55 +1,64 @@
 {
-    "toolwarn": {
-        "settings": {
-            "name": "Toolbreak Warning",
-            "header": {
-                "tools": {
-                    "name": "Tools"
-                }
-            },
-            "enabled": {
-                "name": "Activated"
-            },
-            "toolConfig": {
-                "name": "Manage tools"
-            }
-        },
-        "warnings": {
-            "firstWarning": "Your tools' durability is at %s%%!",
-            "lastHit": "You are on your last hits of this tool. You are risking breaking it!"
-        },
-        "gui": {
-            "meta": "Warn at: %s%% • Chat: %s • Last hit: %s",
-            "remove": "Do you really want to remove this entry?",
-            "checkbox": {
-                "openChat": "Open chat",
-                "lastHit": "Last hit warning"
-            },
-            "dropdown": {
-                "warnSound": "Warn sound",
-                "lastSound": "Last hit warn sound",
-                "type": {
-                    "sword": "Sword",
-                    "pickaxe": "Pickaxe",
-                    "axe": "Axe",
-                    "shovel": "Shovel",
-                    "hoe": "Hoe",
-                    "bow": "Bow",
-                    "crossbow": "Crossbow",
-                    "lighter": "Flint and steel",
-                    "shears": "Shears",
-                    "trident": "Trident"
-                },
-                "sound": {
-                    "none": "None",
-                    "anvilUse": "Anvil Use",
-                    "levelUp": "Level Up",
-                    "glassBreak": "Glass Break",
-                    "pling": "Pling"
-                }
-            },
-            "slider": "Warning durability (in %)",
-            "type": "Tool type"
+  "toolwarn": {
+    "settings": {
+      "name": "Toolbreak Warning",
+      "header": {
+        "tools": {
+          "name": "Tools"
         }
+      },
+      "enabled": {
+        "name": "Activated"
+      },
+      "toolManager": {
+        "name": "Manage tools"
+      }
+    },
+    "warnings": {
+      "firstWarning": "Your tools' durability is at %s%%!",
+      "lastHit": "You are on your last hits of this tool. You are risking breaking it!"
+    },
+    "ui": {
+      "tool": {
+        "meta": "Warn at: %s%% • Chat: %s • Last hit: %s"
+      },
+      "popup": {
+        "settings": {
+          "type": "Tool type",
+          "durability": "Warning durability (in %)",
+          "checkbox": {
+            "openChat": "Open chat",
+            "lastHit": "Last hit warning"
+          },
+          "dropdown": {
+            "warnSound": "Warn sound",
+            "lastSound": "Last hit warn sound",
+            "type": {
+              "sword": "Sword",
+              "pickaxe": "Pickaxe",
+              "axe": "Axe",
+              "shovel": "Shovel",
+              "hoe": "Hoe",
+              "bow": "Bow",
+              "crossbow": "Crossbow",
+              "lighter": "Flint and steel",
+              "shears": "Shears",
+              "trident": "Trident"
+            },
+            "sound": {
+              "none": "None",
+              "anvilUse": "Anvil Use",
+              "levelUp": "Level Up",
+              "glassBreak": "Glass Break",
+              "pling": "Pling"
+            }
+          }
+        },
+        "remove": {
+          "title": "Confirm removal",
+          "description": "Are you sure you want to remove warnings for the tool %s?"
+        }
+      }
     }
+  }
 }

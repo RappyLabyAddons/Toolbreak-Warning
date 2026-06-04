@@ -1,0 +1,55 @@
+.tool-container {
+  width: 100%;
+  height: 100%;
+
+  Scroll {
+    width: 100%;
+
+    .tool-list {
+      height: fit-content;
+      space-between-entries: 2;
+      selectable: true;
+    }
+
+    Scrollbar {
+      width: 5;
+      height: 100%;
+      margin-left: 5;
+    }
+  }
+
+  Tool {
+    width: 100%;
+    height: 24;
+    padding: 1;
+
+    .tool-icon {
+      width: 16;
+      height: width;
+      margin: 0 5 0 5;
+    }
+
+    .components {
+      width: 100%;
+      height: fit-content;
+    }
+
+    &:selected {
+      padding: 0;
+      border: 1 gray;
+      background-color: black;
+    }
+
+    &.disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .buttons {
+    height: fit-content;
+    width: 100%;
+    space-between-entries: 5;
+    layout: fill;
+    margin: 5 0 5 0;
+  }
+}
