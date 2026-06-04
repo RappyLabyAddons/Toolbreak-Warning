@@ -11,12 +11,13 @@ version = providers.environmentVariable("VERSION").getOrElse("1.4.4")
 
 labyMod {
     defaultPackageName = "com.rappytv.toolwarn"
+
     addonInfo {
         namespace = "toolwarn"
         displayName = "Toolbreak Warning"
         author = "RappyTV"
         description = "Stops you from using your currently used tool when its almost destroyed."
-        minecraftVersion = "*"
+        minecraftVersion = "1.8.9<26.1.2"
         version = rootProject.version.toString()
     }
 
