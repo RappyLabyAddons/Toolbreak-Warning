@@ -22,63 +22,63 @@ import net.labymod.api.util.MethodOrder;
 @SpriteTexture(value = "settings")
 public class ToolwarnConfig extends AddonConfig {
 
-    @Exclude
-    private final List<WarnTool> tools = new ArrayList<>();
-    @Exclude
-    private final ConfigProperty<Boolean> createDefaultTools = new ConfigProperty<>(true);
+  @Exclude
+  private final List<WarnTool> tools = new ArrayList<>();
+  @Exclude
+  private final ConfigProperty<Boolean> createDefaultTools = new ConfigProperty<>(true);
 
-    @SpriteSlot(size = 32)
-    @SwitchSetting
-    private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
+  @SpriteSlot(size = 32)
+  @SwitchSetting
+  private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
-    @SettingSection("tools")
-    @IntroducedIn(namespace = "toolwarn", value = "1.4.0")
-    @MethodOrder(after = "enabled")
-    @SpriteSlot(size = 32, x = 1)
-    @ActivitySetting
-    public Activity toolConfig() {
-        return new ToolConfigActivity();
+  @SettingSection("tools")
+  @IntroducedIn(namespace = "toolwarn", value = "1.4.0")
+  @MethodOrder(after = "enabled")
+  @SpriteSlot(size = 32, x = 1)
+  @ActivitySetting
+  public Activity toolConfig() {
+    return new ToolConfigActivity();
+  }
+
+  @Override
+  public ConfigProperty<Boolean> enabled() {
+    return this.enabled;
+  }
+
+  public void createDefaultTools() {
+    if (!this.createDefaultTools.get()) {
+      return;
     }
-
-    @Override
-    public ConfigProperty<Boolean> enabled() {
-        return this.enabled;
+    this.createDefaultTools.set(false);
+    if (!this.tools.isEmpty()) {
+      return;
     }
+    this.tools.add(new WarnTool()); // Sword is the default
+    this.tools.add(new WarnTool(Type.PICKAXE));
+    this.tools.add(new WarnTool(Type.AXE));
+    this.tools.add(new WarnTool(Type.SHOVEL));
+    this.tools.add(new WarnTool(Type.HOE));
+    this.tools.add(new WarnTool(Type.BOW));
+    this.tools.add(new WarnTool(Type.CROSSBOW));
+    this.tools.add(new WarnTool(Type.LIGHTER));
+    this.tools.add(new WarnTool(Type.SHEARS));
+    this.tools.add(new WarnTool(Type.TRIDENT));
+  }
 
-    public void createDefaultTools() {
-        if (!this.createDefaultTools.get()) {
-            return;
-        }
-        this.createDefaultTools.set(false);
-        if (!this.tools.isEmpty()) {
-            return;
-        }
-        this.tools.add(new WarnTool()); // Sword is the default
-        this.tools.add(new WarnTool(Type.PICKAXE));
-        this.tools.add(new WarnTool(Type.AXE));
-        this.tools.add(new WarnTool(Type.SHOVEL));
-        this.tools.add(new WarnTool(Type.HOE));
-        this.tools.add(new WarnTool(Type.BOW));
-        this.tools.add(new WarnTool(Type.CROSSBOW));
-        this.tools.add(new WarnTool(Type.LIGHTER));
-        this.tools.add(new WarnTool(Type.SHEARS));
-        this.tools.add(new WarnTool(Type.TRIDENT));
-    }
+  public void removeInvalidTools() {
+    this.tools.removeIf(entry ->
+        entry.getWarnAt() < 1
+            || entry.getWarnAt() > 25
+            || entry.getType() == null
+    );
+  }
 
-    public void removeInvalidTools() {
-        this.tools.removeIf(entry ->
-            entry.getWarnAt() < 1
-                || entry.getWarnAt() > 25
-                || entry.getType() == null
-        );
-    }
+  @Override
+  public int getConfigVersion() {
+    return 2;
+  }
 
-    @Override
-    public int getConfigVersion() {
-        return 2;
-    }
-
-    public List<WarnTool> getTools() {
-        return this.tools;
-    }
+  public List<WarnTool> getTools() {
+    return this.tools;
+  }
 }

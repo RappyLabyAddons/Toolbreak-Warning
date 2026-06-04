@@ -14,43 +14,43 @@ import net.labymod.api.util.version.SemanticVersion;
 @AddonMain
 public class ToolwarnAddon extends LabyAddon<ToolwarnConfig> {
 
-    public static Component prefix = Component.empty()
-        .append(Component.text("TBW", NamedTextColor.RED).decorate(TextDecoration.BOLD))
-        .append(Component.space())
-        .append(Component.text("» ", NamedTextColor.DARK_GRAY));
-    private static ToolwarnAddon INSTANCE;
+  public static Component prefix = Component.empty()
+      .append(Component.text("TBW", NamedTextColor.RED).decorate(TextDecoration.BOLD))
+      .append(Component.space())
+      .append(Component.text("» ", NamedTextColor.DARK_GRAY));
+  private static ToolwarnAddon INSTANCE;
 
-    @Override
-    protected void preConfigurationLoad() {
-        Laby.references().revisionRegistry().register(new SimpleRevision(
-            "toolwarn",
-            new SemanticVersion(1, 3, 4),
-            "2024-01-26"
-        ));
-        Laby.references().revisionRegistry().register(new SimpleRevision(
-            "toolwarn",
-            new SemanticVersion(1, 4, 0),
-            "2024-03-14"
-        ));
-        this.registerListener(new ConfigMigrationListener());
-    }
+  public static ToolwarnAddon getInstance() {
+    return INSTANCE;
+  }
 
-    @Override
-    protected void enable() {
-        INSTANCE = this;
+  @Override
+  protected void preConfigurationLoad() {
+    Laby.references().revisionRegistry().register(new SimpleRevision(
+        "toolwarn",
+        new SemanticVersion(1, 3, 4),
+        "2024-01-26"
+    ));
+    Laby.references().revisionRegistry().register(new SimpleRevision(
+        "toolwarn",
+        new SemanticVersion(1, 4, 0),
+        "2024-03-14"
+    ));
+    this.registerListener(new ConfigMigrationListener());
+  }
 
-        this.registerSettingCategory();
-        this.configuration().createDefaultTools();
+  @Override
+  protected void enable() {
+    INSTANCE = this;
 
-        this.registerListener(new ToolListener(this));
-    }
+    this.registerSettingCategory();
+    this.configuration().createDefaultTools();
 
-    @Override
-    protected Class<? extends ToolwarnConfig> configurationClass() {
-        return ToolwarnConfig.class;
-    }
+    this.registerListener(new ToolListener(this));
+  }
 
-    public static ToolwarnAddon getInstance() {
-        return INSTANCE;
-    }
+  @Override
+  protected Class<? extends ToolwarnConfig> configurationClass() {
+    return ToolwarnConfig.class;
+  }
 }

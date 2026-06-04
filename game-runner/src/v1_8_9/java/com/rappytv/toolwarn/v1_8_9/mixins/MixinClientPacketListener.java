@@ -15,40 +15,40 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(NetHandlerPlayClient.class)
 public class MixinClientPacketListener {
 
-    @Inject(
-        method = "handleSetSlot",
-        at = @At("HEAD")
-    )
-    private void onHandleContainerSetSlot(S2FPacketSetSlot packet, CallbackInfo ci) {
-        Minecraft minecraft = Minecraft.getMinecraft();
-        if (minecraft.thePlayer == null || packet.func_149175_c() != 0) {
-            return;
-        }
-
-        int hotbarSlot = 36 + minecraft.thePlayer.inventory.currentItem;
-        if (packet.func_149173_d() != hotbarSlot) {
-            return;
-        }
-
-        ItemStack incoming = packet.func_149174_e();
-        ItemStack current = minecraft.thePlayer.getHeldItem();
-
-        if (current == null || incoming == null || !incoming.isItemStackDamageable()) {
-            return;
-        }
-        int maxDamage = incoming.getMaxDamage();
-        int oldDurability = maxDamage - current.getItemDamage();
-        int newDurability = maxDamage - incoming.getItemDamage();
-        if (newDurability > oldDurability) {
-            return;
-        }
-
-        Laby.fireEvent(new ItemStackDamageEvent(
-            MinecraftUtil.fromMinecraft(incoming),
-            oldDurability,
-            newDurability,
-            true
-        ));
+  @Inject(
+      method = "handleSetSlot",
+      at = @At("HEAD")
+  )
+  private void onHandleContainerSetSlot(S2FPacketSetSlot packet, CallbackInfo ci) {
+    Minecraft minecraft = Minecraft.getMinecraft();
+    if (minecraft.thePlayer == null || packet.func_149175_c() != 0) {
+      return;
     }
+
+    int hotbarSlot = 36 + minecraft.thePlayer.inventory.currentItem;
+    if (packet.func_149173_d() != hotbarSlot) {
+      return;
+    }
+
+    ItemStack incoming = packet.func_149174_e();
+    ItemStack current = minecraft.thePlayer.getHeldItem();
+
+    if (current == null || incoming == null || !incoming.isItemStackDamageable()) {
+      return;
+    }
+    int maxDamage = incoming.getMaxDamage();
+    int oldDurability = maxDamage - current.getItemDamage();
+    int newDurability = maxDamage - incoming.getItemDamage();
+    if (newDurability > oldDurability) {
+      return;
+    }
+
+    Laby.fireEvent(new ItemStackDamageEvent(
+        MinecraftUtil.fromMinecraft(incoming),
+        oldDurability,
+        newDurability,
+        true
+    ));
+  }
 
 }
