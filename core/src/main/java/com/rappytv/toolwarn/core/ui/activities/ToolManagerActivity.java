@@ -1,6 +1,7 @@
 package com.rappytv.toolwarn.core.ui.activities;
 
 import com.rappytv.toolwarn.api.item.WarnTool;
+import com.rappytv.toolwarn.core.ui.popup.EditToolPopup;
 import com.rappytv.toolwarn.core.ui.widgets.ToolWidget;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +50,13 @@ public class ToolManagerActivity extends Activity {
   @Override
   public void initialize(Parent parent) {
     super.initialize(parent);
+
+    ToolWidget selectedEntry = this.toolList.listSession().getSelectedEntry();
+    if (selectedEntry != null) {
+      this.selectedTool = selectedEntry.getTool();
+    } else {
+      this.selectedTool = null;
+    }
 
     FlexibleContentWidget container = new FlexibleContentWidget();
     container.addId("tool-container");
@@ -100,13 +108,17 @@ public class ToolManagerActivity extends Activity {
   }
 
   private void performAction(Action action) {
-    switch (action) { // TODO: implement add and edit actions
-      case ADD -> {
-        // add
-      }
-      case EDIT -> {
-        // edit
-      }
+    switch (action) {
+      case ADD -> new EditToolPopup(new WarnTool(), true, (tool) -> {
+        this.tools.add(tool);
+        this.selectedTool = tool;
+        this.reload();
+      }).displayInOverlay();
+      case EDIT -> new EditToolPopup(this.selectedTool, false, (tool) -> {
+        this.tools.remove(this.selectedTool);
+        this.tools.add(tool);
+        this.reload();
+      }).displayInOverlay();
       case REMOVE -> SimpleAdvancedPopup.builder()
           .title(Component.translatable("toolwarn.ui.popup.remove.title"))
           .description(Component.translatable(

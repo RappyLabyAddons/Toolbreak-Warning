@@ -13,35 +13,34 @@ public class WarnTool {
       "textures/tools.png");
   private boolean enabled;
   private Type type;
-  private WarnSound sound;
-  private WarnSound lastSound;
   private int warnAt;
   private boolean openChat;
   private boolean lastHitWarn;
+  private WarnSound sound;
+  private WarnSound lastSound;
 
   public WarnTool() {
     this(Type.SWORD);
   }
 
   public WarnTool(Type type) {
-    this(true, type, WarnSound.NONE, WarnSound.NONE, 5, true, true);
+    this(true, type, 5, true, true, WarnSound.NONE, WarnSound.NONE);
   }
 
-  public WarnTool(Type type, WarnSound sound, WarnSound lastSound, int warnAt, boolean openChat,
-      boolean lastHitWarn) {
-    this(true, type, sound, lastSound, warnAt, openChat, lastHitWarn);
+  public WarnTool(Type type, int warnAt, boolean openChat, boolean lastHitWarn, WarnSound sound,
+      WarnSound lastSound) {
+    this(true, type, warnAt, lastHitWarn, openChat, sound, lastSound);
   }
 
-  public WarnTool(boolean enabled, Type type, WarnSound sound, WarnSound lastSound, int warnAt,
-      boolean openChat,
-      boolean lastHitWarn) {
+  public WarnTool(boolean enabled, Type type, int warnAt, boolean openChat, boolean lastHitWarn,
+      WarnSound sound, WarnSound lastSound) {
     this.enabled = enabled;
     this.type = type;
-    this.sound = sound;
-    this.lastSound = lastSound;
     this.warnAt = warnAt;
     this.openChat = openChat;
     this.lastHitWarn = lastHitWarn;
+    this.sound = sound;
+    this.lastSound = lastSound;
   }
 
   public boolean isEnabled() {
@@ -58,18 +57,6 @@ public class WarnTool {
 
   public void setType(Type type) {
     this.type = type;
-  }
-
-  public WarnSound getSound() {
-    return this.sound;
-  }
-
-  public void setSound(WarnSound sound) {
-    this.sound = sound;
-  }
-
-  public WarnSound getLastSound() {
-    return this.lastSound;
   }
 
   public void setLastSound(WarnSound lastSound) {
@@ -100,16 +87,28 @@ public class WarnTool {
     this.lastHitWarn = lastHitWarn;
   }
 
+  public WarnSound getSound() {
+    return this.sound;
+  }
+
+  public void setSound(WarnSound sound) {
+    this.sound = sound;
+  }
+
+  public WarnSound getLastSound() {
+    return this.lastSound;
+  }
+
   @Override
   public String toString() {
     return "WarnTool{" +
         "enabled=" + this.enabled +
         ", type=" + this.type +
-        ", sound=" + this.sound +
-        ", lastSound=" + this.lastSound +
         ", warnAt=" + this.warnAt +
         ", openChat=" + this.openChat +
         ", lastHitWarn=" + this.lastHitWarn +
+        ", sound=" + this.sound +
+        ", lastSound=" + this.lastSound +
         '}';
   }
 

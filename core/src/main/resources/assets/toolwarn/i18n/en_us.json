@@ -24,15 +24,18 @@
       },
       "popup": {
         "settings": {
-          "type": "Tool type",
-          "durability": "Warning durability (in %)",
-          "checkbox": {
+          "component": {
+            "add": "Add tool",
+            "edit": "Edit tool",
+            "enabled": "Enabled",
+            "type": "Tool type",
+            "warnAt": "Warning durability (in %)",
             "openChat": "Open chat",
-            "lastHit": "Last hit warning"
+            "lastHitWarning": "Last hit warning",
+            "warnSound": "Warn sound",
+            "lastWarnSound": "Last hit warn sound"
           },
           "dropdown": {
-            "warnSound": "Warn sound",
-            "lastSound": "Last hit warn sound",
             "type": {
               "sword": "Sword",
               "pickaxe": "Pickaxe",
