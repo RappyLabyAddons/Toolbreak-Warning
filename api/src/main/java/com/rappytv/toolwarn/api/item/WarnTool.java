@@ -4,35 +4,51 @@ import com.rappytv.toolwarn.api.WarnSound;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.resources.ResourceLocation;
 import net.labymod.api.client.world.item.ItemStack;
+import net.labymod.api.util.I18n;
 import org.jetbrains.annotations.Nullable;
 
 public class WarnTool {
 
   private static final ResourceLocation ICON_SPRITE = ResourceLocation.create("toolwarn",
       "textures/tools.png");
+  private boolean enabled;
   private Type type;
-  private WarnSound sound;
-  private WarnSound lastSound;
   private int warnAt;
   private boolean openChat;
   private boolean lastHitWarn;
+  private WarnSound sound;
+  private WarnSound lastSound;
 
   public WarnTool() {
     this(Type.SWORD);
   }
 
   public WarnTool(Type type) {
-    this(type, WarnSound.NONE, WarnSound.NONE, 5, true, true);
+    this(true, type, 5, true, true, WarnSound.NONE, WarnSound.NONE);
   }
 
-  public WarnTool(Type type, WarnSound sound, WarnSound lastSound, int warnAt, boolean openChat,
-      boolean lastHitWarn) {
+  public WarnTool(Type type, int warnAt, boolean openChat, boolean lastHitWarn, WarnSound sound,
+      WarnSound lastSound) {
+    this(true, type, warnAt, lastHitWarn, openChat, sound, lastSound);
+  }
+
+  public WarnTool(boolean enabled, Type type, int warnAt, boolean openChat, boolean lastHitWarn,
+      WarnSound sound, WarnSound lastSound) {
+    this.enabled = enabled;
     this.type = type;
-    this.sound = sound;
-    this.lastSound = lastSound;
     this.warnAt = warnAt;
     this.openChat = openChat;
     this.lastHitWarn = lastHitWarn;
+    this.sound = sound;
+    this.lastSound = lastSound;
+  }
+
+  public boolean isEnabled() {
+    return this.enabled;
+  }
+
+  public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
   }
 
   public Type getType() {
@@ -41,18 +57,6 @@ public class WarnTool {
 
   public void setType(Type type) {
     this.type = type;
-  }
-
-  public WarnSound getSound() {
-    return this.sound;
-  }
-
-  public void setSound(WarnSound sound) {
-    this.sound = sound;
-  }
-
-  public WarnSound getLastSound() {
-    return this.lastSound;
   }
 
   public void setLastSound(WarnSound lastSound) {
@@ -71,16 +75,41 @@ public class WarnTool {
     return this.openChat;
   }
 
-  public boolean lastHitWarn() {
-    return this.lastHitWarn;
-  }
-
   public void setOpenChat(boolean openChat) {
     this.openChat = openChat;
   }
 
+  public boolean lastHitWarn() {
+    return this.lastHitWarn;
+  }
+
   public void setLastHitWarn(boolean lastHitWarn) {
     this.lastHitWarn = lastHitWarn;
+  }
+
+  public WarnSound getSound() {
+    return this.sound;
+  }
+
+  public void setSound(WarnSound sound) {
+    this.sound = sound;
+  }
+
+  public WarnSound getLastSound() {
+    return this.lastSound;
+  }
+
+  @Override
+  public String toString() {
+    return "WarnTool{" +
+        "enabled=" + this.enabled +
+        ", type=" + this.type +
+        ", warnAt=" + this.warnAt +
+        ", openChat=" + this.openChat +
+        ", lastHitWarn=" + this.lastHitWarn +
+        ", sound=" + this.sound +
+        ", lastSound=" + this.lastSound +
+        '}';
   }
 
   public enum Type {
@@ -101,6 +130,14 @@ public class WarnTool {
 
     Type(int x, int y) {
       this.icon = Icon.sprite32(ICON_SPRITE, x, y);
+    }
+
+    public String translationKey() {
+      return "toolwarn.ui.popup.settings.dropdown.type." + this.name().toLowerCase();
+    }
+
+    public String getTranslation() {
+      return I18n.translate(this.translationKey());
     }
 
     public static Type getByItem(@Nullable ItemStack itemStack) {

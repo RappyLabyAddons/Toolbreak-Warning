@@ -18,11 +18,6 @@ public class ToolwarnAddon extends LabyAddon<ToolwarnConfig> {
       .append(Component.text("TBW", NamedTextColor.RED).decorate(TextDecoration.BOLD))
       .append(Component.space())
       .append(Component.text("» ", NamedTextColor.DARK_GRAY));
-  private static ToolwarnAddon INSTANCE;
-
-  public static ToolwarnAddon getInstance() {
-    return INSTANCE;
-  }
 
   @Override
   protected void preConfigurationLoad() {
@@ -41,8 +36,6 @@ public class ToolwarnAddon extends LabyAddon<ToolwarnConfig> {
 
   @Override
   protected void enable() {
-    INSTANCE = this;
-
     this.registerSettingCategory();
     this.configuration().createDefaultTools();
 

@@ -10,7 +10,7 @@
             "enabled": {
                 "name": "Aktiviert"
             },
-            "toolConfig": {
+          "toolManager": {
                 "name": "Werkzeuge verwalten"
             }
         },
@@ -18,7 +18,7 @@
             "lastHit": "Du solltest das Tool jetzt weglegen. Das ist dein letzter Schlag!",
             "warning": "Willst du das Tool wirklich weiter benutzen? Die Haltbarkeit liegt bei %s%%!"
         },
-        "gui": {
+      "activity": {
             "meta": "Warnung bei: %s%% • Chat: %s • Letzter Schlag: %s",
             "remove": "Willst du diesen Eintrag wirklich entfernen?",
             "checkbox": {

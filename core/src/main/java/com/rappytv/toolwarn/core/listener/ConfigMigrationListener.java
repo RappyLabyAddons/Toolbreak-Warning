@@ -93,21 +93,21 @@ public class ConfigMigrationListener {
 
     JsonArray tools = new JsonArray();
     tools.add(gson.toJsonTree(
-        new WarnTool(Type.SWORD, warnSound, lastHitSound, sword, openChat, lastHitWarn)));
+        new WarnTool(Type.SWORD, sword, openChat, lastHitWarn, warnSound, lastHitSound)));
     tools.add(gson.toJsonTree(
-        new WarnTool(Type.PICKAXE, warnSound, lastHitSound, pickaxe, openChat, lastHitWarn)));
+        new WarnTool(Type.PICKAXE, pickaxe, openChat, lastHitWarn, warnSound, lastHitSound)));
     tools.add(gson.toJsonTree(
-        new WarnTool(Type.AXE, warnSound, lastHitSound, axe, openChat, lastHitWarn)));
+        new WarnTool(Type.AXE, axe, openChat, lastHitWarn, warnSound, lastHitSound)));
     tools.add(gson.toJsonTree(
-        new WarnTool(Type.SHOVEL, warnSound, lastHitSound, shovel, openChat, lastHitWarn)));
+        new WarnTool(Type.SHOVEL, shovel, openChat, lastHitWarn, warnSound, lastHitSound)));
     tools.add(gson.toJsonTree(
-        new WarnTool(Type.CROSSBOW, warnSound, lastHitSound, crossbow, openChat, lastHitWarn)));
+        new WarnTool(Type.CROSSBOW, crossbow, openChat, lastHitWarn, warnSound, lastHitSound)));
     tools.add(gson.toJsonTree(
-        new WarnTool(Type.LIGHTER, warnSound, lastHitSound, lighter, openChat, lastHitWarn)));
+        new WarnTool(Type.LIGHTER, lighter, openChat, lastHitWarn, warnSound, lastHitSound)));
     tools.add(gson.toJsonTree(
-        new WarnTool(Type.SHEARS, warnSound, lastHitSound, shears, openChat, lastHitWarn)));
+        new WarnTool(Type.SHEARS, shears, openChat, lastHitWarn, warnSound, lastHitSound)));
     tools.add(gson.toJsonTree(
-        new WarnTool(Type.TRIDENT, warnSound, lastHitSound, trident, openChat, lastHitWarn)));
+        new WarnTool(Type.TRIDENT, trident, openChat, lastHitWarn, warnSound, lastHitSound)));
 
     config.add("tools", tools);
     event.setJsonObject(config);

@@ -2,7 +2,7 @@ package com.rappytv.toolwarn.core;
 
 import com.rappytv.toolwarn.api.item.WarnTool;
 import com.rappytv.toolwarn.api.item.WarnTool.Type;
-import com.rappytv.toolwarn.core.ui.activities.ToolConfigActivity;
+import com.rappytv.toolwarn.core.ui.activities.ToolManagerActivity;
 import java.util.ArrayList;
 import java.util.List;
 import net.labymod.api.addon.AddonConfig;
@@ -24,6 +24,7 @@ public class ToolwarnConfig extends AddonConfig {
 
   @Exclude
   private final List<WarnTool> tools = new ArrayList<>();
+
   @Exclude
   private final ConfigProperty<Boolean> createDefaultTools = new ConfigProperty<>(true);
 
@@ -36,8 +37,8 @@ public class ToolwarnConfig extends AddonConfig {
   @MethodOrder(after = "enabled")
   @SpriteSlot(size = 32, x = 1)
   @ActivitySetting
-  public Activity toolConfig() {
-    return new ToolConfigActivity();
+  public Activity toolManager() {
+    return new ToolManagerActivity(this.tools);
   }
 
   @Override
@@ -63,14 +64,6 @@ public class ToolwarnConfig extends AddonConfig {
     this.tools.add(new WarnTool(Type.LIGHTER));
     this.tools.add(new WarnTool(Type.SHEARS));
     this.tools.add(new WarnTool(Type.TRIDENT));
-  }
-
-  public void removeInvalidTools() {
-    this.tools.removeIf(entry ->
-        entry.getWarnAt() < 1
-            || entry.getWarnAt() > 25
-            || entry.getType() == null
-    );
   }
 
   @Override
